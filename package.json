@@ -18,7 +18,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "CI=true react-scripts build"
+    "build": "CI=true react-scripts build && cp build/index.html build/404.html"
   },
   "eslintConfig": {
     "extends": "react-app"
