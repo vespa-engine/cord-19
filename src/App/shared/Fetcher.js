@@ -1,5 +1,9 @@
 import { useReducer } from 'react';
 
+const backend =
+  process.env.REACT_APP_BACKEND_URL ||
+  'https://ge78jthota.execute-api.us-east-1.amazonaws.com/default';
+
 function Get(url, params) {
   return Fetch('GET', url, params);
 }
@@ -24,6 +28,8 @@ function Fetch(method, url, params) {
   function reducer(state, action) {
     return { ...state, ...action };
   }
+
+  if (!url.startsWith('http')) url = backend + url;
 
   params = params || {};
   params.method = method;

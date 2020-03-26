@@ -3,6 +3,7 @@ import { Router } from '@reach/router';
 import { Flex, Box } from 'rebass';
 import NavMenu from 'App/shared/components/NavMenu';
 import Main from './Main';
+import Search from './Search';
 import Error from 'App/shared/components/Error';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Box width={1}>
         <Router primary={false} component={React.Fragment}>
           <Main path="/" />
+          <Search path="/search" />
           <Error default />
         </Router>
       </Box>
