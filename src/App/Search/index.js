@@ -21,6 +21,8 @@ const Container = styled.div`
 function SearchResults() {
   const query = new URLSearchParams(window.location.search);
   query.set('type', 'any');
+  query.set('summary', 'short');
+
   const { loading, response, error } = Get(
     '/search/?' + query.toString()
   ).state();

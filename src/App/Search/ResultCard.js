@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Card } from 'semantic-ui-react';
+import Moment from 'react-moment';
 import Link from 'App/shared/components/Link';
 
 const StyledCard = styled(Card)`
@@ -57,11 +58,17 @@ const nameFormatter = ({ first, middle, last }) => {
   return (matches ? matches.join('') + ' ' : '') + last;
 };
 
-function Date({ date }) {
-  return !date ? null : (
-    <span title={date.length === 4 ? date : undefined}>
-      {date.substring(0, 4)}
-    </span>
+function JournalAndDate({ journal, timestamp }) {
+  const format = journal ? ' (YYYY)' : 'YYYY';
+  return (
+    <>
+      {journal}
+      {timestamp > 0 ? (
+        <Moment format={format} unix utc>
+          {timestamp * 1000}
+        </Moment>
+      ) : null}
+    </>
   );
 }
 
@@ -71,6 +78,7 @@ function AuthorsList({ authors }) {
     e.preventDefault();
     setShowAll(true);
   };
+
   if (!authors) return null;
   const limit = showAll || authors.length < 12 ? authors.length : 10;
   return (
@@ -92,19 +100,16 @@ function AuthorsList({ authors }) {
 }
 
 function ResultCard({
-  fields: { id, title, datestring, journal, abstract, body_text, authors },
+  fields: { id, title, timestamp, journal, abstract, authors },
 }) {
-  const content = formatText(abstract || body_text);
+  const content = formatText(abstract);
   return (
     <StyledCard>
       <Card.Header>
-        <Link to={`${process.env.PUBLIC_URL}/article/${id}`}>
-          {highlightReplacer(title, '')}
-        </Link>
+        <Link to={`/article/${id}`}>{highlightReplacer(title, '')}</Link>
       </Card.Header>
       <Card.Meta>
-        {journal}
-        <Date date={datestring} />
+        <JournalAndDate {...{ journal, timestamp }} />
         <AuthorsList authors={authors} />
       </Card.Meta>
       {content && <Card.Content>{content}</Card.Content>}
