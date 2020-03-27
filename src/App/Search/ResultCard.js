@@ -17,7 +17,7 @@ const StyledCard = styled(Card)`
   .meta {
     padding: 5px;
 
-    span {
+    a.doi {
       float: right;
     }
   }
@@ -72,6 +72,15 @@ function JournalAndDate({ journal, timestamp }) {
   );
 }
 
+function DoiLink({ doi }) {
+  if (!doi || doi === 'https://doi.org/None') return null;
+  return (
+    <Link className="ui doi" to={doi}>
+      {doi.replace('https://doi.org/', 'doi:')}
+    </Link>
+  );
+}
+
 function AuthorsList({ authors }) {
   const [showAll, setShowAll] = useState(false);
   const onShowAll = e => {
@@ -100,7 +109,7 @@ function AuthorsList({ authors }) {
 }
 
 function ResultCard({
-  fields: { id, title, timestamp, journal, abstract, authors },
+  fields: { id, title, timestamp, journal, doi, abstract, authors },
 }) {
   const content = formatText(abstract);
   return (
@@ -110,6 +119,7 @@ function ResultCard({
       </Card.Header>
       <Card.Meta>
         <JournalAndDate {...{ journal, timestamp }} />
+        <DoiLink doi={doi} />
         <AuthorsList authors={authors} />
       </Card.Meta>
       {content && <Card.Content>{content}</Card.Content>}
