@@ -1,8 +1,7 @@
 import { useReducer } from 'react';
 
 const backend =
-  process.env.REACT_APP_BACKEND_URL ||
-  'https://ge78jthota.execute-api.us-east-1.amazonaws.com/default';
+  process.env.REACT_APP_BACKEND_URL || 'https://api.cord19.vespa.ai';
 
 function Get(url, params) {
   return Fetch('GET', url, params);
