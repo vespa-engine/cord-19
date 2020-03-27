@@ -6,12 +6,13 @@ This documents tells you what you need to know to contribute.
 Contribution can include:
 * Improvements to ranking
 * Improvement to data quality
+* Frontend improvements
 
-To contribute, make a PR - the Vespa Team reviews at best effort.
+To contribute, make a PR - the Vespa Team reviews and merges at best effort.
 
 ## Issues
 We track issues in [GitHub issues](https://github.com/vespa-engine/cord-19/issues).
-It is fine to submit issues also for feature requests and ideas,
+It is OK to submit issues also for feature requests and ideas,
 whether or not you intend to work on them.
 
 ## License and copyright
