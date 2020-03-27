@@ -34,27 +34,13 @@ function NavMenu() {
     <Box sx={{ paddingLeft: '16px', paddingRight: '16px' }} width={1}>
       <NavBar secondary inverted fluid>
         <Menu.Item fitted>
-          <Link to="/">
+          <Link to="https://cloud.vespa.ai/">
             <Image src={logo} />
           </Link>
         </Menu.Item>
         <Menu.Menu position="right">
           <Menu.Item>
-            <Link to="http://blog.vespa.ai/">Blog</Link>
-          </Menu.Item>
-          <Menu.Item>
-            <Link to="https://github.com/vespa-engine/cord-19/blob/master/getting-started.md">Getting Started</Link>
-          </Menu.Item>
-          <Menu.Item>
-            <Link to="https://github.com/vespa-engine/cord-19/blob/master/README.md">README</Link>
-          </Menu.Item>
-          <Menu.Item>
-            <Link to="https://github.com/vespa-engine/cord-19">GitHub</Link>
-          </Menu.Item>
-          <Menu.Item>
-            <Link to="https://github.com/vespa-engine/cord-19/issues">
-              Issues
-            </Link>
+            <Link to="https://github.com/vespa-engine/cord-19/blob/master/README.md">Read more</Link>
           </Menu.Item>
         </Menu.Menu>
       </NavBar>
