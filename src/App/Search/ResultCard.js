@@ -33,6 +33,7 @@ const StyledCard = styled(Card)`
   }
 `;
 
+const isValidDoi = doi => doi && doi !== 'https://doi.org/None'; // TODO: Fix in documents
 const highlightReplacer = (text, replace) =>
   text.replace(/<(\/?)hi>/g, replace);
 const formatText = text => {
@@ -72,7 +73,7 @@ function JournalAndDate({ journal, timestamp }) {
 }
 
 function DoiLink({ doi }) {
-  if (!doi || doi === 'https://doi.org/None') return null;
+  if (!isValidDoi(doi)) return null;
   return (
     <Link className="ui doi" to={doi}>
       {doi.replace('https://doi.org/', 'doi:')}
@@ -111,10 +112,16 @@ function ResultCard({
   fields: { id, title, timestamp, journal, doi, abstract, authors },
 }) {
   const content = formatText(abstract);
+  const plainTitle = highlightReplacer(title, '');
   return (
     <StyledCard>
       <Card.Header>
-        <Link to={`/article/${id}`}>{highlightReplacer(title, '')}</Link>
+        {/* TODO: Link to /article/:id */}
+        {isValidDoi(doi) ? (
+          <Link to={doi}>{plainTitle}</Link>
+        ) : (
+          <>{plainTitle}</>
+        )}
       </Card.Header>
       <Card.Meta>
         <JournalAndDate {...{ journal, timestamp }} />
