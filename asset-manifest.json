@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/cord-19/static/css/main.7da8f716.chunk.css",
-    "main.js": "/cord-19/static/js/main.f5e31db3.chunk.js",
-    "main.js.map": "/cord-19/static/js/main.f5e31db3.chunk.js.map",
-    "runtime-main.js": "/cord-19/static/js/runtime-main.64ee523f.js",
-    "runtime-main.js.map": "/cord-19/static/js/runtime-main.64ee523f.js.map",
-    "static/css/2.cdb3008c.chunk.css": "/cord-19/static/css/2.cdb3008c.chunk.css",
-    "static/js/2.2dd90764.chunk.js": "/cord-19/static/js/2.2dd90764.chunk.js",
-    "static/js/2.2dd90764.chunk.js.map": "/cord-19/static/js/2.2dd90764.chunk.js.map",
-    "index.html": "/cord-19/index.html",
-    "precache-manifest.60521f5e5cd06adfed7b7a94da503589.js": "/cord-19/precache-manifest.60521f5e5cd06adfed7b7a94da503589.js",
-    "service-worker.js": "/cord-19/service-worker.js",
-    "static/css/2.cdb3008c.chunk.css.map": "/cord-19/static/css/2.cdb3008c.chunk.css.map",
-    "static/css/main.7da8f716.chunk.css.map": "/cord-19/static/css/main.7da8f716.chunk.css.map",
-    "static/js/2.2dd90764.chunk.js.LICENSE.txt": "/cord-19/static/js/2.2dd90764.chunk.js.LICENSE.txt",
-    "static/media/VespaLogoWhite.png": "/cord-19/static/media/VespaLogoWhite.2fad86a7.png",
-    "static/media/semantic.css": "/cord-19/static/media/outline-icons.ece54318.ttf"
+    "main.css": "/static/css/main.7da8f716.chunk.css",
+    "main.js": "/static/js/main.8e82b080.chunk.js",
+    "main.js.map": "/static/js/main.8e82b080.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.1f881fee.js",
+    "runtime-main.js.map": "/static/js/runtime-main.1f881fee.js.map",
+    "static/css/2.3a2a7389.chunk.css": "/static/css/2.3a2a7389.chunk.css",
+    "static/js/2.b49662ff.chunk.js": "/static/js/2.b49662ff.chunk.js",
+    "static/js/2.b49662ff.chunk.js.map": "/static/js/2.b49662ff.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.e585d3b97a0fa9001a91b80b566652f0.js": "/precache-manifest.e585d3b97a0fa9001a91b80b566652f0.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.3a2a7389.chunk.css.map": "/static/css/2.3a2a7389.chunk.css.map",
+    "static/css/main.7da8f716.chunk.css.map": "/static/css/main.7da8f716.chunk.css.map",
+    "static/js/2.b49662ff.chunk.js.LICENSE.txt": "/static/js/2.b49662ff.chunk.js.LICENSE.txt",
+    "static/media/VespaLogoWhite.png": "/static/media/VespaLogoWhite.2fad86a7.png",
+    "static/media/semantic.css": "/static/media/outline-icons.ece54318.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.64ee523f.js",
-    "static/css/2.cdb3008c.chunk.css",
-    "static/js/2.2dd90764.chunk.js",
+    "static/js/runtime-main.1f881fee.js",
+    "static/css/2.3a2a7389.chunk.css",
+    "static/js/2.b49662ff.chunk.js",
     "static/css/main.7da8f716.chunk.css",
-    "static/js/main.f5e31db3.chunk.js"
+    "static/js/main.8e82b080.chunk.js"
   ]
 }
