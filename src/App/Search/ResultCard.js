@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Card } from 'semantic-ui-react';
+import Moment from 'react-moment';
 import Link from 'App/shared/components/Link';
 
 const StyledCard = styled(Card)`
@@ -14,9 +15,9 @@ const StyledCard = styled(Card)`
   }
 
   .meta {
-    padding: 5px;
+    padding: 3px 5px;
 
-    span {
+    a.doi {
       float: right;
     }
   }
@@ -27,12 +28,12 @@ const StyledCard = styled(Card)`
     clear: both;
   }
 
-  .content {
-    border-top: 1px solid rgba(34, 36, 38, 0.1);
+  && .content {
     padding: 0.5em;
   }
 `;
 
+const isValidDoi = doi => doi && doi !== 'https://doi.org/None'; // TODO: Fix in documents
 const highlightReplacer = (text, replace) =>
   text.replace(/<(\/?)hi>/g, replace);
 const formatText = text => {
@@ -57,11 +58,26 @@ const nameFormatter = ({ first, middle, last }) => {
   return (matches ? matches.join('') + ' ' : '') + last;
 };
 
-function Date({ date }) {
-  return !date ? null : (
-    <span title={date.length === 4 ? date : undefined}>
-      {date.substring(0, 4)}
-    </span>
+function JournalAndDate({ journal, timestamp }) {
+  const format = journal ? ' (YYYY)' : 'YYYY';
+  return (
+    <>
+      {journal}
+      {timestamp > 0 ? (
+        <Moment format={format} unix utc>
+          {timestamp * 1000}
+        </Moment>
+      ) : null}
+    </>
+  );
+}
+
+function DoiLink({ doi }) {
+  if (!isValidDoi(doi)) return null;
+  return (
+    <Link className="ui doi" to={doi}>
+      {doi.replace('https://doi.org/', 'doi:')}
+    </Link>
   );
 }
 
@@ -71,6 +87,7 @@ function AuthorsList({ authors }) {
     e.preventDefault();
     setShowAll(true);
   };
+
   if (!authors) return null;
   const limit = showAll || authors.length < 12 ? authors.length : 10;
   return (
@@ -92,19 +109,23 @@ function AuthorsList({ authors }) {
 }
 
 function ResultCard({
-  fields: { id, title, datestring, journal, abstract, body_text, authors },
+  fields: { id, title, timestamp, journal, doi, abstract, authors },
 }) {
-  const content = formatText(abstract || body_text);
+  const content = formatText(abstract);
+  const plainTitle = highlightReplacer(title, '');
   return (
     <StyledCard>
       <Card.Header>
-        <Link to={`${process.env.PUBLIC_URL}/article/${id}`}>
-          {highlightReplacer(title, '')}
-        </Link>
+        {/* TODO: Link to /article/:id */}
+        {isValidDoi(doi) ? (
+          <Link to={doi}>{plainTitle}</Link>
+        ) : (
+          <>{plainTitle}</>
+        )}
       </Card.Header>
       <Card.Meta>
-        {journal}
-        <Date date={datestring} />
+        <JournalAndDate {...{ journal, timestamp }} />
+        <DoiLink doi={doi} />
         <AuthorsList authors={authors} />
       </Card.Meta>
       {content && <Card.Content>{content}</Card.Content>}
