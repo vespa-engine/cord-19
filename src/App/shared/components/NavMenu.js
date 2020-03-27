@@ -40,7 +40,9 @@ function NavMenu() {
         </Menu.Item>
         <Menu.Menu position="right">
           <Menu.Item>
-            <Link to="https://github.com/vespa-engine/cord-19/blob/master/README.md">Read more</Link>
+            <Link to="https://github.com/vespa-engine/cord-19/blob/master/README.md">
+              Read more
+            </Link>
           </Menu.Item>
         </Menu.Menu>
       </NavBar>
