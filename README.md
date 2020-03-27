@@ -8,8 +8,8 @@ _Retrieved from https://pages.semanticscholar.org/coronavirus-research._
 _Accessed 2020-03-27. https://doi.org/10.5281/zenodo.3727291_
 
 It is made accessible by the [Vespa Team](https://vespa.ai/).
-To use the application, try the [sample queries](https://cord19.vespa.ai/).
-For more advanced usage, refer to [CORD-19 search](/cord-19-queries.md).
+To use the application, try the sample queries at [Vespa CORD-19 Search](https://cord19.vespa.ai/).
+For more advanced usage, refer to [CORD-19 API Query](/cord-19-queries.md).
 
 To implement this application, the Vespa Team has also used:
 * https://medium.com/scite/analyzing-more-than-1m-citations-to-better-understand-scientific-research-on-covid-19-3faa59d726c2
