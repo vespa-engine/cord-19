@@ -153,8 +153,7 @@ function ResultCard({
   return (
     <StyledCard>
       <Card.Header>
-        {/* TODO: Link to /article/:id */}
-        {doi ? <Link to={doi}>{plainTitle}</Link> : <>{plainTitle}</>}
+        <Link to={`/article/${id}`}>{plainTitle}</Link>
       </Card.Header>
       <Card.Meta>
         <JournalAndDate {...{ journal, timestamp }} />

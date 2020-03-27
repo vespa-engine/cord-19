@@ -5,6 +5,7 @@ import NavMenu from 'App/shared/components/NavMenu';
 import Footer from 'App/shared/components/Footer';
 import Main from './Main';
 import Search from './Search';
+import Article from './Article';
 import Error from 'App/shared/components/Error';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Router primary={false} component={React.Fragment}>
           <Main path="/" />
           <Search path="/search" />
+          <Article path="/article/:id" />
           <Error default />
         </Router>
       </Box>
