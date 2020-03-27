@@ -1,7 +1,8 @@
 <!-- Copyright Verizon Media. Licensed under the terms of the Apache 2.0 license. See LICENSE in the project root. -->
 # Experiment yourself
 _CORD-19 Search_ is built on the [Vespa Cloud](https://cloud.vespa.ai/) service.
-To run the same application on your own computer, use [Vespa.ai](https://vespa.ai/) and the guide below.
+To run the same application on your own computer,
+use [Vespa.ai](https://vespa.ai/) (open source big data serving engine) and the guide below.
 
 Running the application locally is easy and enables you to play with ranking features.
 Use this to make the application more useful for the scientists that needs it,
