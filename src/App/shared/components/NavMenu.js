@@ -34,7 +34,7 @@ function NavMenu() {
     <Box sx={{ paddingLeft: '16px', paddingRight: '16px' }} width={1}>
       <NavBar secondary inverted fluid>
         <Menu.Item fitted>
-          <Link to="https://cloud.vespa.ai/">
+          <Link to="/">
             <Image src={logo} />
           </Link>
         </Menu.Item>
