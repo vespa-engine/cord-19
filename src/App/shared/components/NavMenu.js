@@ -43,16 +43,16 @@ function NavMenu() {
             <Link to="http://blog.vespa.ai/">Blog</Link>
           </Menu.Item>
           <Menu.Item>
-            <Link to="https://twitter.com/vespaengine">Twitter</Link>
+            <Link to="https://github.com/vespa-engine/cord-19/blob/master/getting-started.md">Getting Started</Link>
           </Menu.Item>
           <Menu.Item>
-            <Link to="https://docs.vespa.ai/documentation/">Docs</Link>
+            <Link to="https://github.com/vespa-engine/cord-19/blob/master/README.md">README</Link>
           </Menu.Item>
           <Menu.Item>
-            <Link to="https://github.com/vespa-engine">GitHub</Link>
+            <Link to="https://github.com/vespa-engine/cord-19">GitHub</Link>
           </Menu.Item>
           <Menu.Item>
-            <Link to="https://github.com/vespa-engine/vespa/issues">
+            <Link to="https://github.com/vespa-engine/cord-19/issues">
               Issues
             </Link>
           </Menu.Item>
