@@ -1,7 +1,8 @@
 <!-- Copyright Verizon Media. Licensed under the terms of the Apache 2.0 license. See LICENSE in the project root. -->
 # Contributing to CORD-19
-Contributions to [CORD-19](http://github.com/vespa-engine/cord-19) are welcome.
-This documents tells you what you need to know to contribute.
+Contributions are greatly appreciated.
+This document describes what’s needed to contribute.
+If you have any questions, tweet us @vespaengine.
 
 Contribution can include:
 * Improvements to ranking
