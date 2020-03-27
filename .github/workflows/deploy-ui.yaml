@@ -1,7 +1,6 @@
 name: CORD-19 UI
 on:
   push:
-    branches: [ master ]
 
 jobs:
   build:
