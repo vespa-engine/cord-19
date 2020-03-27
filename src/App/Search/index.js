@@ -10,7 +10,8 @@ const Container = styled.div`
     font-size: 1.1rem;
     width: 100%;
     max-width: 1000px;
-    margin: 2rem auto;
+    margin: 0 auto;
+    padding: 2rem 0.5rem;
 
     .column {
       padding: 0;

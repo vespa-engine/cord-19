@@ -15,7 +15,7 @@ const StyledCard = styled(Card)`
   }
 
   .meta {
-    padding: 5px;
+    padding: 3px 5px;
 
     a.doi {
       float: right;
@@ -28,8 +28,7 @@ const StyledCard = styled(Card)`
     clear: both;
   }
 
-  .content {
-    border-top: 1px solid rgba(34, 36, 38, 0.1);
+  && .content {
     padding: 0.5em;
   }
 `;
