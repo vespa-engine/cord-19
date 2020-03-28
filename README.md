@@ -3,7 +3,7 @@
 Welcome to _CORD-19 Search_.
 This application serves data from:
 
-_COVID-19 Open Research Dataset (CORD-19). 2020. Version 2020-03-20._
+_COVID-19 Open Research Dataset (CORD-19). 2020. Version 2020-03-27._
 _Retrieved from https://pages.semanticscholar.org/coronavirus-research._
 _Accessed 2020-03-27. https://doi.org/10.5281/zenodo.3727291_
 
