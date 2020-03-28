@@ -7,14 +7,16 @@ There is a simple search frontend at https://cord19.vespa.ai/ and api access at 
 ## Front end query language
 The https://cord19.vespa.ai/ query interface supports the Vespa [simple query language](https://docs.vespa.ai/documentation/reference/simple-query-language-reference.html):
 
-* Use +term to specify that the result **must** include the term and - for **must not**. 
-* "viral transmissions" searches for the phrase 
-* *+"viral transmission" covid-19 -1918* Must have the phrase "viral transmission" and should have 'covid-19' and must not include the '1918'
+* Use +query_term to specify that the result **must** include the term and -query_term for **must not**. 
+* "viral transmissions" searches for the phrase  
+* Example *+"viral transmission" covid-19 -1918* Must have the phrase "viral transmission" and should have 'covid-19' and must not include the term '1918'
+* To search specific fields use fieldname:query_term, e.g +title:"reproduction number". 
 
 Query examples:
 * [+covid-19 +temperature impact on viral transmission](https://cord19.vespa.ai/search?query=%2Bcovid-19+%2Btemperature+impact+on+viral+transmission)
 * [basic reproduction numbers for covid-19 in +"south korea"](https://cord19.vespa.ai/search?query=basic+reproduction+numbers+for+covid-19+in+%2B%22south+korea%22)
 * [Impact of school closure to handle COVID-19 pandemic](https://cord19.vespa.ai/search?query=Impact+of+school+closure+to+handle+COVID-19+pandemic) 
+* [+title:"reproduction number" +abstract:MERS](https://cord19.vespa.ai/search?query=%2Btitle%3A%22reproduction+number%22+%2Babstract%3AMERS) 
 
 ## API Access
 
@@ -37,12 +39,13 @@ These are the most important fields in the dataset
 |datestring|datestring from metadata|no|yes|yes|no|string|
 |timestamp|Epoch Unix time stamp parsed from datestring|yes|yes|yes|range and exact matching - can also be sorted on|long|
 |license|license|yes|yes|yes|exact matching|string|
+|journal|journal|yes|yes|yes|exact matching|string|
 |has_full_text|has_full_text|yes|yes|yes|exact matching|bool|
-|doi|https:// + doi from metadata|no|yes|no|no|bool|
+|doi|https:// + doi from metadata|no|yes|no|no|string|
 |id|row id from metadata.csv|yes|yes|yes|yes|int|
 |title_embedding|[SciBERT-NLI](https://huggingface.co/gsarti/scibert-nli) embedding from title|yes (using nearestNeighbor())|no|no|yes|tensor<float>(x[768])|
 |abstract_embedding|[SciBERT-NLI](https://huggingface.co/gsarti/scibert-nli) embedding from abstract|yes (using nearestNeighbor())|no|no|yes|tensor<float>(x[768])|
-|authors|authors for full documents|yes using sameElement()|yes|yes|yes|array of struct|
+|authors|authors in metadata or authors from sha json if found|yes using sameElement()|yes|yes|yes|array of struct|
 
 
 ## Ranking
