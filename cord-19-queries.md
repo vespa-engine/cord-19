@@ -17,6 +17,8 @@ Query examples:
 * [basic reproduction numbers for covid-19 in +"south korea"](https://cord19.vespa.ai/search?query=basic+reproduction+numbers+for+covid-19+in+%2B%22south+korea%22)
 * [Impact of school closure to handle COVID-19 pandemic](https://cord19.vespa.ai/search?query=Impact+of+school+closure+to+handle+COVID-19+pandemic) 
 * [+title:"reproduction number" +abstract:MERS](https://cord19.vespa.ai/search?query=%2Btitle%3A%22reproduction+number%22+%2Babstract%3AMERS) 
+* [+authors.last:knobel](https://cord19.vespa.ai/search?query=authors.last%3Aknobel)
+
 
 ## API Access
 
