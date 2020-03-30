@@ -14,8 +14,9 @@ const StyledCard = styled(Card)`
     padding: 5px;
   }
 
-  .meta {
+  &.card .meta {
     padding: 3px 5px;
+    color: rgba(0, 0, 0, 0.5);
 
     a.doi {
       float: right;
@@ -33,7 +34,6 @@ const StyledCard = styled(Card)`
   }
 `;
 
-const isValidDoi = doi => doi && doi !== 'https://doi.org/None'; // TODO: Fix in documents
 const highlightReplacer = (text, replace) =>
   text.replace(/<(\/?)hi>/g, replace);
 const formatText = text => {
@@ -59,10 +59,14 @@ const nameFormatter = ({ first, middle, last }) => {
 };
 
 function JournalAndDate({ journal, timestamp }) {
-  const format = journal ? ' (YYYY)' : 'YYYY';
+  const format = journal ? ' (YYYY-MM-DD)' : 'YYYY-MM-DD';
   return (
     <>
-      {journal}
+      {journal && (
+        <>
+          <b>Journal:</b> {journal}
+        </>
+      )}
       {timestamp > 0 ? (
         <Moment format={format} unix utc>
           {timestamp * 1000}
@@ -73,11 +77,32 @@ function JournalAndDate({ journal, timestamp }) {
 }
 
 function DoiLink({ doi }) {
-  if (!isValidDoi(doi)) return null;
+  if (!doi) return null;
   return (
     <Link className="ui doi" to={doi}>
       {doi.replace('https://doi.org/', 'doi:')}
     </Link>
+  );
+}
+
+function SourceAndCitations({ source, citations_count_total }) {
+  if (!source && !citations_count_total) return null;
+  return (
+    <div>
+      {source && (
+        <>
+          <b>Source: </b>
+          {source}
+        </>
+      )}
+      {source && citations_count_total && <>, </>}
+      {citations_count_total && (
+        <>
+          <b>Citations: </b>
+          {citations_count_total}
+        </>
+      )}
+    </div>
   );
 }
 
@@ -92,6 +117,7 @@ function AuthorsList({ authors }) {
   const limit = showAll || authors.length < 12 ? authors.length : 10;
   return (
     <div>
+      <b>Authors: </b>
       {authors
         .map(nameFormatter)
         .slice(0, limit)
@@ -109,7 +135,17 @@ function AuthorsList({ authors }) {
 }
 
 function ResultCard({
-  fields: { id, title, timestamp, journal, doi, abstract, authors },
+  fields: {
+    id,
+    title,
+    timestamp,
+    journal,
+    doi,
+    abstract,
+    authors,
+    source,
+    citations_count_total,
+  },
 }) {
   const content = formatText(abstract);
   const plainTitle = highlightReplacer(title, '');
@@ -117,15 +153,12 @@ function ResultCard({
     <StyledCard>
       <Card.Header>
         {/* TODO: Link to /article/:id */}
-        {isValidDoi(doi) ? (
-          <Link to={doi}>{plainTitle}</Link>
-        ) : (
-          <>{plainTitle}</>
-        )}
+        {doi ? <Link to={doi}>{plainTitle}</Link> : <>{plainTitle}</>}
       </Card.Header>
       <Card.Meta>
         <JournalAndDate {...{ journal, timestamp }} />
         <DoiLink doi={doi} />
+        <SourceAndCitations {...{ source, citations_count_total }} />
         <AuthorsList authors={authors} />
       </Card.Meta>
       {content && <Card.Content>{content}</Card.Content>}

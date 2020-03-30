@@ -23,6 +23,8 @@ function SearchResults() {
   const query = new URLSearchParams(window.location.search);
   query.set('type', 'any');
   query.set('summary', 'short');
+  query.set('restrict', 'doc');
+  query.set('hits', '20');
 
   const { loading, response, error } = Get(
     '/search/?' + query.toString()
