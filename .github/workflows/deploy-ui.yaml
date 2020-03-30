@@ -15,6 +15,7 @@ jobs:
         node-version: '12.x'
     - run: |
         cd "${GITHUB_WORKSPACE}"
+        ls -la
         yarn install
         yarn build
         mv build ../build
