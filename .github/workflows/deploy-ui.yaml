@@ -22,15 +22,11 @@ jobs:
         echo mv build ../build
         git config user.name  "${GITHUB_ACTOR}"
         git config user.email "${GITHUB_ACTOR}@verizonmedia.com"
-        echo git checkout gh-pages
-        git branch
-        git remote set-url origin "https://x-access-token:${DEPLOY_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
         git checkout gh-pages
         git pull
-        echo after pull
-        rm -rf !("CNAME"|"node_modules")
-        mv ../build/* .
-        rm -rf ../build
-        git add .
-        git commit -m "Publish to gh-pages branch $(date -Is)"
-        git remote set-url origin "https://x-access-token:${DEPLOY_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+        echo rm -rf !("CNAME"|"node_modules")
+        echo mv ../build/* .
+        echo rm -rf ../build
+        echo git add .
+        echo git commit -m "Publish to gh-pages branch $(date -Is)"
+        echo git remote set-url origin "https://x-access-token:${DEPLOY_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
