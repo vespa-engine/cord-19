@@ -1,5 +1,10 @@
 name: CORD-19 UI
-on: [push]
+on:
+  push:
+    branches: [ master ]
+    paths-ignore:
+    - '*.md'
+    - 'img'
 
 jobs:
   build:
