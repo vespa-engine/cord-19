@@ -23,4 +23,4 @@ jobs:
         git add --all
         git commit -m "Publish to gh-pages branch"
         git remote set-url origin "https://x-access-token:${DEPLOY_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-        git push --force-with-lease origin gh-pages
+
