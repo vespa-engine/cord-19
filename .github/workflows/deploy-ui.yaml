@@ -1,10 +1,17 @@
 name: CORD-19 UI
-on: [push]
+on:
+  push:
+    branches: [ master ]
+    paths-ignore:
+    - '*.md'
+    - 'img'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env:
+      DEPLOY_TOKEN: ${{ secrets.CORD_19_DEPLOY }}
+    
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js 12
@@ -12,5 +19,21 @@ jobs:
       with:
         node-version: '12.x'
     - run: |
+        set -ex
+        shopt -s extglob
+        cd "${GITHUB_WORKSPACE}"
+        ls -la
         yarn install
         yarn build
+        mv build ../build
+        git config user.name  "${GITHUB_ACTOR}"
+        git config user.email "info@vespa.ai"
+        git fetch origin
+        git checkout gh-pages
+        rm -rf !("CNAME"|"node_modules")
+        mv ../build/* .
+        rm -rf ../build
+        git add .
+        git commit -m "Publish to gh-pages branch $(date -Is)"
+        git remote set-url origin "https://x-access-token:${DEPLOY_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+        git push origin gh-pages
