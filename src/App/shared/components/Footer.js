@@ -14,8 +14,8 @@ const FooterBox = styled(Box)`
     text-align: center;
 
     a {
-      color: white;
       font-weight: bold;
+      color: white;
     }
 
     a:hover {
@@ -44,4 +44,3 @@ function Footer() {
 }
 
 export default Footer;
-
