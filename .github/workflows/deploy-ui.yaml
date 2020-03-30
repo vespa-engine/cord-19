@@ -14,4 +14,5 @@ jobs:
       with:
         node-version: '12.x'
     - run: |
-        echo "$GITHUB_ACTOR"
+        echo "${GITHUB_ACTOR}"
+        echo "${GITHUB_WORKSPACE}"
