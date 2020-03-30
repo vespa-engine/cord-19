@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import 'fomantic-ui-css/semantic.css';
+import 'react-tagsinput/react-tagsinput.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 

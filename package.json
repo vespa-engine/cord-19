@@ -32,6 +32,7 @@
   "devDependencies": {
     "@reach/router": "^1.2.1",
     "@welldone-software/why-did-you-render": "^3.3.9",
+    "@wojtekmaj/react-daterange-picker": "^2.5.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react-hooks": "^2.3.0",
     "http-proxy-middleware": "^0.20.0",
@@ -43,6 +44,7 @@
     "react-dom": "^16.12.0",
     "react-moment": "^0.9.7",
     "react-scripts": "^3.4.0",
+    "react-tagsinput": "^3.19.0",
     "react-window": "^1.8.5",
     "rebass": "^4.0.6",
     "semantic-ui-react": "^0.88.2",
