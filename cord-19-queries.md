@@ -24,6 +24,7 @@ Query examples:
 
 * Frontend: https://cord19.vespa.ai/  
 * Full API access: https://api.cord19.vespa.ai/search/?query=covid-19 
+* [Kaggle Notebook: Semantic Search Using Vespa.ai's CORD-19 index](https://www.kaggle.com/jkb123/semantic-search-using-vespa-ai-s-cord19-index)
 
 For using the Search Api of Vespa please see  [API documentation](https://docs.vespa.ai/documentation/search-api.html), [YQL Query Language](https://docs.vespa.ai/documentation/query-language.html).
 For the full document definition see [doc.sd](https://github.com/vespa-engine/sample-apps/blob/master/vespa-cloud/cord-19-search/src/main/application/searchdefinitions/doc.sd).
