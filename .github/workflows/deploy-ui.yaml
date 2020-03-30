@@ -14,7 +14,7 @@ jobs:
       with:
         node-version: '12.x'
     - run: |
-        set -e
+        set -ex
         cd "${GITHUB_WORKSPACE}"
         ls -la
         echo yarn install
@@ -24,6 +24,7 @@ jobs:
         git config user.email "${GITHUB_ACTOR}@verizonmedia.com"
         echo git checkout gh-pages
         git branch
+        git remote set-url origin "https://x-access-token:${DEPLOY_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
         git checkout gh-pages
         git pull
         echo after pull
