@@ -14,7 +14,16 @@ jobs:
       with:
         node-version: '12.x'
     - run: |
-        echo "${GITHUB_ACTOR}"
-        echo "${GITHUB_WORKSPACE}"
-        echo "cwd: "
-        pwd
+        yarn install
+        yarn build
+        mv build ../build
+        git config user.name  "${GITHUB_ACTOR}"
+        git config user.email "${GITHUB_ACTOR}@verizonmedia.com"
+        git checkout gh-pages
+        git pull
+        rm -rf !("CNAME"|"node_modules")
+        mv ../build/* .
+        rm -rf ../build
+        git add .
+        git commit -m "Publish to gh-pages branch $(date -Is)"
+        git remote set-url origin "https://x-access-token:${DEPLOY_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
