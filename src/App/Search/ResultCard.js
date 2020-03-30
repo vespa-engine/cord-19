@@ -33,7 +33,7 @@ const StyledCard = styled(Card)`
   }
 `;
 
-const isValidDoi = doi => doi && doi !== 'https://doi.org/None'; // TODO: Fix in documents
+const isValidDoi = doi => doi 
 const highlightReplacer = (text, replace) =>
   text.replace(/<(\/?)hi>/g, replace);
 const formatText = text => {
@@ -59,10 +59,11 @@ const nameFormatter = ({ first, middle, last }) => {
 };
 
 function JournalAndDate({ journal, timestamp }) {
-  const format = journal ? ' (YYYY)' : 'YYYY';
+  const format = journal ? ' (YYYY-MM-DD)' : 'YYYY-MM-DD';
+  const journal_format = journal ? 'Journal: '+ journal : '';
   return (
     <>
-      {journal}
+      {journal_format}
       {timestamp > 0 ? (
         <Moment format={format} unix utc>
           {timestamp * 1000}
@@ -92,6 +93,7 @@ function AuthorsList({ authors }) {
   const limit = showAll || authors.length < 12 ? authors.length : 10;
   return (
     <div>
+      Authors:  
       {authors
         .map(nameFormatter)
         .slice(0, limit)
@@ -109,7 +111,7 @@ function AuthorsList({ authors }) {
 }
 
 function ResultCard({
-  fields: { id, title, timestamp, journal, doi, abstract, authors },
+  fields: { id, title, timestamp, journal, doi, abstract, authors, source, citations_count_total },
 }) {
   const content = formatText(abstract);
   const plainTitle = highlightReplacer(title, '');
@@ -126,6 +128,7 @@ function ResultCard({
       <Card.Meta>
         <JournalAndDate {...{ journal, timestamp }} />
         <DoiLink doi={doi} />
+        <div>Source: {source}, Citations: {citations_count_total} </div>
         <AuthorsList authors={authors} />
       </Card.Meta>
       {content && <Card.Content>{content}</Card.Content>}
