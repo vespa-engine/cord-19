@@ -14,14 +14,16 @@ jobs:
       with:
         node-version: '12.x'
     - run: |
+        set -e
         cd "${GITHUB_WORKSPACE}"
         ls -la
-        yarn install
-        yarn build
-        mv build ../build
+        echo yarn install
+        echo yarn build
+        echo mv build ../build
         git config user.name  "${GITHUB_ACTOR}"
         git config user.email "${GITHUB_ACTOR}@verizonmedia.com"
         echo git checkout gh-pages
+        git branch
         git checkout gh-pages
         git pull
         echo after pull
