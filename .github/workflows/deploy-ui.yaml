@@ -22,6 +22,7 @@ jobs:
         echo mv build ../build
         git config user.name  "${GITHUB_ACTOR}"
         git config user.email "${GITHUB_ACTOR}@verizonmedia.com"
+        git fetch origin
         git checkout gh-pages
         git pull
         echo rm -rf !("CNAME"|"node_modules")
