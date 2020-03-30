@@ -14,7 +14,7 @@ jobs:
       with:
         node-version: '12.x'
     - run: |
-        yarn install
+        rm package-lock.json && yarn install
         yarn build
         mv build ../build
         git config user.name  "${GITHUB_ACTOR}"
