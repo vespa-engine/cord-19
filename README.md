@@ -34,3 +34,7 @@ refer to [contributing](/CONTRIBUTING.md) and submit PRs.
 ## Experiment yourself
 Feel free to download the application, index the data set, and improve the service.
 See [experiment yourself](/experiment-yourself.md) for how run open source Vespa.ai on your own computer.
+
+----
+
+[![CORD-19 UI](https://github.com/vespa-engine/cord-19/workflows/CORD-19%20UI/badge.svg?branch=master)](https://github.com/vespa-engine/cord-19/actions?query=workflow%3A%22CORD-19+UI%22)
