@@ -16,3 +16,5 @@ jobs:
     - run: |
         echo "${GITHUB_ACTOR}"
         echo "${GITHUB_WORKSPACE}"
+        echo "cwd: "
+        pwd
