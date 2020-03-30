@@ -4,7 +4,9 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env:
+      DEPLOY_TOKEN: ${{ secrets.CORD_19_DEPLOY }}
+    
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js 12
@@ -12,5 +14,13 @@ jobs:
       with:
         node-version: '12.x'
     - run: |
+        git config user.name "$GITHUB_ACTOR"
+        git config user.email "${GITHUB_ACTOR}@verizonmedia.com"
+        git checkout gh-pages
+        git rebase origin/master
         yarn install
         yarn build
+        git add --all
+        git commit -m "Publish to gh-pages branch"
+        git remote set-url origin "https://x-access-token:${DEPLOY_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+        git push --force-with-lease origin gh-pages
