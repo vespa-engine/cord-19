@@ -86,7 +86,8 @@ function DoiLink({ doi }) {
 }
 
 function SourceAndCitations({ source, citations_count_total }) {
-  if (!source && !citations_count_total) return null;
+  const showCitations = citations_count_total > 0;
+  if (!source && !showCitations) return null;
   return (
     <div>
       {source && (
@@ -95,8 +96,8 @@ function SourceAndCitations({ source, citations_count_total }) {
           {source}
         </>
       )}
-      {source && citations_count_total && <>, </>}
-      {citations_count_total && (
+      {source && showCitations && <>, </>}
+      {showCitations && (
         <>
           <b>Citations: </b>
           {citations_count_total}
