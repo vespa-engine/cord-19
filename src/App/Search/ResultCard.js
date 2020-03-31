@@ -5,6 +5,9 @@ import Moment from 'react-moment';
 import Link from 'App/shared/components/Link';
 
 const StyledCard = styled(Card)`
+  && {
+    box-shadow: none;
+  }
 
   &.card {
     width: 100%;
@@ -32,7 +35,7 @@ const StyledCard = styled(Card)`
 
   && .content {
     padding: 0.5em;
-    border-color: rgba(0, 0, 0, 0);
+    border: 0;
   }
 `;
 
