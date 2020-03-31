@@ -4,8 +4,7 @@
   "private": true,
   "homepage": "/",
   "dependencies": {
-    "fomantic-ui-css": "^2.8.4",
-    "lint-staged": "^10.1.0"
+    "fomantic-ui-css": "^2.8.4"
   },
   "lint-staged": {
     "src/App/!(Guide)/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
@@ -47,7 +46,8 @@
     "react-window": "^1.8.5",
     "rebass": "^4.0.6",
     "semantic-ui-react": "^0.88.2",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "lint-staged": "^10.1.0"
   },
   "husky": {
     "hooks": {
