@@ -3,6 +3,7 @@ import { navigate } from '@reach/router';
 const select = `all(
      all(group(source) order(-count()) each(output(count())))
      all(group(journal) max(10) order(-count()) each(output(count())))
+     all(group(authors.name) max(10) order(-count()) each(output(count())) as(author))
      all(group(time.year(timestamp)) max(10) order(-count()) each(output(count())) as(year))
      all(group(has_full_text) each(output(count())))
    )`
@@ -33,6 +34,7 @@ const generateApiQueryParams = () => {
     orCombiner('journal', journal),
     orCombiner('source', source),
     orCombiner('timestamp', timestampRanges, true),
+    orCombiner('authors.name', author),
     orCombiner('has_full_text', has_full_text),
   ]
     .filter(s => s)
