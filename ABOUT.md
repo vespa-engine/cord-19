@@ -2,9 +2,7 @@
 # About CORD-19 Search
 _CORD-19 Search_ is built on Vespa Cloud:
 
-![architecture](img/CORD-19-architecture.svg)
-
-(We will add more details on data pre-processing before indexing)
+![overview](img/CORD-19-data-processing.svg)
 
 (We will add pointers here on different approaches to ranking and the results)
 
