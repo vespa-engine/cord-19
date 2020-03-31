@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import Moment from 'react-moment';
-import { Container, Header, Tab, List } from 'semantic-ui-react';
+import { Container, Header, Tab, List, Pagination } from 'semantic-ui-react';
 import { Error, Loading } from 'App/shared/components/Messages';
 import { Get } from 'App/shared/Fetcher';
 import ResultCard from 'App/Search/ResultCard';
 import Link from 'App/shared/components/Link';
 import { nameFormatter } from 'App/shared/utils/formatter';
+import { navigate } from '@reach/router';
 
 const ContainerContent = styled(Container)`
   &&& {
@@ -107,8 +108,8 @@ function Related({ id }) {
   );
 }
 
-function CitedBy({ citedBy }) {
-  return citedBy.map(id => {
+function CitedBy({ citedBy, offset }) {
+  return citedBy.slice(10 * offset, 10 * (offset + 1)).map(id => {
     const { loading, response, error } = Get(
       `/document/v1/covid-19/doc/docid/${id}`
     ).state();
@@ -128,6 +129,7 @@ function CitedBy({ citedBy }) {
 }
 
 function Article({ id }) {
+  const url = new URL(window.location);
   const { loading, response, error } = Get(
     `/document/v1/covid-19/doc/docid/${id}`
   ).state();
@@ -153,14 +155,38 @@ function Article({ id }) {
     },
     {
       menuItem: `${citations.length} citing articles`,
-      render: () => <CitedBy citedBy={citations} />,
+      render: () => (
+        <Container>
+          <CitedBy
+            citedBy={citations}
+            offset={parseInt(url.searchParams.get('offset')) || 0}
+          />
+          <Pagination
+            totalPages={Math.floor((citations.length + 9) / 10)}
+            onPageChange={(e, pageInfo) => {
+              const offset = pageInfo.activePage - 1;
+              if (offset >= 0 && 10 * offset < citations.length) {
+                url.searchParams.set('offset', offset);
+                navigate(url);
+              }
+            }}
+          />
+        </Container>
+      ),
     },
   ];
 
   return (
     <ContainerContent>
       <Content {...response.fields} />
-      <Tab panes={panes} />
+      <Tab
+        panes={panes}
+        defaultActiveIndex={url.searchParams.get('activeIndex') || 0}
+        onTabChange={(e, tabInfo) => {
+          url.searchParams.set('activeIndex', tabInfo.activeIndex);
+          navigate(url);
+        }}
+      />
     </ContainerContent>
   );
 }
