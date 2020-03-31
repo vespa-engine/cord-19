@@ -33,7 +33,8 @@ refer to [contributing](/CONTRIBUTING.md) and submit PRs.
 
 ## Experiment yourself
 Feel free to download the application, index the data set, and improve the service.
-See [experiment yourself](/experiment-yourself.md) for how run open source Vespa.ai on your own computer.
+See [experiment yourself](https://github.com/vespa-engine/sample-apps/blob/master/vespa-cloud/cord-19-search/experiment-yourself.md)
+for how run open source Vespa.ai on your own computer.
 
 ----
 
