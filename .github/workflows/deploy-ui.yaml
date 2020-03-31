@@ -76,8 +76,6 @@ jobs:
         cd "${GITHUB_WORKSPACE}"
         git config user.name  "${GITHUB_ACTOR}"
         git config user.email "info@vespa.ai"
-#        git fetch origin
-#        git checkout gh-pages
         rm -rf !("CNAME"|"node_modules")
         mv ../build/* .
         ls -la
