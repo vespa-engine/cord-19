@@ -4,7 +4,6 @@ import { Box } from 'rebass';
 import Link from 'App/shared/components/Link';
 import { Segment, Image } from 'semantic-ui-react';
 import logo from 'App/shared/img/VespaLogoWhite.png';
-import dummy from 'App/shared/img/VespaLogoWhite.png';
 
 const FooterBox = styled(Box)`
   &&& {
@@ -48,7 +47,7 @@ const FooterBox = styled(Box)`
 function Footer() {
   return (
     <FooterBox>
-      <Segment.Group horizontal inverted>
+      <Segment.Group horizontal>
         <Segment className="sides" />
         <Segment>
           <Link to="https://pages.semanticscholar.org/coronavirus-research">

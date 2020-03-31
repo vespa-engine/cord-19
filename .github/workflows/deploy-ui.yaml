@@ -79,7 +79,7 @@ jobs:
         ls -la
         git diff
         rm -rf ../build
-#        git add .
-#        git commit -m "Publish to gh-pages branch $(date -Is)"
-#        git remote set-url origin "https://x-access-token:${DEPLOY_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-#        git push origin gh-pages
+        git add .
+        git commit -m "Publish to gh-pages branch $(date -Is)"
+        git remote set-url origin "https://x-access-token:${DEPLOY_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+        git push origin gh-pages
