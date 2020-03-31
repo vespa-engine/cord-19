@@ -52,7 +52,17 @@ function SearchResults(searchState) {
     return <Error message={error.message || 'Unknown search error...'} />;
 
   console.log(response);
-  if (!('children' in response.root)) return null;
+  const [grouping, ...articles] = response.root.children;
+
+  const valuesState = grouping.children.reduce((obj, { label, children }) => {
+    obj[label] = children.map(({ value, fields }) => ({
+      value,
+      count: fields['count()'],
+      checked: searchState[label].includes(value),
+    }));
+    return obj;
+  }, {});
+
   return (
     <div id="wrapper">
       <Sidebar onSearch={onSearch} {...searchState} {...valuesState} />
