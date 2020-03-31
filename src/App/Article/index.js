@@ -122,7 +122,7 @@ function Related({ id }) {
 }
 
 function CitedBy({ citedBy }) {
-  return citedBy.map((id, _) => {
+  return citedBy.map(id => {
     const { loading, response, error } = Get(
       `/document/v1/covid-19/doc/docid/${id}`
     ).state();
@@ -149,14 +149,22 @@ function Article({ id }) {
 
   console.log(response);
 
+  const citations = [
+    ...new Set(
+      (response.fields.cited_by || []).concat(
+        (response.fields.citations_inbound || []).map((c, _) => c.source_id)
+      )
+    ),
+  ];
+
   const panes = [
     {
-      menuItem: 'Related',
+      menuItem: 'Related articles',
       render: () => <Related id={response.fields.id} />,
     },
     {
-      menuItem: 'Cited by',
-      render: () => <CitedBy citedBy={response.fields.cited_by} />,
+      menuItem: `${citations.length} citing articles`,
+      render: () => <CitedBy disabled citedBy={citations} />,
     },
   ];
 

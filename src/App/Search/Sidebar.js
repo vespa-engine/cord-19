@@ -41,9 +41,11 @@ function Checkboxes({ name, field, values, onSearch }) {
 
 function Sidebar({ journal, source, year, author, has_full_text, onSearch }) {
   return (
-    <div id="sidebar"
-         className="ui form"
-         style={{backgroundColor:'#f2f8ff', boxShadow: '1px 1px #a0c0f0' }}>
+    <div
+      id="sidebar"
+      className="ui form"
+      style={{ backgroundColor: '#f2f8ff', boxShadow: '1px 1px #a0c0f0' }}
+    >
       <Checkboxes
         name="Source"
         field="source"
