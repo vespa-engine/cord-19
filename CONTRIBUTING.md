@@ -20,7 +20,7 @@ locally on your machine to test your changes before submitting a PR.
 1. Clone this repo to your local work directory.
 1. Install and start [Docker](https://www.docker.com/products/docker-desktop) if you haven't already.
 1. Download and start an instance needed to run the front-end: \
-`$ docker run -ti --rm --name console -p 3000:3000 --entrypoint /bin/sh -v /PATH/TO/WORKDIR/cord-19:/app -w /app node:12-alpine`
+`$ docker run -ti --rm --name cord-19 -p 3000:3000 --entrypoint /bin/sh -v /PATH/TO/WORKDIR/cord-19:/app -w /app node:12-alpine`
 1. Inside the container, install the dependencies: \
 `/app # yarn install`
 1. Now start the frontend server: \
