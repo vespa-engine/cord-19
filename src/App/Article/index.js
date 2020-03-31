@@ -163,6 +163,9 @@ function Article({ id }) {
           />
           <Pagination
             totalPages={Math.floor((citations.length + 9) / 10)}
+            defaultActivePage={
+              1 + (parseInt(url.searchParams.get('offset')) || 0)
+            }
             onPageChange={(e, pageInfo) => {
               const offset = pageInfo.activePage - 1;
               if (offset >= 0 && 10 * offset < citations.length) {
