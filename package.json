@@ -4,7 +4,8 @@
   "private": true,
   "homepage": "/",
   "dependencies": {
-    "fomantic-ui-css": "^2.8.4"
+    "fomantic-ui-css": "^2.8.4",
+    "lint-staged": "^10.1.0"
   },
   "lint-staged": {
     "src/App/!(Guide)/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
