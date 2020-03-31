@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import Moment from 'react-moment';
 import { Container, Header, Tab, List } from 'semantic-ui-react';
 import { Error, Loading } from 'App/shared/components/Messages';
 import { Get } from 'App/shared/Fetcher';
 import ResultCard from 'App/Search/ResultCard';
+import Link from 'App/shared/components/Link';
 
 const ContainerContent = styled(Container)`
   &&& {
@@ -12,36 +14,81 @@ const ContainerContent = styled(Container)`
   }
 `;
 
+const nameFormatter = ({ first, middle, last }) => {
+  if (!last) return first || middle;
+  const matches = [first, middle]
+    .filter(s => s)
+    .join(' ')
+    .match(/(?:(?=^|\s)(\w)|([A-Z]))/g);
+  return (matches ? matches.join('') + ' ' : '') + last;
+};
+
 function Authors({ authors }) {
+  const limit = authors.length;
   return (
-    <List horizontal>
-      {authors.map(({ name, last }) => (
-        <List.Item key={name}>{`${name} ${last}`}</List.Item>
-      ))}
-    </List>
+    <Header.Subheader>
+      {authors
+        .map(nameFormatter)
+        .slice(0, limit)
+        .join(', ')}
+    </Header.Subheader>
   );
 }
 
-function Doi({ doi }) {
+function Meta({ journal, timestamp, source, license, doi }) {
+  const format = journal ? ' (YYYY-MM-DD)' : 'YYYY-MM-DD';
+  const date = timestamp ? (
+    <Moment format={format} unix utc>
+      {timestamp * 1000}
+    </Moment>
+  ) : null;
+
   return (
     <List>
-      <List.Item as="li">
-        <a href={doi} target="_blank" rel="noopener noreferrer">
-          {doi}
-        </a>
+      <List.Item>
+        <List.Header>Doi</List.Header>
+        <Link to={doi}>{doi.replace('https://doi.org/', '')}</Link>
+      </List.Item>
+      {journal ? (
+        <List.Item>
+          <List.Header>Journal</List.Header>
+          {journal} {date}
+        </List.Item>
+      ) : (
+        <List.Item>
+          <List.Header>Date</List.Header>
+          {date}
+        </List.Item>
+      )}
+      <List.Item>
+        <List.Header>Source</List.Header>
+        {source}
+      </List.Item>
+      <List.Item>
+        <List.Header>License</List.Header>
+        {license}
       </List.Item>
     </List>
   );
 }
 
-function Content({ title, abstract, authors, doi }) {
+function Content({
+  title,
+  abstract,
+  authors,
+  doi,
+  journal,
+  timestamp,
+  source,
+  license,
+}) {
   return (
     <ContainerContent>
       <Header as="h1">{title}</Header>
       <Authors authors={authors} />
-      <Doi doi={doi} />
       <Header as="h3">Abstract</Header>
       <p>{abstract}</p>
+      <Meta {...{ journal, timestamp, source, license, doi }} />
     </ContainerContent>
   );
 }
