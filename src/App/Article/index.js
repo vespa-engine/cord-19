@@ -16,14 +16,8 @@ const ContainerContent = styled(Container)`
 `;
 
 function Authors({ authors }) {
-  const limit = authors.length;
   return (
-    <Header.Subheader>
-      {authors
-        .map(nameFormatter)
-        .slice(0, limit)
-        .join(', ')}
-    </Header.Subheader>
+    <Header.Subheader>{authors.map(nameFormatter).join(', ')}</Header.Subheader>
   );
 }
 
