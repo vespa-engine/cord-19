@@ -27,6 +27,7 @@ const FooterBox = styled(Box)`
 function Footer() {
   return (
     <FooterBox>
+      <Segment.Group class="test" inverted></Segment.Group>
       <Link to="https://pages.semanticscholar.org/coronavirus-research">
         COVID-19 Open Research Dataset (CORD-19)
       </Link>
