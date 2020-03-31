@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Card } from 'semantic-ui-react';
 import Moment from 'react-moment';
 import Link from 'App/shared/components/Link';
+import { nameFormatter } from 'App/shared/utils/formatter';
 
 const StyledCard = styled(Card)`
   && {
@@ -51,16 +52,6 @@ const formatText = text => {
       }}
     />
   );
-};
-
-const nameFormatter = ({ first, middle, last }) => {
-  if (!last) return first || middle;
-  const matches = [first, middle]
-    .filter(s => s)
-    .join(' ')
-    .match(/(?:(?=^|\s)(\w)|([A-Z]))/g);
-
-  return (matches ? matches.join('') + ' ' : '') + last;
 };
 
 function JournalAndDate({ journal, timestamp }) {

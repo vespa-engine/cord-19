@@ -6,6 +6,7 @@ import { Error, Loading } from 'App/shared/components/Messages';
 import { Get } from 'App/shared/Fetcher';
 import ResultCard from 'App/Search/ResultCard';
 import Link from 'App/shared/components/Link';
+import { nameFormatter } from 'App/shared/utils/formatter';
 
 const ContainerContent = styled(Container)`
   &&& {
@@ -13,15 +14,6 @@ const ContainerContent = styled(Container)`
     margin-bottom: 2rem;
   }
 `;
-
-const nameFormatter = ({ first, middle, last }) => {
-  if (!last) return first || middle;
-  const matches = [first, middle]
-    .filter(s => s)
-    .join(' ')
-    .match(/(?:(?=^|\s)(\w)|([A-Z]))/g);
-  return (matches ? matches.join('') + ' ' : '') + last;
-};
 
 function Authors({ authors }) {
   const limit = authors.length;
