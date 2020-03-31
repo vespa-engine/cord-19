@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Box } from 'rebass';
-import { Image, Menu } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 import Link from 'App/shared/components/Link';
-import logo from 'App/shared/img/VespaLogoWhite.png';
 
 const NavBar = styled(Menu)`
   &&& {
@@ -11,6 +10,11 @@ const NavBar = styled(Menu)`
     margin: 0;
 
     border-bottom: 1px solid rgba(63, 157, 216, 0.25);
+
+    .item.header {
+      font-weight: bold;
+      font-size: 1.4em;
+    }
 
     .item,
     .item > a,
@@ -33,10 +37,8 @@ function NavMenu() {
   return (
     <Box sx={{ paddingLeft: '16px', paddingRight: '16px' }} width={1}>
       <NavBar secondary inverted fluid>
-        <Menu.Item fitted>
-          <Link to="/">
-            <Image src={logo} />
-          </Link>
+        <Menu.Item header>
+          <Link to="/">CORD-19 Search and Navigate</Link>
         </Menu.Item>
         <Menu.Menu position="right">
           <Menu.Item>

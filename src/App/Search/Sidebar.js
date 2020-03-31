@@ -23,23 +23,27 @@ function Checkboxes({ name, field, values, onSearch }) {
   return (
     <Form.Field>
       <label>{name}</label>
-      {values.map(({ value, count, checked }, i) => (
-        <PaddedCheckbox
-          key={i}
-          name={name}
-          value={value}
-          onChange={onChange}
-          label={`${value} (${count})`}
-          checked={checked}
-        />
-      ))}
+      {values
+        .filter(({ value }) => value.length > 0)
+        .map(({ value, count, checked }, i) => (
+          <PaddedCheckbox
+            key={i}
+            name={name}
+            value={value}
+            onChange={onChange}
+            label={`${value} (${count})`}
+            checked={checked}
+          />
+        ))}
     </Form.Field>
   );
 }
 
 function Sidebar({ journal, source, year, author, has_full_text, onSearch }) {
   return (
-    <div id="sidebar" className="ui form">
+    <div id="sidebar"
+         className="ui form"
+         style={{backgroundColor:'#f2f8ff', boxShadow: '1px 1px #a0c0f0' }}>
       <Checkboxes
         name="Source"
         field="source"
