@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Form } from 'semantic-ui-react';
-import { navigate } from '@reach/router';
 
 const StyledSearchForm = styled(Form)`
   &&& {
@@ -17,19 +16,17 @@ const StyledSearchForm = styled(Form)`
   }
 `;
 
-function SearchForm() {
-  const [query, setQuery] = useState(window.location.search);
-  const params = new URLSearchParams(query);
-  const set = () => setQuery(params.toString());
+function SearchForm({ onSearch, query = '' }) {
+  const [currentQuery, setCurrentQuery] = useState(query);
 
   return (
-    <StyledSearchForm onSubmit={() => navigate('/search?' + params)}>
+    <StyledSearchForm onSubmit={() => onSearch({ query: currentQuery })}>
       <Form.Input
         icon="search"
         placeholder="Search..."
         className="input"
-        onChange={(e, { value }) => set(params.set('query', value))}
-        value={params.get('query') || ''}
+        onChange={(e, { value }) => setCurrentQuery(value)}
+        value={currentQuery}
       />
     </StyledSearchForm>
   );
