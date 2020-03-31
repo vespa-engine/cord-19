@@ -23,16 +23,18 @@ function Checkboxes({ name, field, values, onSearch }) {
   return (
     <Form.Field>
       <label>{name}</label>
-      {values.map(({ value, count, checked }, i) => (
-        <PaddedCheckbox
-          key={i}
-          name={name}
-          value={value}
-          onChange={onChange}
-          label={`${value} (${count})`}
-          checked={checked}
-        />
-      ))}
+      {values
+        .filter(({ value }) => value.length > 0)
+        .map(({ value, count, checked }, i) => (
+          <PaddedCheckbox
+            key={i}
+            name={name}
+            value={value}
+            onChange={onChange}
+            label={`${value} (${count})`}
+            checked={checked}
+          />
+        ))}
     </Form.Field>
   );
 }
