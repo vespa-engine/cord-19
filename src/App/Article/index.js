@@ -1,16 +1,48 @@
 import React from 'react';
-import { Container, Header, Tab } from 'semantic-ui-react';
+import styled from 'styled-components';
+import { Container, Header, Tab, List } from 'semantic-ui-react';
 import { Error, Loading } from 'App/shared/components/Messages';
 import { Get } from 'App/shared/Fetcher';
 import ResultCard from 'App/Search/ResultCard';
 
-function Content({ title, abstract }) {
+const ContainerContent = styled(Container)`
+  &&& {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+`;
+
+function Authors({ authors }) {
   return (
-    <Container text>
+    <List horizontal>
+      {authors.map(({ name, last }) => (
+        <List.Item key={name}>{`${name} ${last}`}</List.Item>
+      ))}
+    </List>
+  );
+}
+
+function Doi({ doi }) {
+  return (
+    <List>
+      <List.Item as="li">
+        <a href={doi} target="_blank" rel="noopener noreferrer">
+          {doi}
+        </a>
+      </List.Item>
+    </List>
+  );
+}
+
+function Content({ title, abstract, authors, doi }) {
+  return (
+    <ContainerContent>
       <Header as="h1">{title}</Header>
+      <Authors authors={authors} />
+      <Doi doi={doi} />
       <Header as="h3">Abstract</Header>
       <p>{abstract}</p>
-    </Container>
+    </ContainerContent>
   );
 }
 
@@ -82,10 +114,10 @@ function Article({ id }) {
   ];
 
   return (
-    <Container>
+    <ContainerContent>
       <Content {...response.fields} />
       <Tab panes={panes} />
-    </Container>
+    </ContainerContent>
   );
 }
 
