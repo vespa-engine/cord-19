@@ -5,33 +5,79 @@ on:
     paths-ignore:
     - '*.md'
     - 'img'
+  pull_request:
+    branches: [ master ]
+    paths-ignore:
+    - '*.md'
+    - 'img'
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    env:
-      DEPLOY_TOKEN: ${{ secrets.CORD_19_DEPLOY }}
-    
+    runs-on: ubuntu-latest   
     steps:
-    - uses: actions/checkout@v2
+    - name: Check out code
+      uses: actions/checkout@v2
     - name: Use Node.js 12
       uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-    - run: |
+    - name: Build code
+      run: |
         set -ex
         shopt -s extglob
         cd "${GITHUB_WORKSPACE}"
         ls -la
         yarn install
         yarn build
-        mv build ../build
+    - name: Upload artifacts
+      uses: actions/upload-artifacts@v1
+      with:
+        name: site-artifacts
+        path: build
+
+  check-artifact:
+    if: github.event_name == 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Fetch artifacts
+      uses: actions/download-artifacts@v1
+      with:
+        name: site-artifacts
+        path: ../build
+    - name: Show artifacts
+      run: |
+        set -ex
+        shopt -s extglob
+        cd "${GITHUB_WORKSPACE}"
+        ls -la ../build
+        find ../build 
+
+  deploy:
+    if: github.event_name == 'push'
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      DEPLOY_TOKEN: ${{ secrets.CORD_19_DEPLOY }}
+    steps:
+    - name: Fetch artifacts
+      uses: actions/download-artifacts@v1
+      with:
+        name: site-artifacts
+        path: ../build
+    - name: Deploy to gh-pages
+      run: |
+        set -ex
+        shopt -s extglob
+        cd "${GITHUB_WORKSPACE}"
         git config user.name  "${GITHUB_ACTOR}"
         git config user.email "info@vespa.ai"
         git fetch origin
         git checkout gh-pages
         rm -rf !("CNAME"|"node_modules")
         mv ../build/* .
+        ls -la
+        git diff
         rm -rf ../build
         git add .
         git commit -m "Publish to gh-pages branch $(date -Is)"
