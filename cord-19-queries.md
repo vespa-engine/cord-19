@@ -52,12 +52,16 @@ These are the most important fields in the dataset
 
 
 ## Ranking
-See Vespa's [Ranking documentation](https://docs.vespa.ai/documentation/ranking.html). There are 3 ranking profiles available (&ranking.profile=x).:
+See Vespa's [Ranking documentation](https://docs.vespa.ai/documentation/ranking.html). There are 3 ranking profiles available 
 
 |Ranking|Description|
 |---|---|
 |default|The default Vespa ranking function (nativeRank) which also uses term proximity for multi-term queries|
-|bm25|A weighted combination of bm25(title), bm25(abstract) and bm25(body_text)|
+|bm25|Linear sum: bm25(title) + bm25(abstract) + bm25(body_text)|
+|bm25fw|Linear weighted sum: 0.6*bm25(title) + 0.3*bm25(abstract) + 0.1*bm25(body_text)|
+|freshness|By decreasing timestamp|
+
+See [Vespa BM25](https://docs.vespa.ai/documentation/reference/bm25.html) and [Vespa nativeRank](https://docs.vespa.ai/documentation/reference/nativerank.html)
 
 The ranking profiles are defined in the [document definition (doc.sd)](https://github.com/vespa-engine/sample-apps/blob/master/vespa-cloud/cord-19-search/src/main/application/searchdefinitions/doc.sd).
 
@@ -89,7 +93,7 @@ search_request_any = {
   'ranking': 'default'
 }
 
-#Restrict matching to abstract field 
+#Restrict matching to abstract field and filter by timestamp
 search_request_all_abstract = {
   'yql': 'select id,title, abstract, doi from sources * where userQuery() and has_full_text=true and timestamp > 1577836800;',
   'default-index': 'abstract',
@@ -113,4 +117,18 @@ search_request_authors= {
 endpoint='https://api.cord19.vespa.ai/search/'
 response = requests.post(endpoint, json=search_request_all)
 ```
+
+## Related articles using SCIBERT-NLI embeddings 
+On top of Vespa's native api's we have built a related articles implementation which uses 
+nearest neighbor search in dense vector space (Sentence Embeddings [SCIBERT-NLI](https://huggingface.co/gsarti/scibert-nli) using Vespa's 
+[nearest neighbor query operator](https://docs.vespa.ai/documentation/reference/query-language-reference.html#nearestneighbor).  The detailed implementation 
+is found in this [custom searcher](https://github.com/vespa-engine/sample-apps/blob/master/vespa-cloud/cord-19-search/src/main/java/ai/vespa/example/cord19/searcher/RelatedPaperSearcherANN.java)
+For a given document we fetch the document and its sentence embedding for title and abstract search using the nearest neighbor operator which ranking score (rawScore()) is 1/(1+ euclidean distance). 
+
+
+
+
+ 
+
+
  
