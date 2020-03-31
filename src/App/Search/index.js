@@ -33,8 +33,23 @@ const Container = styled.div`
     #search_results {
       flex: 1;
     }
+
+    #no_matches {
+      text-align: center;
+      margin: 2rem;
+    }
   }
 `;
+
+function NoMatches({ query }) {
+  return (
+    <div id="no_matches">
+      <h1>¯\_(ツ)_/¯</h1>
+      <br />
+      No matches for <b>{query}</b>
+    </div>
+  );
+}
 
 function SearchResults(searchState) {
   const query = generateApiQueryParams();
@@ -53,6 +68,7 @@ function SearchResults(searchState) {
 
   console.log(response);
   const [grouping, ...articles] = response.root.children;
+  if (articles.length === 0) return <NoMatches {...searchState} />;
 
   const valuesState = grouping.children.reduce((obj, { label, children }) => {
     obj[label] = children.map(({ value, fields }) => ({
