@@ -41,19 +41,28 @@ const generateApiQueryParams = () => {
     .join(' ');
 
   const query = new URLSearchParams(window.location.search);
-  ['journal', 'source', 'year', 'author', 'has_full_text'].forEach(q =>
-    query.delete(q)
-  );
+  const ranking = query.get('ranking');
+  [
+    'journal',
+    'source',
+    'year',
+    'author',
+    'has_full_text',
+    'ranking',
+  ].forEach(q => query.delete(q));
   if (filter) query.set('filter', filter);
+  if (ranking) query.set('ranking.profile', ranking);
   query.set('select', select);
 
   return query;
 };
 
 const onSearch = params => {
-  const urlParams = new URLSearchParams(
-    'query' in params ? '' : window.location.search // Reset all filters if searching new query
-  );
+  const urlParams = new URLSearchParams(window.location.search);
+  // Reset all filters if searching new query
+  if ('query' in params && params.query !== urlParams.get('query'))
+    [...urlParams.keys()].forEach(k => urlParams.delete(k));
+
   for (let [key, value] of Object.entries(params)) {
     urlParams.delete(key);
     if (Array.isArray(value)) value.forEach(v => urlParams.append(key, v));
@@ -75,6 +84,7 @@ const getSearchState = () => {
     year: urlParams.getAll('year'),
     author: urlParams.getAll('author'),
     has_full_text: urlParams.getAll('has_full_text'),
+    ranking: urlParams.get('ranking'),
   };
 };
 

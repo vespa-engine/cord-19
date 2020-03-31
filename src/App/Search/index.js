@@ -26,7 +26,6 @@ const Container = styled.div`
       height: fit-content;
       margin-right: 1em;
       padding: 0.5em;
-      box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
       border-radius: 0.28571429rem;
     }
 
@@ -52,6 +51,7 @@ function NoMatches({ query }) {
 }
 
 function SearchResults(searchState) {
+  const groupingId = 'group:root:0';
   const query = generateApiQueryParams();
   query.set('type', 'any');
   query.set('summary', 'short');
@@ -67,7 +67,13 @@ function SearchResults(searchState) {
     return <Error message={error.message || 'Unknown search error...'} />;
 
   console.log(response);
-  const [grouping, ...articles] = response.root.children;
+  const [
+    grouping,
+    ...articles
+  ] = response.root.children.sort(
+    ({ id: id1, relevance: rev1 }, { id: id2, relevance: rev2 }) =>
+      id1 === groupingId ? -1 : id2 === groupingId ? 1 : rev2 - rev1
+  );
   if (articles.length === 0) return <NoMatches {...searchState} />;
 
   const valuesState = grouping.children.reduce((obj, { label, children }) => {
@@ -96,7 +102,7 @@ function Search() {
 
   return (
     <Container>
-      <SearchForm onSearch={onSearch} {...searchState} />
+      <SearchForm showRanking onSearch={onSearch} {...searchState} />
       <SearchResults {...searchState} />
     </Container>
   );

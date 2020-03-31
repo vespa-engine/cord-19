@@ -127,10 +127,13 @@ function CitedBy({ citedBy }) {
       `/document/v1/covid-19/doc/docid/${id}`
     ).state();
 
-    if (loading) return <Loading message="Loading..." />;
+    if (loading) return <Loading key={id} message="Loading..." />;
     if (error)
       return (
-        <Error message={error.message || `Failed to load article #${id}`} />
+        <Error
+          key={id}
+          message={error.message || `Failed to load article #${id}`}
+        />
       );
 
     console.log(response);
@@ -164,7 +167,7 @@ function Article({ id }) {
     },
     {
       menuItem: `${citations.length} citing articles`,
-      render: () => <CitedBy disabled citedBy={citations} />,
+      render: () => <CitedBy citedBy={citations} />,
     },
   ];
 
