@@ -47,8 +47,8 @@ const FooterBox = styled(Box)`
 function Footer() {
   return (
     <FooterBox>
-      <Segment.Group horizontal inverted>
-        <Segment className='sides'/>
+      <Segment.Group horizontal>
+        <Segment className="sides" />
         <Segment>
           <Link to="https://pages.semanticscholar.org/coronavirus-research">
             COVID-19 Open Research Dataset (CORD-19)
@@ -63,9 +63,9 @@ function Footer() {
             Apache License 2.0
           </Link>
         </Segment>
-        <Segment className='sides'>
+        <Segment className="sides">
           <Link to="/">
-            <Image src={logo} />{' '}
+            <Image src={logo} />
           </Link>
         </Segment>
       </Segment.Group>

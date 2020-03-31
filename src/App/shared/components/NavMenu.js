@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Box } from 'rebass';
 import { Menu } from 'semantic-ui-react';
 import Link from 'App/shared/components/Link';
-import logo from 'App/shared/img/VespaLogoWhite.png';
 
 const NavBar = styled(Menu)`
   &&& {
@@ -39,9 +38,7 @@ function NavMenu() {
     <Box sx={{ paddingLeft: '16px', paddingRight: '16px' }} width={1}>
       <NavBar secondary inverted fluid>
         <Menu.Item header>
-          <Link to="/">
-            CORD-19 Search and Navigate
-          </Link>
+          <Link to="/">CORD-19 Search and Navigate</Link>
         </Menu.Item>
         <Menu.Menu position="right">
           <Menu.Item>
