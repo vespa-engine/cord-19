@@ -13,7 +13,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest   
+    runs-on: ubuntu-latest
     steps:
     - name: Check out code
       uses: actions/checkout@v2
@@ -30,7 +30,7 @@ jobs:
         yarn install
         yarn build
     - name: Upload artifacts
-      uses: actions/upload-artifacts@v1
+      uses: actions/upload-artifact@v1
       with:
         name: site-artifacts
         path: build
@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Fetch artifacts
-      uses: actions/download-artifacts@v1
+      uses: actions/download-artifact@v1
       with:
         name: site-artifacts
         path: ../build
@@ -51,7 +51,7 @@ jobs:
         shopt -s extglob
         cd "${GITHUB_WORKSPACE}"
         ls -la ../build
-        find ../build 
+        find ../build
 
   deploy:
     if: github.event_name == 'push'
@@ -61,7 +61,7 @@ jobs:
       DEPLOY_TOKEN: ${{ secrets.CORD_19_DEPLOY }}
     steps:
     - name: Fetch artifacts
-      uses: actions/download-artifacts@v1
+      uses: actions/download-artifact@v1
       with:
         name: site-artifacts
         path: ../build
@@ -79,7 +79,7 @@ jobs:
         ls -la
         git diff
         rm -rf ../build
-        git add .
-        git commit -m "Publish to gh-pages branch $(date -Is)"
-        git remote set-url origin "https://x-access-token:${DEPLOY_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-        git push origin gh-pages
+#        git add .
+#        git commit -m "Publish to gh-pages branch $(date -Is)"
+#        git remote set-url origin "https://x-access-token:${DEPLOY_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+#        git push origin gh-pages
