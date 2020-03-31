@@ -93,12 +93,12 @@ function Content({
   );
 }
 
-function Related({ title }) {
+function Related({ id }) {
   const query = new URLSearchParams();
-  query.set('type', 'any');
-  query.set('hits', '3');
-  query.set('query', title);
+  query.set('id', id);
+  query.set('searchChain', 'related-ann');
   query.set('summary', 'short');
+  query.set('hits', '3');
 
   const { loading, response, error } = Get(
     '/search/?' + query.toString()
@@ -152,7 +152,7 @@ function Article({ id }) {
   const panes = [
     {
       menuItem: 'Related',
-      render: () => <Related title={response.fields.title} />,
+      render: () => <Related id={response.fields.id} />,
     },
     {
       menuItem: 'Cited by',
