@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Grid, List } from 'semantic-ui-react';
 import SearchForm from 'App/shared/components/SearchForm';
 import Link from 'App/shared/components/Link';
+import { onSearch } from './Search/Utils';
 
 const ContentGrid = styled(Grid)`
   &&& {
@@ -71,7 +72,7 @@ function Main() {
     <ContentGrid verticalAlign="middle" textAlign="center">
       <Grid.Column>
         <h1 size="huge">CORD-19 Search</h1>
-        <SearchForm />
+        <SearchForm onSearch={onSearch} />
         <SearchSuggestions />
         <VespaDescription />
       </Grid.Column>
