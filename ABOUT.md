@@ -4,11 +4,28 @@ _CORD-19 Search_ is built on Vespa Cloud:
 
 ![overview](img/CORD-19-data-processing.svg)
 
-(We will add pointers here on different approaches to ranking and the results)
-
-Find the frontend code in this repo in [src/App](/src/App).
+* Use the Query API to _search_.
+  Coming: Use the left frame to navigate / drill down / refine the query
+* Coming: From the article view, find _similar articles_
 
 The application is implemented as a
 [Vespa Cloud sample application](https://github.com/vespa-engine/sample-apps/tree/master/vespa-cloud/cord-19-search).
 Refer to [experiment yourself](https://github.com/vespa-engine/sample-apps/blob/master/vespa-cloud/cord-19-search/experiment-yourself.md)
-to try out different rank profiles.
+to try out different rank profiles, including ML models.
+
+Find the frontend code in this repo in [src/App](/src/App).
+
+## Work notes
+Use the scite.ai dataset citations,
+and add these by matching the [DOI](https://en.wikipedia.org/wiki/Digital_object_identifier)
+to those in the CORD-19 dataset.
+
+Also plan to merge these citations with citations we find from the dataset
+by matching a bibliography reference's title to titles in the data set.
+(We find roughly 3x more citations that way,
+but we have no way to extract sentiment (supporting, contradicting).
+
+We also need some way to extract the citation passage,
+i.e. the sentence(s) containing the reference.
+
+

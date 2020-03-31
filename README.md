@@ -19,6 +19,10 @@ store, search, rank and organize big data at user serving time.
 To implement this application, we also used:
 * https://medium.com/scite/analyzing-more-than-1m-citations-to-better-understand-scientific-research-on-covid-19-3faa59d726c2
 * https://zenodo.org/record/3724818#.Xn4Z-tNKh26
+* https://github.com/allenai/scibert
+
+Find more details in [About CORD-19 Search](ABOUT.md)
+
 
 ## Questions and contributions
 
