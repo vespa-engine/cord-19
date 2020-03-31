@@ -8,6 +8,7 @@ import { nameFormatter } from 'App/shared/utils/formatter';
 const StyledCard = styled(Card)`
   && {
     box-shadow: none;
+    margin-bottom: 2em;
   }
 
   &.card {
@@ -20,7 +21,7 @@ const StyledCard = styled(Card)`
   }
 
   &.card .meta {
-    padding: 3px 5px;
+    padding: 0 0.5em;
     color: rgba(0, 0, 0, 0.5);
 
     a.doi {
@@ -35,7 +36,7 @@ const StyledCard = styled(Card)`
   }
 
   && .content {
-    padding: 0.5em;
+    padding: 0.3em 0.5em;
     border: 0;
   }
 `;
