@@ -8,6 +8,7 @@ import ResultCard from 'App/Search/ResultCard';
 import Link from 'App/shared/components/Link';
 import { nameFormatter } from 'App/shared/utils/formatter';
 import { navigate } from '@reach/router';
+import { uniq } from 'lodash';
 
 const ContainerContent = styled(Container)`
   &&& {
@@ -155,13 +156,10 @@ function Article({ id }) {
 
   console.log(response);
 
-  const citations = [
-    ...new Set(
-      (response.fields.cited_by || []).concat(
-        (response.fields.citations_inbound || []).map((c, _) => c.source_id)
-      )
-    ),
-  ];
+  const citations = uniq([
+    ...(response.fields.cited_by || []),
+    ...(response.fields.citations_inbound || []).map(c => c.source_id),
+  ]);
 
   const panes = [
     {
