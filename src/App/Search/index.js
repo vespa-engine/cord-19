@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import SearchForm from 'App/shared/components/SearchForm';
 import { Loading, Error } from 'App/shared/components/Messages';
@@ -51,7 +51,13 @@ function NoMatches({ query }) {
   );
 }
 
-function SearchResults({ articles, query }) {
+function SearchResults({ articles, query, loading, error }) {
+  if (loading) return <Loading message="Searching..." />;
+  if (error)
+    return <Error message={error.message || 'Unknown search error...'} />;
+
+  if (articles.length === 0) return <NoMatches query={query} />;
+
   return (
     <>
       {articles.map((article, i) => (
@@ -81,36 +87,39 @@ function Search() {
   const { loading, response, error } = Get(
     '/search/?' + query.toString()
   ).state();
+  const [grouping, setGrouping] = useState();
 
-  if (loading) return <Loading message="Searching..." />;
-  if (error)
-    return <Error message={error.message || 'Unknown search error...'} />;
-
-  console.log(response);
-  const [
-    grouping,
-    ...articles
-  ] = response.root.children.sort(
-    ({ id: id1, relevance: rev1 }, { id: id2, relevance: rev2 }) =>
-      id1 === groupingId ? -1 : id2 === groupingId ? 1 : rev2 - rev1
+  const [groupingResponse, ...articles] = (
+    response?.root?.children || []
+  ).sort(({ id: id1, relevance: rev1 }, { id: id2, relevance: rev2 }) =>
+    id1 === groupingId ? -1 : id2 === groupingId ? 1 : rev2 - rev1
   );
-  if (articles.length === 0) return <NoMatches {...searchState} />;
 
-  const valuesState = grouping.children.reduce((obj, { label, children }) => {
-    obj[label] = children.map(({ value, fields }) => ({
-      value,
-      count: fields['count()'],
-      checked: searchState[label].includes(value),
-    }));
-    return obj;
-  }, {});
+  useEffect(() => {
+    if (loading) return;
+    setGrouping(groupingResponse);
+  }, [groupingResponse, setGrouping, loading]);
+
+  const valuesState = !grouping
+    ? {}
+    : grouping.children.reduce((obj, { label, children }) => {
+        obj[label] = children.map(({ value, fields }) => ({
+          value,
+          count: fields['count()'],
+          checked: searchState[label].includes(value),
+        }));
+        return obj;
+      }, {});
 
   return (
     <Container>
-      <Sidebar onSearch={onSearch} {...searchState} {...valuesState} />
+      <Sidebar onSearch={onSearch} {...valuesState} />
       <div id="search_results">
         <SearchForm showRanking onSearch={onSearch} {...searchState} />
-        <SearchResults articles={articles} query={searchState.query} />
+        <SearchResults
+          query={searchState.query}
+          {...{ articles, loading, error }}
+        />
       </div>
     </Container>
   );

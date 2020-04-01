@@ -30,7 +30,7 @@ const PaddedCheckbox = styled(Checkbox)`
 `;
 
 function Checkboxes({ name, field, values, onSearch }) {
-  if (values.length === 0) return null;
+  if (!values || values.length === 0) return null;
   const onChange = (event, { value, checked }) => {
     const selected = values
       .filter(({ value: oValue, checked: oChecked }) =>
