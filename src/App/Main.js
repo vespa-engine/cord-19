@@ -59,10 +59,9 @@ function VespaDescription() {
   return (
     <>
       <h4>
-        Powered by <Link to="https://vespa.ai">Vespa.ai</Link>
+        This is an <Link to="https://github.com/vespa-engine/cord-19/blob/master/README.md">open source application </Link>
+        on <Link to="https://vespa.ai">Vespa.ai</Link> - The big data serving engine
       </h4>
-      The open big data serving engine: Store, search, rank and organize big
-      data at user serving time.
     </>
   );
 }

@@ -5,7 +5,7 @@
 This is the __frontend__ of the [Vespa CORD-19 Search](https://cord19.vespa.ai/).
 The __backend__ [Vespa](https://vespa.ai) application is 
 [here](https://github.com/vespa-engine/sample-apps/tree/master/vespa-cloud/cord-19-search). 
-Both are open source.
+All of this is open source.
 
 For more advanced usage, see the [CORD-19 API](/cord-19-queries.md).
 
@@ -25,7 +25,7 @@ To implement this application, we also used:
 Find more details in [About CORD-19 Search](ABOUT.md)
 
 
-## Questions and contributions
+## Contribute and run your own
 
 We are currently working on this -
 expect daily updates to documentation and query features.
