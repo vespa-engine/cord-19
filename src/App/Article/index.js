@@ -115,11 +115,13 @@ function CitedBy({ citedBy, page, onPageChange }) {
       {citedBy.slice(10 * (page - 1), 10 * page).map(id => (
         <Citation key={id} id={id} />
       ))}
-      <Pagination
-        totalPages={numPages}
-        defaultActivePage={page}
-        onPageChange={(e, { activePage }) => onPageChange(activePage)}
-      />
+      {numPages > 1 && (
+        <Pagination
+          totalPages={numPages}
+          defaultActivePage={page}
+          onPageChange={(e, { activePage }) => onPageChange(activePage)}
+        />
+      )}
     </Container>
   );
 }
