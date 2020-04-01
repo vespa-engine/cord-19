@@ -4,9 +4,11 @@ _CORD-19 Search_ is built on Vespa Cloud:
 
 ![overview](img/CORD-19-data-processing.svg)
 
-* Use the Query API to _search_.
-  Coming: Use the left frame to navigate / drill down / refine the query
-* Coming: From the article view, find _similar articles_
+* Use the Query API to [search](https://docs.vespa.ai/documentation/querying-vespa.html).
+* Use the left frame to navigate / drill down / refine the query -
+  implemented using [Vespa Grouping](https://docs.vespa.ai/documentation/grouping.html)
+* From the article view, find [similar/related articles](https://github.com/vespa-engine/cord-19/blob/master/cord-19-queries.md#user-content-related-articles-using-scibert-nli-embeddings) -
+  implemented using SCIBERT-NLI embeddings.
 
 The application is implemented as a
 [Vespa Cloud sample application](https://github.com/vespa-engine/sample-apps/tree/master/vespa-cloud/cord-19-search).
@@ -27,5 +29,3 @@ but we have no way to extract sentiment (supporting, contradicting).
 
 We also need some way to extract the citation passage,
 i.e. the sentence(s) containing the reference.
-
-
