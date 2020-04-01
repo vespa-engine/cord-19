@@ -97,7 +97,9 @@ function Related({ id }) {
   query.set('id', id);
   query.set('searchChain', 'related-ann');
   query.set('summary', 'short');
-  query.set('hits', '3');
+  query.set('ranking.profile', 'related-ann');
+  query.set('use-abstract', 'true');
+  query.set('hits', '5');
 
   const { loading, response, error } = Get(
     '/search/?' + query.toString()
