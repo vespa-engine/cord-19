@@ -108,24 +108,33 @@ function Related({ id }) {
   );
 }
 
-function CitedBy({ citedBy, offset }) {
-  return citedBy.slice(10 * offset, 10 * (offset + 1)).map(id => {
-    const { loading, response, error } = Get(
-      `/document/v1/covid-19/doc/docid/${id}`
-    ).state();
+function CitedBy({ citedBy, page, onPageChange }) {
+  const numPages = Math.floor((citedBy.length + 9) / 10);
+  return (
+    <Container>
+      {citedBy.slice(10 * (page - 1), 10 * page).map(id => (
+        <Citation key={id} id={id} />
+      ))}
+      <Pagination
+        totalPages={numPages}
+        defaultActivePage={page}
+        onPageChange={(e, { activePage }) => onPageChange(activePage)}
+      />
+    </Container>
+  );
+}
 
-    if (loading) return <Loading key={id} message="Loading..." />;
-    if (error)
-      return (
-        <Error
-          key={id}
-          message={error.message || `Failed to load article #${id}`}
-        />
-      );
+function Citation({ id }) {
+  const { loading, response, error } = Get(
+    `/document/v1/covid-19/doc/docid/${id}`
+  ).state();
 
-    console.log(response);
-    return <ResultCard key={id} {...response} />;
-  });
+  if (loading) return <Loading message="Loading..." />;
+  if (error)
+    return <Error message={error.message || `Failed to load article #${id}`} />;
+
+  console.log(response);
+  return <ResultCard {...response} />;
 }
 
 function Article({ id }) {
@@ -156,25 +165,16 @@ function Article({ id }) {
     {
       menuItem: `${citations.length} citing articles`,
       render: () => (
-        <Container>
-          <CitedBy
-            citedBy={citations}
-            offset={parseInt(url.searchParams.get('offset')) || 0}
-          />
-          <Pagination
-            totalPages={Math.floor((citations.length + 9) / 10)}
-            defaultActivePage={
-              1 + (parseInt(url.searchParams.get('offset')) || 0)
+        <CitedBy
+          citedBy={citations}
+          page={parseInt(url.searchParams.get('page')) || 1}
+          onPageChange={page => {
+            if (page >= 1 && page - 1 <= citations.length / 10) {
+              url.searchParams.set('page', page);
+              navigate(url);
             }
-            onPageChange={(e, pageInfo) => {
-              const offset = pageInfo.activePage - 1;
-              if (offset >= 0 && 10 * offset < citations.length) {
-                url.searchParams.set('offset', offset);
-                navigate(url);
-              }
-            }}
-          />
-        </Container>
+          }}
+        />
       ),
     },
   ];
@@ -184,9 +184,11 @@ function Article({ id }) {
       <Content {...response.fields} />
       <Tab
         panes={panes}
-        defaultActiveIndex={url.searchParams.get('activeIndex') || 0}
+        defaultActiveIndex={url.searchParams.get('tab') || 0}
         onTabChange={(e, tabInfo) => {
-          url.searchParams.set('activeIndex', tabInfo.activeIndex);
+          // Reset all query params when changing tab
+          [...url.searchParams.keys()].forEach(k => url.searchParams.delete(k));
+          url.searchParams.set('tab', tabInfo.activeIndex);
           navigate(url);
         }}
       />
