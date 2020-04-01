@@ -23,6 +23,7 @@ const Center = styled.div`
 `;
 
 function Authors({ authors }) {
+  if (!authors) return null;
   return (
     <Header.Subheader>{authors.map(nameFormatter).join(', ')}</Header.Subheader>
   );
@@ -55,14 +56,18 @@ function Meta({ journal, timestamp, source, license, doi }) {
           {date}
         </List.Item>
       )}
-      <List.Item>
-        <List.Header>Source</List.Header>
-        {source}
-      </List.Item>
-      <List.Item>
-        <List.Header>License</List.Header>
-        {license}
-      </List.Item>
+      {source && (
+        <List.Item>
+          <List.Header>Source</List.Header>
+          {source}
+        </List.Item>
+      )}
+      {license && (
+        <List.Item>
+          <List.Header>License</List.Header>
+          {license}
+        </List.Item>
+      )}
     </List>
   );
 }
