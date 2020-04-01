@@ -171,7 +171,9 @@ function Article({ id }) {
 
   const citations = uniq([
     ...(response.fields.cited_by || []),
-    ...(response.fields.citations_inbound || []).map(c => c.source_id),
+    ...(response.fields.citations_inbound || [])
+      .map(c => c.source_id)
+      .filter(c => !isNaN(c)),
   ]);
 
   const panes = [
