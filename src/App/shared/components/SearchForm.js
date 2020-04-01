@@ -37,7 +37,7 @@ const rankings = [
     value: 'default',
   },
   {
-    text: 'Freshness',
+    text: 'By Date',
     value: 'freshness',
   },
 ];
