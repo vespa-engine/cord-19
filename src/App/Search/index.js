@@ -11,14 +11,10 @@ const Container = styled.div`
   &&& {
     font-size: 1.1rem;
     width: 100%;
-    max-width: 1500px;
-    margin: 0 auto;
+    max-width: 1300px;
+    margin: 0.5em auto 0;
     padding: 2rem 0.5rem;
-
-    #wrapper {
-      display: flex;
-      margin-top: 1em;
-    }
+    display: flex;
 
     #sidebar {
       width: 30%;
@@ -55,7 +51,26 @@ function NoMatches({ query }) {
   );
 }
 
-function SearchResults(searchState) {
+function SearchResults({ articles, query }) {
+  return (
+    <>
+      {articles.map((article, i) => (
+        <ResultCard
+          key={i}
+          {...article}
+          onSearchSimilar={() =>
+            onSearch({
+              query: appendRelatedToQuery(query, article.fields.id),
+            })
+          }
+        />
+      ))}
+    </>
+  );
+}
+
+function Search() {
+  const searchState = getSearchState();
   const groupingId = 'group:root:0';
   const query = generateApiQueryParams();
   query.set('type', 'any');
@@ -91,35 +106,12 @@ function SearchResults(searchState) {
   }, {});
 
   return (
-    <div id="wrapper">
+    <Container>
       <Sidebar onSearch={onSearch} {...searchState} {...valuesState} />
       <div id="search_results">
-        {articles.map((article, i) => (
-          <ResultCard
-            key={i}
-            {...article}
-            onSearchSimilar={() =>
-              onSearch({
-                query: appendRelatedToQuery(
-                  searchState.query,
-                  article.fields.id
-                ),
-              })
-            }
-          />
-        ))}
+        <SearchForm showRanking onSearch={onSearch} {...searchState} />
+        <SearchResults articles={articles} query={searchState.query} />
       </div>
-    </div>
-  );
-}
-
-function Search() {
-  const searchState = getSearchState();
-
-  return (
-    <Container>
-      <SearchForm showRanking onSearch={onSearch} {...searchState} />
-      <SearchResults {...searchState} />
     </Container>
   );
 }

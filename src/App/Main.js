@@ -27,6 +27,10 @@ const ContentGrid = styled(Grid)`
     & .ui.list {
       margin: 0.5rem 0;
     }
+
+    .ui.form {
+      max-width: 800px;
+    }
   }
 `;
 
