@@ -117,6 +117,10 @@ function CitedBy({ citedBy, page, onPageChange }) {
       ))}
       {numPages > 1 && (
         <Pagination
+          firstItem={null}
+          lastItem={null}
+          prevItem={null}
+          nextItem={null}
           totalPages={numPages}
           defaultActivePage={page}
           onPageChange={(e, { activePage }) => onPageChange(activePage)}
