@@ -1,6 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Checkbox, Form } from 'semantic-ui-react';
+import { Button, Checkbox, Form } from 'semantic-ui-react';
+
+const filters = [
+  { name: 'Source', field: 'source' },
+  {
+    name: 'Journal',
+    field: 'journal',
+  },
+  {
+    name: 'Published',
+    field: 'year',
+  },
+  {
+    name: 'Author',
+    field: 'author',
+  },
+  {
+    name: 'Full text',
+    field: 'has_full_text',
+  },
+];
 
 const PaddedCheckbox = styled(Checkbox)`
   && {
@@ -24,7 +44,10 @@ function Checkboxes({ name, field, values, onSearch }) {
     <Form.Field>
       <label>{name}</label>
       {values
-        .filter(({ value }) => value.length > 0)
+        .filter(
+          ({ value }) =>
+            value.length > 0 && !(field === 'year' && value === '1970')
+        )
         .map(({ value, count, checked }, i) => (
           <PaddedCheckbox
             key={i}
@@ -39,43 +62,33 @@ function Checkboxes({ name, field, values, onSearch }) {
   );
 }
 
-function Sidebar({ journal, source, year, author, has_full_text, onSearch }) {
+function Sidebar({ onSearch, ...filterValues }) {
   return (
     <div
       id="sidebar"
       className="ui form"
       style={{ backgroundColor: '#f2f8ff' }}
     >
-      <Checkboxes
-        name="Source"
-        field="source"
-        values={source}
-        onSearch={onSearch}
-      />
-      <Checkboxes
-        name="Journal"
-        field="journal"
-        values={journal}
-        onSearch={onSearch}
-      />
-      <Checkboxes
-        name="Published"
-        field="year"
-        values={year}
-        onSearch={onSearch}
-      />
-      <Checkboxes
-        name="Author"
-        field="author"
-        values={author}
-        onSearch={onSearch}
-      />
-      <Checkboxes
-        name="Full text"
-        field="has_full_text"
-        values={has_full_text}
-        onSearch={onSearch}
-      />
+      <Button
+        fluid
+        style={{ marginBottom: '0.5em' }}
+        onClick={() =>
+          onSearch(
+            filters.reduce((obj, { field }) => ({ ...obj, [field]: [] }), {})
+          )
+        }
+      >
+        Clear all
+      </Button>
+      {filters.map(({ name, field }) => (
+        <Checkboxes
+          key={field}
+          name={name}
+          field={field}
+          values={filterValues[field]}
+          onSearch={onSearch}
+        />
+      ))}
     </div>
   );
 }

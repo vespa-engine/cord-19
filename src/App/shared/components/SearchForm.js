@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Form } from 'semantic-ui-react';
 
@@ -44,6 +44,10 @@ const rankings = [
 
 function SearchForm({ onSearch, ranking, showRanking, query = '' }) {
   const [currentQuery, setCurrentQuery] = useState(query);
+  useEffect(() => {
+    if (query !== currentQuery) setCurrentQuery(query);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query]);
 
   return (
     <StyledSearchForm onSubmit={() => onSearch({ query: currentQuery })}>

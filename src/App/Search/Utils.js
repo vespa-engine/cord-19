@@ -59,9 +59,6 @@ const generateApiQueryParams = () => {
 
 const onSearch = params => {
   const urlParams = new URLSearchParams(window.location.search);
-  // Reset all filters if searching new query
-  if ('query' in params && params.query !== urlParams.get('query'))
-    [...urlParams.keys()].forEach(k => urlParams.delete(k));
 
   for (let [key, value] of Object.entries(params)) {
     urlParams.delete(key);

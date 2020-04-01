@@ -40,6 +40,11 @@ const Container = styled.div`
   }
 `;
 
+const appendRelatedToQuery = (query, id) => {
+  const relatedToRegex = /(?:^|\s)(related_to:[0-9]+)(?:$|\s)/;
+  return query.replace(relatedToRegex, ' ').trim() + ' related_to:' + id;
+};
+
 function NoMatches({ query }) {
   return (
     <div id="no_matches">
@@ -90,7 +95,18 @@ function SearchResults(searchState) {
       <Sidebar onSearch={onSearch} {...searchState} {...valuesState} />
       <div id="search_results">
         {articles.map((article, i) => (
-          <ResultCard key={i} {...article} />
+          <ResultCard
+            key={i}
+            {...article}
+            onSearchSimilar={() =>
+              onSearch({
+                query: appendRelatedToQuery(
+                  searchState.query,
+                  article.fields.id
+                ),
+              })
+            }
+          />
         ))}
       </div>
     </div>

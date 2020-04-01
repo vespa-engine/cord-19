@@ -41,19 +41,26 @@ const StyledCard = styled(Card)`
   }
 `;
 
-const highlightReplacer = (text, replace) =>
-  text.replace(/<(\/?)hi>/g, replace);
+const highlightRegex = /<hi>(.*?)<\/hi>/g;
 const formatText = text => {
   if (!text) return null;
-  const fixedText = highlightReplacer(text.replace(/<sep \/>/g, '…'), '<$1b>');
-  return (
-    <p
-      dangerouslySetInnerHTML={{
-        __html: fixedText,
-      }}
-    />
-  );
+  return text
+    .replace(/<sep \/>/g, '…')
+    .split(highlightRegex)
+    .map((r, i) => (i % 2 === 0 ? r : <b key={i}>{r}</b>));
 };
+
+const FunctionLink = ({ onClick, ...props }) => (
+  <a
+    href="#root"
+    onClick={e => {
+      e.preventDefault();
+      onClick();
+    }}
+  >
+    {props.children}
+  </a>
+);
 
 function JournalAndDate({ journal, timestamp }) {
   const format = journal ? ' (YYYY-MM-DD)' : 'YYYY-MM-DD';
@@ -106,10 +113,6 @@ function SourceAndCitations({ source, citations_count_total }) {
 
 function AuthorsList({ authors }) {
   const [showAll, setShowAll] = useState(false);
-  const onShowAll = e => {
-    e.preventDefault();
-    setShowAll(true);
-  };
 
   if (!authors) return null;
   const limit = showAll || authors.length < 12 ? authors.length : 10;
@@ -123,9 +126,9 @@ function AuthorsList({ authors }) {
       {limit < authors.length ? (
         <>
           {' '}
-          <a href="#root" onClick={onShowAll}>
+          <FunctionLink onClick={() => setShowAll(true)}>
             and {authors.length - limit} more
-          </a>
+          </FunctionLink>
         </>
       ) : null}
     </div>
@@ -144,9 +147,10 @@ function ResultCard({
     source,
     citations_count_total,
   },
+  onSearchSimilar,
 }) {
   const content = formatText(abstract);
-  const plainTitle = highlightReplacer(title, '');
+  const plainTitle = title.replace(highlightRegex, '$1');
   return (
     <StyledCard>
       <Card.Header>
@@ -158,7 +162,16 @@ function ResultCard({
         <SourceAndCitations {...{ source, citations_count_total }} />
         <AuthorsList authors={authors} />
       </Card.Meta>
-      {content && <Card.Content>{content}</Card.Content>}
+      {(content || onSearchSimilar) && (
+        <Card.Content>
+          {content && <p>{content}</p>}
+          {onSearchSimilar && (
+            <FunctionLink onClick={onSearchSimilar}>
+              Search for similar articles
+            </FunctionLink>
+          )}
+        </Card.Content>
+      )}
     </StyledCard>
   );
 }
