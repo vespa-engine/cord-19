@@ -17,6 +17,11 @@ const ContainerContent = styled(Container)`
   }
 `;
 
+const Center = styled.div`
+  width: fit-content;
+  margin: 0 auto;
+`;
+
 function Authors({ authors }) {
   return (
     <Header.Subheader>{authors.map(nameFormatter).join(', ')}</Header.Subheader>
@@ -117,15 +122,17 @@ function CitedBy({ citedBy, page, onPageChange }) {
         <Citation key={id} id={id} />
       ))}
       {numPages > 1 && (
-        <Pagination
-          firstItem={null}
-          lastItem={null}
-          prevItem={null}
-          nextItem={null}
-          totalPages={numPages}
-          defaultActivePage={page}
-          onPageChange={(e, { activePage }) => onPageChange(activePage)}
-        />
+        <Center>
+          <Pagination
+            firstItem={null}
+            lastItem={null}
+            prevItem={null}
+            nextItem={null}
+            totalPages={numPages}
+            defaultActivePage={page}
+            onPageChange={(e, { activePage }) => onPageChange(activePage)}
+          />
+        </Center>
       )}
     </Container>
   );
