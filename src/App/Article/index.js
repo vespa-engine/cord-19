@@ -148,7 +148,7 @@ function Article({ id }) {
 
   const panes = [
     {
-      menuItem: 'Related articles',
+      menuItem: 'Similar articles',
       render: () => <Related id={response.fields.id} />,
     },
     {
