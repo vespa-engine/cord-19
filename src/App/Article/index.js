@@ -174,7 +174,11 @@ function Article({ id }) {
       render: () => <Related id={response.fields.id} />,
     },
     {
-      menuItem: `${citations.length} citing articles`,
+      menuItem: {
+        key: 'citations',
+        content: `${citations.length} citing articles`,
+        disabled: citations.length === 0,
+      },
       render: () => (
         <CitedBy
           citedBy={citations}
