@@ -41,18 +41,13 @@ const StyledCard = styled(Card)`
   }
 `;
 
-const highlightReplacer = (text, replace) =>
-  text.replace(/<(\/?)hi>/g, replace);
+const highlightRegex = /<hi>(.*?)<\/hi>/g;
 const formatText = text => {
   if (!text) return null;
-  const fixedText = highlightReplacer(text.replace(/<sep \/>/g, '…'), '<$1b>');
-  return (
-    <p
-      dangerouslySetInnerHTML={{
-        __html: fixedText,
-      }}
-    />
-  );
+  return text
+    .replace(/<sep \/>/g, '…')
+    .split(highlightRegex)
+    .map((r, i) => (i % 2 === 0 ? r : <b key={i}>{r}</b>));
 };
 
 function JournalAndDate({ journal, timestamp }) {
@@ -146,7 +141,7 @@ function ResultCard({
   },
 }) {
   const content = formatText(abstract);
-  const plainTitle = highlightReplacer(title, '');
+  const plainTitle = title.replace(highlightRegex, '$1');
   return (
     <StyledCard>
       <Card.Header>
