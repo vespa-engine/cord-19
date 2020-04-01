@@ -42,11 +42,11 @@ function NavMenu() {
         </Menu.Item>
         <Menu.Menu position="right">
           <Menu.Item>
-            <Link to="https://twitter.com/vespaengine">Twitter</Link>
+            <Link to="https://github.com/vespa-engine/cord-19/blob/master/cord-19-queries.md">API</Link>
           </Menu.Item>
           <Menu.Item>
             <Link to="https://github.com/vespa-engine/cord-19/blob/master/README.md">
-              Read more
+              Open source
             </Link>
           </Menu.Item>
         </Menu.Menu>
