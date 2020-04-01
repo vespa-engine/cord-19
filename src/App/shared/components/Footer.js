@@ -64,7 +64,7 @@ function Footer() {
           </Link>
         </Segment>
         <Segment className="sides">
-          <Link to="/">
+          <Link to="https://vespa.ai">
             <Image src={logo} />
           </Link>
         </Segment>
