@@ -24,7 +24,10 @@ function Checkboxes({ name, field, values, onSearch }) {
     <Form.Field>
       <label>{name}</label>
       {values
-        .filter(({ value }) => value.length > 0)
+        .filter(
+          ({ value }) =>
+            value.length > 0 && !(field === 'year' && value === '1970')
+        )
         .map(({ value, count, checked }, i) => (
           <PaddedCheckbox
             key={i}
