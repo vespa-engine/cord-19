@@ -38,10 +38,12 @@ function Meta({ journal, timestamp, source, license, doi }) {
 
   return (
     <List>
-      <List.Item>
-        <List.Header>Doi</List.Header>
-        <Link to={doi}>{doi.replace('https://doi.org/', '')}</Link>
-      </List.Item>
+      {doi && (
+        <List.Item>
+          <List.Header>Doi</List.Header>
+          <Link to={doi}>{doi.replace('https://doi.org/', '')}</Link>
+        </List.Item>
+      )}
       {journal ? (
         <List.Item>
           <List.Header>Journal</List.Header>
@@ -79,8 +81,12 @@ function Content({
     <ContainerContent>
       <Header as="h1">{title}</Header>
       <Authors authors={authors} />
-      <Header as="h3">Abstract</Header>
-      <p>{abstract}</p>
+      {abstract && (
+        <>
+          <Header as="h3">Abstract</Header>
+          <p>{abstract}</p>
+        </>
+      )}
       <Meta {...{ journal, timestamp, source, license, doi }} />
     </ContainerContent>
   );
