@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import SearchForm from 'App/shared/components/SearchForm';
-import { Error, Loading } from 'App/shared/components/Messages';
-import { Get } from 'App/shared/Fetcher';
+import { Container } from 'semantic-ui-react';
 import ResultCard from './ResultCard';
 import Sidebar from './Sidebar';
 import SearchOptions from './SearchOptions';
-import { Container, Pagination } from 'semantic-ui-react';
 import { generateApiQueryParams, getSearchState, onSearch } from './Utils';
+import { Get } from 'App/shared/Fetcher';
+import SearchForm from 'App/shared/components/SearchForm';
+import { Error, Loading } from 'App/shared/components/Messages';
 import Footer from 'App/shared/components/Footer';
+import Pagination from 'App/shared/components/Pagination';
 
 const ContainerSearch = styled(Container)`
   &&& {
@@ -44,11 +45,6 @@ const ContainerSearch = styled(Container)`
   }
 `;
 
-const Center = styled.div`
-  width: fit-content;
-  margin: 0 auto;
-`;
-
 const appendRelatedToQuery = (query, id) => {
   const relatedToRegex = /(?:^|\s)(related_to:[0-9]+)(?:$|\s)/;
   return query.replace(relatedToRegex, ' ').trim() + ' related_to:' + id;
@@ -61,29 +57,6 @@ function NoMatches({ query }) {
       <br />
       No matches for <b>{query}</b>
     </div>
-  );
-}
-
-function OffsetPagination({ totalCount, offset, onSearch }) {
-  const totalPages = Math.min(100, Math.floor((totalCount + 9) / 10));
-  return (
-    <>
-      {totalPages > 1 && (
-        <Center>
-          <Pagination
-            firstItem={null}
-            lastItem={null}
-            prevItem={null}
-            nextItem={null}
-            totalPages={totalPages}
-            defaultActivePage={1 + offset / 10}
-            onPageChange={(e, { activePage }) =>
-              onSearch({ offset: (activePage - 1) * 10 })
-            }
-          />
-        </Center>
-      )}
-    </>
   );
 }
 
@@ -136,7 +109,7 @@ function Search() {
     setGrouping(groupingResponse);
   }, [groupingResponse, setGrouping, loading]);
 
-  const totalCount = response?.root?.fields?.totalCount;
+  const totalCount = response?.root?.fields?.totalCount || 0;
   const valuesState = !grouping?.children
     ? {}
     : grouping.children.reduce((obj, { label, children }) => {
@@ -163,10 +136,10 @@ function Search() {
             query={searchState.query}
             {...{ articles, loading, error }}
           />
-          <OffsetPagination
-            totalCount={totalCount}
+          <Pagination
+            total={totalCount}
             offset={parseInt(query.get('offset')) || 0}
-            onSearch={onSearch}
+            onOffsetChange={offset => onSearch({ offset })}
           />
         </div>
       </ContainerSearch>

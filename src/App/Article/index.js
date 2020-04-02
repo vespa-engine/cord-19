@@ -1,14 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import Moment from 'react-moment';
-import { Container, Header, Tab, List, Pagination } from 'semantic-ui-react';
+import { navigate } from '@reach/router';
+import { uniq } from 'lodash';
+import { Container, Header, Tab, List } from 'semantic-ui-react';
 import { Error, Loading } from 'App/shared/components/Messages';
 import { Get } from 'App/shared/Fetcher';
 import ResultCard from 'App/Search/ResultCard';
 import Link from 'App/shared/components/Link';
 import { nameFormatter } from 'App/shared/utils/formatter';
-import { navigate } from '@reach/router';
-import { uniq } from 'lodash';
+import Pagination from 'App/shared/components/Pagination';
 import Footer from 'App/shared/components/Footer';
 
 const ContainerContent = styled(Container)`
@@ -128,25 +129,17 @@ function Related({ id }) {
   );
 }
 
-function CitedBy({ citedBy, page, totalPages, onPageChange }) {
+function CitedBy({ citedBy, total, offset, onOffsetChange }) {
   return (
     <Container>
-      {citedBy.slice(10 * (page - 1), 10 * page).map(id => (
+      {citedBy.slice(offset, offset + 10).map(id => (
         <Citation key={id} id={id} />
       ))}
-      {totalPages > 1 && (
-        <Center>
-          <Pagination
-            firstItem={null}
-            lastItem={null}
-            prevItem={null}
-            nextItem={null}
-            totalPages={totalPages}
-            defaultActivePage={page}
-            onPageChange={(e, { activePage }) => onPageChange(activePage)}
-          />
-        </Center>
-      )}
+      <Pagination
+        total={total}
+        offset={offset}
+        onOffsetChange={onOffsetChange}
+      />
     </Container>
   );
 }
@@ -182,7 +175,6 @@ function Article({ id }) {
       .map(c => c.source_id)
       .filter(c => !isNaN(c)),
   ]);
-  const totalPages = Math.floor((citations.length + 9) / 10);
 
   const panes = [
     {
@@ -198,10 +190,10 @@ function Article({ id }) {
       render: () => (
         <CitedBy
           citedBy={citations}
-          page={parseInt(url.searchParams.get('page')) || 1}
-          totalPages={totalPages}
-          onPageChange={page => {
-            url.searchParams.set('page', page);
+          offset={parseInt(url.searchParams.get('offset')) || 0}
+          total={citations.length}
+          onOffsetChange={offset => {
+            url.searchParams.set('offset', offset);
             navigate(url);
           }}
         />
