@@ -1,31 +1,35 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "82140a343baae6c2cab1d90ffa5a5a59",
+    "revision": "eaa23e33b40e45e43ef2d420d614c585",
     "url": "/index.html"
   },
   {
-    "revision": "90e56bb15bd6d9f5a1cc",
+    "revision": "15b9f70c6cdef961123b",
     "url": "/static/css/2.3a2a7389.chunk.css"
   },
   {
-    "revision": "d64e99a29e5294a15d3c",
+    "revision": "08f328863249745c4f80",
     "url": "/static/css/main.7da8f716.chunk.css"
   },
   {
-    "revision": "90e56bb15bd6d9f5a1cc",
-    "url": "/static/js/2.d24b0c65.chunk.js"
+    "revision": "15b9f70c6cdef961123b",
+    "url": "/static/js/2.212176b2.chunk.js"
   },
   {
     "revision": "0b509aa605fadc6397c0cfbf2d23d619",
-    "url": "/static/js/2.d24b0c65.chunk.js.LICENSE.txt"
+    "url": "/static/js/2.212176b2.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d64e99a29e5294a15d3c",
-    "url": "/static/js/main.970e8f21.chunk.js"
+    "revision": "08f328863249745c4f80",
+    "url": "/static/js/main.91cac5f9.chunk.js"
   },
   {
     "revision": "a580cc98e9ef085ed614",
     "url": "/static/js/runtime-main.1f881fee.js"
+  },
+  {
+    "revision": "aefa1e1ffb1c2f60c57e0f0faf706466",
+    "url": "/static/media/VespaIcon.aefa1e1f.png"
   },
   {
     "revision": "2fad86a77fa339e40983978720ba1cee",
