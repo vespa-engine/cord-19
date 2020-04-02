@@ -9,6 +9,14 @@ const StyledCard = styled(Card)`
   && {
     box-shadow: none;
     margin-bottom: 2em;
+
+    a {
+      color: #005a8e;
+    }
+
+    a:hover {
+      color: #1a7db6;
+    }
   }
 
   &.card {
