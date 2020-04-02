@@ -42,6 +42,7 @@ const generateApiQueryParams = () => {
 
   const query = new URLSearchParams(window.location.search);
   const ranking = query.get('ranking');
+  const fieldset = query.get('fieldset');
   [
     'journal',
     'source',
@@ -49,9 +50,11 @@ const generateApiQueryParams = () => {
     'author',
     'has_full_text',
     'ranking',
+    'fieldset',
   ].forEach(q => query.delete(q));
   if (filter) query.set('filter', filter);
   if (ranking) query.set('ranking.profile', ranking);
+  if (fieldset) query.set('model.defaultIndex', fieldset);
   query.set('select', select);
 
   return query;
