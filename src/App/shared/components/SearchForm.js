@@ -8,6 +8,10 @@ const StyledSearchForm = styled(Form)`
     display: flex;
     width: 100%;
     margin: 0 auto;
+    
+    input[type="text"] {
+      border-radius: 1.3rem;
+    }
 
     .input {
       margin: 0;
