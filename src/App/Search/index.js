@@ -91,7 +91,7 @@ function Search() {
   query.set('type', 'any');
   query.set('summary', 'short');
   query.set('restrict', 'doc');
-  query.set('hits', '10');
+  query.set('hits', 10);
 
   const { loading, response, error } = Get(
     '/search/?' + query.toString()

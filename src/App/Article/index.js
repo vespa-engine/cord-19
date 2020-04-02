@@ -100,8 +100,8 @@ function Related({ id }) {
   query.set('searchChain', 'related-ann');
   query.set('summary', 'short');
   query.set('ranking.profile', 'related-ann');
-  query.set('use-abstract', 'true');
-  query.set('hits', '5');
+  query.set('use-abstract', true);
+  query.set('hits', 5);
 
   const { loading, response, error } = Get(
     '/search/?' + query.toString()
@@ -130,11 +130,7 @@ function CitedBy({ citedBy, total, offset, onOffsetChange }) {
       {citedBy.slice(offset, offset + 10).map(id => (
         <Citation key={id} id={id} />
       ))}
-      <Pagination
-        total={total}
-        offset={offset}
-        onOffsetChange={onOffsetChange}
-      />
+      <Pagination {...{ total, offset, onOffsetChange }} />
     </Container>
   );
 }
