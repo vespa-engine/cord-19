@@ -137,7 +137,7 @@ function Search() {
           />
         </div>
       </ContainerSearch>
-      {!loading && <Footer />}
+      <Footer />
     </React.Fragment>
   );
 }
