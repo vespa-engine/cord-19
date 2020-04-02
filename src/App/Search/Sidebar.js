@@ -80,7 +80,6 @@ function Sidebar({ onSearch, ...filterValues }) {
       style={{ backgroundColor: '#e6eff5' }}
     >
       <Button
-        fluid
         disabled={noneChecked}
         onClick={() =>
           onSearch(
