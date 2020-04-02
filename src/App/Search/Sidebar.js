@@ -36,6 +36,8 @@ const PaddedCheckbox = styled(Checkbox)`
 function Checkboxes({ name, field, values, onSearch }) {
   if (!values || values.length === 0) return null;
   const onChange = (event, { value, checked }) => {
+    // The new selected checkboxes are the ones that were previously selected
+    // and the current value of the checkbox that triggered the event
     const selected = values
       .filter(({ value: oValue, checked: oChecked }) =>
         oValue === value ? checked : oChecked

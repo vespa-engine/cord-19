@@ -98,18 +98,22 @@ function Search() {
   ).state();
   const [grouping, setGrouping] = useState();
 
+  // Sort results to make sure the grouping hit is first
   const [groupingResponse, ...articles] = (
     response?.root?.children || []
   ).sort(({ id: id1, relevance: rev1 }, { id: id2, relevance: rev2 }) =>
     id1 === groupingId ? -1 : id2 === groupingId ? 1 : rev2 - rev1
   );
 
+  // Store grouping in own state so we can keep sidebar populated while making a new search
   useEffect(() => {
     if (loading) return;
     setGrouping(groupingResponse);
   }, [groupingResponse, setGrouping, loading]);
 
   const totalCount = response?.root?.fields?.totalCount || 0;
+
+  // Combine grouping data with search state (search related query parameters, i.e. which filters have been enabled)
   const valuesState = !grouping?.children
     ? {}
     : grouping.children.reduce((obj, { label, children }) => {

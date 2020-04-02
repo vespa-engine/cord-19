@@ -53,12 +53,16 @@ const StyledCard = styled(Card)`
 const highlightRegex = /<hi>(.*?)<\/hi>/g;
 const formatText = text => {
   if (!text) return null;
-  return text
-    .replace(/<sep \/>/g, '…')
-    .split(highlightRegex)
-    .map((r, i) => (i % 2 === 0 ? r : <b key={i}>{r}</b>));
+  return (
+    text
+      .replace(/<sep \/>/g, '…')
+      .split(highlightRegex)
+      // The highlighted sections will be every other element starting at 1, wrap these in bold while keep others as strings
+      .map((r, i) => (i % 2 === 0 ? r : <b key={i}>{r}</b>))
+  );
 };
 
+// Link which has a dummy target which is ignored, only triggers the onClick callback
 const FunctionLink = ({ onClick, ...props }) => (
   <a
     href="#root"
