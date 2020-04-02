@@ -23,7 +23,7 @@ const StyledCard = styled(Card)`
   &.card .meta {
     font-size: 0.9em;
     padding: 0 0.5em;
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(48, 48, 48, 0.5);
 
     a.doi {
       float: right;
