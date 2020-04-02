@@ -135,7 +135,7 @@ function Search() {
   }, [groupingResponse, setGrouping, loading]);
 
   const totalCount = response?.root?.fields?.totalCount;
-  const totalPages = Math.floor((totalCount + 9) / 10);
+  const totalPages = Math.min(100, Math.floor((totalCount + 9) / 10));
   const valuesState = !grouping?.children
     ? {}
     : grouping.children.reduce((obj, { label, children }) => {
