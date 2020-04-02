@@ -101,7 +101,7 @@ function Search() {
     setGrouping(groupingResponse);
   }, [groupingResponse, setGrouping, loading]);
 
-  const valuesState = !grouping
+  const valuesState = !grouping?.children
     ? {}
     : grouping.children.reduce((obj, { label, children }) => {
         obj[label] = children.map(({ value, fields }) => ({
