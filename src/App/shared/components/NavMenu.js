@@ -62,12 +62,12 @@ function NavMenu() {
                 API
               </Link>
             </Menu.Item>
-            <Menu.Item fitted>
+            <Menu.Item>
               <Link to="https://github.com/vespa-engine/cord-19/blob/master/README.md">
                 Open source
               </Link>
             </Menu.Item>
-            <Menu.Item fitted>
+            <Menu.Item>
               <Link to="https://github.com/vespa-engine/cord-19/blob/master/README.md#Contact">
                 Contact us
               </Link>
