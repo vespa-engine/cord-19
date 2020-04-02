@@ -40,7 +40,7 @@ const rankings = [
 function SearchOptions({ totalCount, fieldset, ranking, onSearch }) {
   return (
     <Container>
-      {totalCount != null && (
+      {totalCount > 0 && (
         <>
           <b>{totalCount}</b> matches
         </>
