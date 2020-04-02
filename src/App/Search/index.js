@@ -24,10 +24,16 @@ const ContainerSearch = styled(Container)`
       margin-right: 1em;
       padding: 0.5em;
       border-radius: 0.28571429rem;
+
+      .ui.button {
+        padding: 0.78125rem 0.4rem;
+        line-height: 1.4285em;
+      }
     }
 
     #search_results {
       flex: 1;
+      margin-top: 0.5em; // Must match #sidebar top padding
     }
 
     #no_matches {

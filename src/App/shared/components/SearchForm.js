@@ -25,7 +25,7 @@ const StyledSearchForm = styled(Form)`
       border-radius: 0.28571429rem
       box-shadow: none;
       background: white;
-      padding: 0.78125rem 0.4rem;
+      padding: 0.70982rem 0.4rem;
     }
   }
 `;
