@@ -36,6 +36,8 @@ const PaddedCheckbox = styled(Checkbox)`
 function Checkboxes({ name, field, values, onSearch }) {
   if (!values || values.length === 0) return null;
   const onChange = (event, { value, checked }) => {
+    // The new selected checkboxes are the ones that were previously selected
+    // and the current value of the checkbox that triggered the event
     const selected = values
       .filter(({ value: oValue, checked: oChecked }) =>
         oValue === value ? checked : oChecked
@@ -67,6 +69,10 @@ function Checkboxes({ name, field, values, onSearch }) {
 }
 
 function Sidebar({ onSearch, ...filterValues }) {
+  const noneChecked =
+    Object.values(filterValues)
+      .flatMap(values => values.map(({ checked }) => checked))
+      .find(c => c) !== true;
   return (
     <div
       id="sidebar"
@@ -75,6 +81,7 @@ function Sidebar({ onSearch, ...filterValues }) {
     >
       <Button
         fluid
+        disabled={noneChecked}
         style={{
           marginBottom: '0.5em',
           background: 'rgba(0, 90, 142, 0.1) none',

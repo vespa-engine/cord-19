@@ -11,6 +11,7 @@ const select = `all(
   .map(s => s.trim())
   .join('');
 
+// Combines an array of possible values for a given field into an OR expression that is ANDed with other filters
 const orCombiner = (field, array, range = false) =>
   array.length
     ? '+(' +
@@ -43,6 +44,8 @@ const generateApiQueryParams = () => {
   const query = new URLSearchParams(window.location.search);
   const ranking = query.get('ranking');
   const fieldset = query.get('fieldset');
+  // Remove query parameters used in the UI, these are either sent to backend under a different name
+  // or as part of an expression (filters)
   [
     'journal',
     'source',
@@ -86,6 +89,7 @@ const getSearchState = () => {
     author: urlParams.getAll('author'),
     has_full_text: urlParams.getAll('has_full_text'),
     ranking: urlParams.get('ranking'),
+    fieldset: urlParams.get('fieldset'),
   };
 };
 
