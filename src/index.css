@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  color: #303030 !important;
   font-family: 'Lato', 'Helvetica Neue', 'Arial', 'Helvetica', -apple-system,
     sans-serif;
   -webkit-font-smoothing: antialiased;

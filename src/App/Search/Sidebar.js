@@ -27,6 +27,9 @@ const PaddedCheckbox = styled(Checkbox)`
     display: block;
     padding: 2px;
     font-size: 0.9em;
+    label {
+      color: #303030;
+    }
   }
 `;
 
@@ -74,7 +77,7 @@ function Sidebar({ onSearch, ...filterValues }) {
         fluid
         style={{
           marginBottom: '0.5em',
-          background: '#b1d0e6 none',
+          background: 'rgba(0, 90, 142, 0.1) none',
           color: '#3f9dd8',
         }}
         onClick={() =>
