@@ -19,11 +19,6 @@ const ContainerContent = styled(Container)`
   }
 `;
 
-const Center = styled.div`
-  width: fit-content;
-  margin: 0 auto;
-`;
-
 function Authors({ authors }) {
   if (!authors) return null;
   return (
