@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import SearchForm from 'App/shared/components/SearchForm';
-import { Loading, Error } from 'App/shared/components/Messages';
-import { Get } from 'App/shared/Fetcher';
+import { Container } from 'semantic-ui-react';
 import ResultCard from './ResultCard';
 import Sidebar from './Sidebar';
 import SearchOptions from './SearchOptions';
-import { Container } from 'semantic-ui-react';
 import { generateApiQueryParams, getSearchState, onSearch } from './Utils';
+import { Get } from 'App/shared/Fetcher';
+import SearchForm from 'App/shared/components/SearchForm';
+import { Error, Loading } from 'App/shared/components/Messages';
 import Footer from 'App/shared/components/Footer';
+import Pagination from 'App/shared/components/Pagination';
 
 const ContainerSearch = styled(Container)`
   &&& {
@@ -90,7 +91,7 @@ function Search() {
   query.set('type', 'any');
   query.set('summary', 'short');
   query.set('restrict', 'doc');
-  query.set('hits', '20');
+  query.set('hits', '10');
 
   const { loading, response, error } = Get(
     '/search/?' + query.toString()
@@ -108,7 +109,7 @@ function Search() {
     setGrouping(groupingResponse);
   }, [groupingResponse, setGrouping, loading]);
 
-  const totalCount = response?.root?.fields?.totalCount;
+  const totalCount = response?.root?.fields?.totalCount || 0;
   const valuesState = !grouping?.children
     ? {}
     : grouping.children.reduce((obj, { label, children }) => {
@@ -134,6 +135,11 @@ function Search() {
           <SearchResults
             query={searchState.query}
             {...{ articles, loading, error }}
+          />
+          <Pagination
+            total={totalCount}
+            offset={parseInt(query.get('offset')) || 0}
+            onOffsetChange={offset => onSearch({ offset })}
           />
         </div>
       </ContainerSearch>

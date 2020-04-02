@@ -4,7 +4,7 @@ import { Dropdown } from 'semantic-ui-react';
 
 const Container = styled.div`
   &&& {
-    margin-top: 2px;
+    margin: 0.32em;
     > span {
       float: right;
     }

@@ -1,14 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import Moment from 'react-moment';
-import { Container, Header, Tab, List, Pagination } from 'semantic-ui-react';
+import { navigate } from '@reach/router';
+import { uniq } from 'lodash';
+import { Container, Header, Tab, List } from 'semantic-ui-react';
 import { Error, Loading } from 'App/shared/components/Messages';
 import { Get } from 'App/shared/Fetcher';
 import ResultCard from 'App/Search/ResultCard';
 import Link from 'App/shared/components/Link';
 import { nameFormatter } from 'App/shared/utils/formatter';
-import { navigate } from '@reach/router';
-import { uniq } from 'lodash';
+import Pagination from 'App/shared/components/Pagination';
 import Footer from 'App/shared/components/Footer';
 
 const ContainerContent = styled(Container)`
@@ -16,11 +17,6 @@ const ContainerContent = styled(Container)`
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
-`;
-
-const Center = styled.div`
-  width: fit-content;
-  margin: 0 auto;
 `;
 
 function Authors({ authors }) {
@@ -128,26 +124,17 @@ function Related({ id }) {
   );
 }
 
-function CitedBy({ citedBy, page, onPageChange }) {
-  const numPages = Math.floor((citedBy.length + 9) / 10);
+function CitedBy({ citedBy, total, offset, onOffsetChange }) {
   return (
     <Container>
-      {citedBy.slice(10 * (page - 1), 10 * page).map(id => (
+      {citedBy.slice(offset, offset + 10).map(id => (
         <Citation key={id} id={id} />
       ))}
-      {numPages > 1 && (
-        <Center>
-          <Pagination
-            firstItem={null}
-            lastItem={null}
-            prevItem={null}
-            nextItem={null}
-            totalPages={numPages}
-            defaultActivePage={page}
-            onPageChange={(e, { activePage }) => onPageChange(activePage)}
-          />
-        </Center>
-      )}
+      <Pagination
+        total={total}
+        offset={offset}
+        onOffsetChange={onOffsetChange}
+      />
     </Container>
   );
 }
@@ -198,12 +185,11 @@ function Article({ id }) {
       render: () => (
         <CitedBy
           citedBy={citations}
-          page={parseInt(url.searchParams.get('page')) || 1}
-          onPageChange={page => {
-            if (page >= 1 && page - 1 <= citations.length / 10) {
-              url.searchParams.set('page', page);
-              navigate(url);
-            }
+          offset={parseInt(url.searchParams.get('offset')) || 0}
+          total={citations.length}
+          onOffsetChange={offset => {
+            url.searchParams.set('offset', offset);
+            navigate(url);
           }}
         />
       ),

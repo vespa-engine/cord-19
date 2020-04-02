@@ -68,6 +68,7 @@ const onSearch = params => {
     if (Array.isArray(value)) value.forEach(v => urlParams.append(key, v));
     else if (value) urlParams.set(key, value);
   }
+  if (!params.hasOwnProperty('offset')) urlParams.delete('offset');
 
   // No query or filters specified
   if (urlParams.entries().next().done) return;
