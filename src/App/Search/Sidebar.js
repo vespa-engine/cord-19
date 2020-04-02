@@ -68,13 +68,13 @@ function Sidebar({ onSearch, ...filterValues }) {
     <div
       id="sidebar"
       className="ui form"
-      style={{ backgroundColor: '#f2f8ff' }}
+      style={{ backgroundColor: '#e6eff5' }}
     >
       <Button
         fluid
         style={{
           marginBottom: '0.5em',
-          background: 'rgba(63,157,216,0.1) none',
+          background: '#b1d0e6 none',
           color: '#3f9dd8',
         }}
         onClick={() =>
