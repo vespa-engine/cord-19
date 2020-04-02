@@ -29,8 +29,7 @@ Find more details in [About CORD-19 Search](ABOUT.md)
 
 We are currently working on this -
 expect daily updates to documentation and query features.
-For questions, [tweet us](https://twitter.com/vespaengine)
-or post an [issue](https://github.com/vespa-engine/cord-19/issues). 
+Use [issues](https://github.com/vespa-engine/cord-19/issues) for bug reports. 
 Contributions are appreciated, see [contributing](/CONTRIBUTING.md).
 
 To create your __own copy__ of the backend Vespa application, see 
