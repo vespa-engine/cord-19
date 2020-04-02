@@ -46,7 +46,7 @@ const ContainerSearch = styled(Container)`
 `;
 
 const appendRelatedToQuery = (query, id) => {
-  const relatedToRegex = /(?:^|\s)(related_to:[0-9]+)(?:$|\s)/;
+  const relatedToRegex = /(?:^|\s)(\+?related_to:[0-9]+)(?:$|\s)/;
   return query.replace(relatedToRegex, ' ').trim() + ' related_to:' + id;
 };
 
