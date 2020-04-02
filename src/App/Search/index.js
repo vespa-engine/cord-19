@@ -44,6 +44,11 @@ const ContainerSearch = styled(Container)`
   }
 `;
 
+const Center = styled.div`
+  width: fit-content;
+  margin: 0 auto;
+`;
+
 const appendRelatedToQuery = (query, id) => {
   const relatedToRegex = /(?:^|\s)(related_to:[0-9]+)(?:$|\s)/;
   return query.replace(relatedToRegex, ' ').trim() + ' related_to:' + id;
@@ -88,15 +93,17 @@ function SearchResults({
         />
       ))}
       {totalPages > 1 && (
-        <Pagination
-          firstItem={null}
-          lastItem={null}
-          prevItem={null}
-          nextItem={null}
-          totalPages={totalPages}
-          defaultActivePage={page}
-          onPageChange={(e, { activePage }) => onPageChange(activePage)}
-        />
+        <Center>
+          <Pagination
+            firstItem={null}
+            lastItem={null}
+            prevItem={null}
+            nextItem={null}
+            totalPages={totalPages}
+            defaultActivePage={page}
+            onPageChange={(e, { activePage }) => onPageChange(activePage)}
+          />
+        </Center>
       )}
     </>
   );
