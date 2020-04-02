@@ -67,7 +67,7 @@ function NavMenu() {
                 Open source
               </Link>
             </Menu.Item>
-            <Menu.Item>
+            <Menu.Item fitted>
               <Link to="https://github.com/vespa-engine/cord-19/blob/master/README.md#Contact">
                 Contact us
               </Link>
