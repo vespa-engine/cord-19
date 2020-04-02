@@ -1,8 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Box } from 'rebass';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Container } from 'semantic-ui-react';
 import Link from 'App/shared/components/Link';
+
+const Header = styled(Box)`
+  background-color: #005a8e;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  a {
+    cursor: pointer;
+    font-weight: 600;
+  }
+`;
 
 const NavBar = styled(Menu)`
   &&& {
@@ -30,35 +39,43 @@ const NavBar = styled(Menu)`
     .ui.image {
       width: 100px;
     }
+
+    span {
+      color: #ffc43c;
+    }
   }
 `;
 
 function NavMenu() {
   return (
-    <Box sx={{ paddingLeft: '16px', paddingRight: '16px' }} width={1}>
-      <NavBar secondary inverted fluid>
-        <Menu.Item header>
-          <Link to="/">CORD-19 Search and Navigate</Link>
-        </Menu.Item>
-        <Menu.Menu position="right">
-          <Menu.Item>
-            <Link to="https://github.com/vespa-engine/cord-19/blob/master/cord-19-queries.md">
-              API
+    <Header sx={{ paddingLeft: '0px', paddingRight: '0px' }} width={1}>
+      <Container>
+        <NavBar secondary inverted fluid>
+          <Menu.Item header fitted>
+            <Link to="/">
+              <span>CORD-19</span> Search and Navigate
             </Link>
           </Menu.Item>
-          <Menu.Item>
-            <Link to="https://github.com/vespa-engine/cord-19/blob/master/README.md">
-              Open source
-            </Link>
-          </Menu.Item>
-          <Menu.Item>
+          <Menu.Menu position="right">
+            <Menu.Item>
+              <Link to="https://github.com/vespa-engine/cord-19/blob/master/cord-19-queries.md">
+                API
+              </Link>
+            </Menu.Item>
+            <Menu.Item fitted>
+              <Link to="https://github.com/vespa-engine/cord-19/blob/master/README.md">
+                Open source
+              </Link>
+            </Menu.Item>
+            <Menu.Item fitted>
             <Link to="https://github.com/vespa-engine/cord-19/blob/master/README.md#Contact">
               Contact us
             </Link>
           </Menu.Item>
-        </Menu.Menu>
-      </NavBar>
-    </Box>
+          </Menu.Menu>
+        </NavBar>
+      </Container>
+    </Header>
   );
 }
 

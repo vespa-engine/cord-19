@@ -5,20 +5,21 @@ import { Loading, Error } from 'App/shared/components/Messages';
 import { Get } from 'App/shared/Fetcher';
 import ResultCard from './ResultCard';
 import Sidebar from './Sidebar';
+import { Container } from 'semantic-ui-react';
 import { generateApiQueryParams, getSearchState, onSearch } from './Utils';
+import Footer from 'App/shared/components/Footer';
 
-const Container = styled.div`
+const ContainerSearch = styled(Container)`
   &&& {
-    font-size: 1.1rem;
+    font-size: 1rem;
     width: 100%;
-    max-width: 1300px;
     margin: 0.5em auto 0;
-    padding: 2rem 0.5rem;
+    padding: 2rem 0;
     display: flex;
 
     #sidebar {
       width: 30%;
-      max-width: 300px;
+      max-width: 250px;
       height: fit-content;
       margin-right: 1em;
       padding: 0.5em;
@@ -112,16 +113,19 @@ function Search() {
       }, {});
 
   return (
-    <Container>
-      <Sidebar onSearch={onSearch} {...valuesState} />
-      <div id="search_results">
-        <SearchForm showRanking onSearch={onSearch} {...searchState} />
-        <SearchResults
-          query={searchState.query}
-          {...{ articles, loading, error }}
-        />
-      </div>
-    </Container>
+    <React.Fragment>
+      <ContainerSearch>
+        <Sidebar onSearch={onSearch} {...valuesState} />
+        <div id="search_results">
+          <SearchForm showRanking onSearch={onSearch} {...searchState} />
+          <SearchResults
+            query={searchState.query}
+            {...{ articles, loading, error }}
+          />
+        </div>
+      </ContainerSearch>
+      {!loading && <Footer />}
+    </React.Fragment>
   );
 }
 
