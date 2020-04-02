@@ -14,8 +14,8 @@ import Footer from 'App/shared/components/Footer';
 
 const ContainerContent = styled(Container)`
   &&& {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 `;
 

@@ -16,7 +16,7 @@ const ContainerSearch = styled(Container)`
     font-size: 1rem;
     width: 100%;
     margin: 0.5em auto 0;
-    padding: 2rem 0;
+    padding: 1rem 0;
     display: flex;
 
     #sidebar {
