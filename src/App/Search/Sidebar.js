@@ -67,6 +67,10 @@ function Checkboxes({ name, field, values, onSearch }) {
 }
 
 function Sidebar({ onSearch, ...filterValues }) {
+  const noneChecked =
+    Object.values(filterValues)
+      .flatMap(values => values.map(({ checked }) => checked))
+      .find(c => c) !== true;
   return (
     <div
       id="sidebar"
@@ -75,6 +79,7 @@ function Sidebar({ onSearch, ...filterValues }) {
     >
       <Button
         fluid
+        disabled={noneChecked}
         style={{
           marginBottom: '0.5em',
           background: 'rgba(0, 90, 142, 0.1) none',
