@@ -26,6 +26,7 @@ const PaddedCheckbox = styled(Checkbox)`
   && {
     display: block;
     padding: 2px;
+    font-size: 0.9em;
   }
 `;
 
@@ -71,7 +72,11 @@ function Sidebar({ onSearch, ...filterValues }) {
     >
       <Button
         fluid
-        style={{ marginBottom: '0.5em' }}
+        style={{
+          marginBottom: '0.5em',
+          background: 'rgba(63,157,216,0.1) none',
+          color: '#3f9dd8',
+        }}
         onClick={() =>
           onSearch(
             filters.reduce((obj, { field }) => ({ ...obj, [field]: [] }), {})

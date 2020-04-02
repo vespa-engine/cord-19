@@ -9,6 +9,7 @@ import Link from 'App/shared/components/Link';
 import { nameFormatter } from 'App/shared/utils/formatter';
 import { navigate } from '@reach/router';
 import { uniq } from 'lodash';
+import Footer from 'App/shared/components/Footer';
 
 const ContainerContent = styled(Container)`
   &&& {
@@ -210,19 +211,24 @@ function Article({ id }) {
   ];
 
   return (
-    <ContainerContent>
-      <Content {...response.fields} />
-      <Tab
-        panes={panes}
-        defaultActiveIndex={url.searchParams.get('tab') || 0}
-        onTabChange={(e, tabInfo) => {
-          // Reset all query params when changing tab
-          [...url.searchParams.keys()].forEach(k => url.searchParams.delete(k));
-          url.searchParams.set('tab', tabInfo.activeIndex);
-          navigate(url);
-        }}
-      />
-    </ContainerContent>
+    <React.Fragment>
+      <ContainerContent>
+        <Content {...response.fields} />
+        <Tab
+          panes={panes}
+          defaultActiveIndex={url.searchParams.get('tab') || 0}
+          onTabChange={(e, tabInfo) => {
+            // Reset all query params when changing tab
+            [...url.searchParams.keys()].forEach(k =>
+              url.searchParams.delete(k)
+            );
+            url.searchParams.set('tab', tabInfo.activeIndex);
+            navigate(url);
+          }}
+        />
+      </ContainerContent>
+      <Footer />
+    </React.Fragment>
   );
 }
 
