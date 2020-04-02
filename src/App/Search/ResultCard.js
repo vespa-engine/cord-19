@@ -156,13 +156,15 @@ function ResultCard({
     journal,
     doi,
     abstract,
+    body_text,
     authors,
     source,
     citations_count_total,
   },
   onSearchSimilar,
+  isFieldSetAll,
 }) {
-  const content = formatText(abstract);
+  const content = formatText(abstract + (isFieldSetAll ? ' ' + body_text : ''));
   const plainTitle = title.replace(highlightRegex, '$1');
   return (
     <StyledCard>

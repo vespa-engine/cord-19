@@ -60,7 +60,7 @@ function NoMatches({ query }) {
   );
 }
 
-function SearchResults({ articles, query, loading, error }) {
+function SearchResults({ articles, query, isFieldSetAll, loading, error }) {
   if (loading) return <Loading message="Searching..." />;
   if (error)
     return <Error message={error.message || 'Unknown search error...'} />;
@@ -73,6 +73,7 @@ function SearchResults({ articles, query, loading, error }) {
         <ResultCard
           key={i}
           {...article}
+          isFieldSetAll={isFieldSetAll}
           onSearchSimilar={() =>
             onSearch({
               query: appendRelatedToQuery(query, article.fields.id),
@@ -138,6 +139,7 @@ function Search() {
           />
           <SearchResults
             query={searchState.query}
+            isFieldSetAll={searchState.fieldset === 'all'}
             {...{ articles, loading, error }}
           />
           <Pagination

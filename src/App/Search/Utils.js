@@ -89,6 +89,7 @@ const getSearchState = () => {
     author: urlParams.getAll('author'),
     has_full_text: urlParams.getAll('has_full_text'),
     ranking: urlParams.get('ranking'),
+    fieldset: urlParams.get('fieldset'),
   };
 };
 
