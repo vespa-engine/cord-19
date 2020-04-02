@@ -128,21 +128,20 @@ function Related({ id }) {
   );
 }
 
-function CitedBy({ citedBy, page, onPageChange }) {
-  const numPages = Math.floor((citedBy.length + 9) / 10);
+function CitedBy({ citedBy, page, totalPages, onPageChange }) {
   return (
     <Container>
       {citedBy.slice(10 * (page - 1), 10 * page).map(id => (
         <Citation key={id} id={id} />
       ))}
-      {numPages > 1 && (
+      {totalPages > 1 && (
         <Center>
           <Pagination
             firstItem={null}
             lastItem={null}
             prevItem={null}
             nextItem={null}
-            totalPages={numPages}
+            totalPages={totalPages}
             defaultActivePage={page}
             onPageChange={(e, { activePage }) => onPageChange(activePage)}
           />
@@ -183,6 +182,7 @@ function Article({ id }) {
       .map(c => c.source_id)
       .filter(c => !isNaN(c)),
   ]);
+  const totalPages = Math.floor((citations.length + 9) / 10);
 
   const panes = [
     {
@@ -199,11 +199,10 @@ function Article({ id }) {
         <CitedBy
           citedBy={citations}
           page={parseInt(url.searchParams.get('page')) || 1}
+          totalPages={totalPages}
           onPageChange={page => {
-            if (page >= 1 && page - 1 <= citations.length / 10) {
-              url.searchParams.set('page', page);
-              navigate(url);
-            }
+            url.searchParams.set('page', page);
+            navigate(url);
           }}
         />
       ),
