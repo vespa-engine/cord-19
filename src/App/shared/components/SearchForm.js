@@ -6,7 +6,7 @@ const StyledSearchForm = styled(Form)`
   &&& {
     font-size: 1.1rem;
     margin: 0 auto;
-    margin-bottom: 0.8em;
+    margin-bottom: 0.5em;
 
     input[type='text'] {
       border-radius: 1.3rem;
