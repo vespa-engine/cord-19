@@ -80,13 +80,7 @@ function Sidebar({ onSearch, ...filterValues }) {
       style={{ backgroundColor: '#e6eff5' }}
     >
       <Button
-        fluid
         disabled={noneChecked}
-        style={{
-          marginBottom: '0.5em',
-          background: 'rgba(0, 90, 142, 0.1) none',
-          color: '#3f9dd8',
-        }}
         onClick={() =>
           onSearch(
             filters.reduce((obj, { field }) => ({ ...obj, [field]: [] }), {})

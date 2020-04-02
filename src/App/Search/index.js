@@ -28,12 +28,13 @@ const ContainerSearch = styled(Container)`
       border-radius: 0.28571429rem;
 
       .ui.button {
-        width: 94%;
+        width: calc(100% - 1em);
         padding: 0.78125rem 0.4rem;
         line-height: 1.4285em;
         border-radius: 1.3rem;
-        margin-left: 0.5em;
-        margin-right: 0.5em;
+        margin: 0 0.5em 0.5em;
+        background: rgba(0, 90, 142, 0.1);
+        color: #3f9dd8;
       }
     }
 
