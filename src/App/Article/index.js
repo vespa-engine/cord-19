@@ -119,6 +119,7 @@ function Related({ id }) {
         {response.root.children.map((article, i) => (
           <ResultCard key={i} {...article} />
         ))}
+        <Link to={`/search/?query=related_to:${id}`}>Show more</Link>
       </React.Fragment>
     </Tab.Pane>
   );
