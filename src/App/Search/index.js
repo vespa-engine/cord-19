@@ -16,6 +16,7 @@ const ContainerSearch = styled(Container)`
     margin: 0.5em auto 0;
     padding: 2rem 0;
     display: flex;
+    min-height: calc(100vh - 137px);
 
     #sidebar {
       width: 30%;
