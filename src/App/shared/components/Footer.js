@@ -9,6 +9,7 @@ import { Container } from 'semantic-ui-react';
 const FooterBox = styled(Box)`
   &&& {
     width: 100%;
+    margin: auto 0 0;
     background-color: ${({ page }) =>
       page === 'main' ? 'transparent' : '#005a8e'};
 
@@ -49,7 +50,6 @@ const FooterBox = styled(Box)`
 `;
 
 function Footer({ page = null }) {
-  console.log('page:', page);
   return (
     <FooterBox page={page}>
       <Container>

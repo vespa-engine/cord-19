@@ -5,6 +5,7 @@ import { Loading, Error } from 'App/shared/components/Messages';
 import { Get } from 'App/shared/Fetcher';
 import ResultCard from './ResultCard';
 import Sidebar from './Sidebar';
+import SearchOptions from './SearchOptions';
 import { Container } from 'semantic-ui-react';
 import { generateApiQueryParams, getSearchState, onSearch } from './Utils';
 import Footer from 'App/shared/components/Footer';
@@ -24,10 +25,16 @@ const ContainerSearch = styled(Container)`
       margin-right: 1em;
       padding: 0.5em;
       border-radius: 0.28571429rem;
+
+      .ui.button {
+        padding: 0.78125rem 0.4rem;
+        line-height: 1.4285em;
+      }
     }
 
     #search_results {
       flex: 1;
+      margin-top: 0.5em; // Must match #sidebar top padding
     }
 
     #no_matches {
@@ -101,6 +108,7 @@ function Search() {
     setGrouping(groupingResponse);
   }, [groupingResponse, setGrouping, loading]);
 
+  const totalCount = response?.root?.fields?.totalCount;
   const valuesState = !grouping?.children
     ? {}
     : grouping.children.reduce((obj, { label, children }) => {
@@ -117,14 +125,19 @@ function Search() {
       <ContainerSearch>
         <Sidebar onSearch={onSearch} {...valuesState} />
         <div id="search_results">
-          <SearchForm showRanking onSearch={onSearch} {...searchState} />
+          <SearchForm onSearch={onSearch} {...searchState} />
+          <SearchOptions
+            totalCount={totalCount}
+            onSearch={onSearch}
+            {...searchState}
+          />
           <SearchResults
             query={searchState.query}
             {...{ articles, loading, error }}
           />
         </div>
       </ContainerSearch>
-      {!loading && <Footer />}
+      <Footer />
     </React.Fragment>
   );
 }
