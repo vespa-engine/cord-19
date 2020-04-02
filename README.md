@@ -38,6 +38,13 @@ To create your __own copy__ of the backend Vespa application, see
 
 Please use [cord19.vespa.ai](https://cord19.vespa.ai/) when referring to this.
 
+
+## Contact
+
+Tweet us at [@vespaengine](https://twitter.com/vespaengine),
+or mail at [info@vespa.ai](mailto:info@vespa.ai).
+
+
 ----
 
 [![CORD-19 UI](https://github.com/vespa-engine/cord-19/workflows/CORD-19%20UI/badge.svg?branch=master)](https://github.com/vespa-engine/cord-19/actions?query=workflow%3A%22CORD-19+UI%22)
