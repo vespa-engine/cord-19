@@ -28,8 +28,12 @@ const ContainerSearch = styled(Container)`
       border-radius: 0.28571429rem;
 
       .ui.button {
+        width: 94%;
         padding: 0.78125rem 0.4rem;
         line-height: 1.4285em;
+        border-radius: 1.3rem;
+        margin-left: 0.5em;
+        margin-right: 0.5em;
       }
     }
 
