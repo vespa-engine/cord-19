@@ -6,7 +6,7 @@ import { Get } from 'App/shared/Fetcher';
 import ResultCard from './ResultCard';
 import Sidebar from './Sidebar';
 import SearchOptions from './SearchOptions';
-import { Container } from 'semantic-ui-react';
+import { Container, Pagination } from 'semantic-ui-react';
 import { generateApiQueryParams, getSearchState, onSearch } from './Utils';
 import Footer from 'App/shared/components/Footer';
 
@@ -59,7 +59,15 @@ function NoMatches({ query }) {
   );
 }
 
-function SearchResults({ articles, query, loading, error }) {
+function SearchResults({
+  articles,
+  query,
+  page,
+  totalPages,
+  onPageChange,
+  loading,
+  error,
+}) {
   if (loading) return <Loading message="Searching..." />;
   if (error)
     return <Error message={error.message || 'Unknown search error...'} />;
@@ -79,6 +87,17 @@ function SearchResults({ articles, query, loading, error }) {
           }
         />
       ))}
+      {totalPages > 1 && (
+        <Pagination
+          firstItem={null}
+          lastItem={null}
+          prevItem={null}
+          nextItem={null}
+          totalPages={totalPages}
+          defaultActivePage={page}
+          onPageChange={(e, { activePage }) => onPageChange(activePage)}
+        />
+      )}
     </>
   );
 }
@@ -90,7 +109,7 @@ function Search() {
   query.set('type', 'any');
   query.set('summary', 'short');
   query.set('restrict', 'doc');
-  query.set('hits', '20');
+  query.set('hits', '10');
 
   const { loading, response, error } = Get(
     '/search/?' + query.toString()
@@ -109,6 +128,7 @@ function Search() {
   }, [groupingResponse, setGrouping, loading]);
 
   const totalCount = response?.root?.fields?.totalCount;
+  const totalPages = Math.floor((totalCount + 9) / 10);
   const valuesState = !grouping?.children
     ? {}
     : grouping.children.reduce((obj, { label, children }) => {
@@ -133,6 +153,9 @@ function Search() {
           />
           <SearchResults
             query={searchState.query}
+            totalPages={totalPages}
+            page={1 + (parseInt(query.get('offset')) || 0) / 10}
+            onPageChange={page => onSearch({ offset: (page - 1) * 10 })}
             {...{ articles, loading, error }}
           />
         </div>
