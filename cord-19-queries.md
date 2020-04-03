@@ -11,6 +11,7 @@ The https://cord19.vespa.ai/ query interface supports the Vespa [simple query la
 * "viral transmissions" searches for the phrase  
 * Example *+"viral transmission" covid-19 -1918* Must have the phrase "viral transmission" and should have 'covid-19' and must not include the term '1918'
 * To search specific fields use fieldname:query_term, e.g +title:"reproduction number". 
+* Use () for OR: +("SARS-COV-2" "coronavirus 2" "novel coronavirus") specifies that documents must match any of these three phrases.  
 
 Query examples:
 * [+covid-19 +temperature impact on viral transmission](https://cord19.vespa.ai/search?query=%2Bcovid-19+%2Btemperature+impact+on+viral+transmission)
@@ -18,13 +19,18 @@ Query examples:
 * [Impact of school closure to handle COVID-19 pandemic](https://cord19.vespa.ai/search?query=Impact+of+school+closure+to+handle+COVID-19+pandemic) 
 * [+title:"reproduction number" +abstract:MERS](https://cord19.vespa.ai/search?query=%2Btitle%3A%22reproduction+number%22+%2Babstract%3AMERS) 
 * [+authors.last:knobel](https://cord19.vespa.ai/search?query=authors.last%3Aknobel)
+* [+("SARS-COV-2" "coronavirus 2" "novel coronavirus")](https://cord19.vespa.ai/search?query=+%2B%28%22SARS-COV-2%22+%22coronavirus+2%22+%22novel+coronoavirus%22%29)
+* [+chloroquine +(covid-19 coronavirus)] (https://cord19.vespa.ai/search?query=%2Bchloroquine+%2B%28covid-19+coronavirus%29)
 
+
+## Similar articles
+See [Similar articles](similar_articles.md) for how similar articles works. 
 
 ## API Access
 
 * Frontend: https://cord19.vespa.ai/  
-* Full API access: https://api.cord19.vespa.ai/search/?query=covid-19 
-* [Kaggle Notebook: Semantic Search Using Vespa.ai's CORD-19 index](https://www.kaggle.com/jkb123/semantic-search-using-vespa-ai-s-cord19-index)
+* Full API access: https://api.cord19.vespa.ai/search/
+* [Sample Kaggle Notebook: Semantic Search Using Vespa.ai's CORD-19 index](https://www.kaggle.com/jkb123/semantic-search-using-vespa-ai-s-cord19-index)
 
 For using the Search Api of Vespa please see  [API documentation](https://docs.vespa.ai/documentation/search-api.html), [YQL Query Language](https://docs.vespa.ai/documentation/query-language.html).
 For the full document definition see [doc.sd](https://github.com/vespa-engine/sample-apps/blob/master/vespa-cloud/cord-19-search/src/main/application/searchdefinitions/doc.sd).
@@ -118,12 +124,6 @@ endpoint='https://api.cord19.vespa.ai/search/'
 response = requests.post(endpoint, json=search_request_all)
 ```
 
-## Related articles using SCIBERT-NLI embeddings 
-On top of Vespa's native api's we have built a related articles implementation which uses 
-nearest neighbor search in dense vector space (Sentence Embeddings [SCIBERT-NLI](https://huggingface.co/gsarti/scibert-nli) using Vespa's 
-[nearest neighbor query operator](https://docs.vespa.ai/documentation/reference/query-language-reference.html#nearestneighbor).  The detailed implementation 
-is found in this [custom searcher](https://github.com/vespa-engine/sample-apps/blob/master/vespa-cloud/cord-19-search/src/main/java/ai/vespa/example/cord19/searcher/RelatedPaperSearcherANN.java)
-For a given document we fetch the document and its sentence embedding for title and abstract search using the nearest neighbor operator which ranking score (rawScore()) is 1/(1+ euclidean distance). 
 
 
 
