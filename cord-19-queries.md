@@ -20,7 +20,7 @@ Query examples:
 * [+title:"reproduction number" +abstract:MERS](https://cord19.vespa.ai/search?query=%2Btitle%3A%22reproduction+number%22+%2Babstract%3AMERS) 
 * [+authors.last:knobel](https://cord19.vespa.ai/search?query=authors.last%3Aknobel)
 * [+("SARS-COV-2" "coronavirus 2" "novel coronavirus")](https://cord19.vespa.ai/search?query=+%2B%28%22SARS-COV-2%22+%22coronavirus+2%22+%22novel+coronoavirus%22%29)
-* [+chloroquine +(covid-19 coronavirus)] (https://cord19.vespa.ai/search?query=%2Bchloroquine+%2B%28covid-19+coronavirus%29)
+* [+chloroquine +(covid-19 coronavirus)](https://cord19.vespa.ai/search?query=%2Bchloroquine+%2B%28covid-19+coronavirus%29)
 
 
 ## Similar articles
