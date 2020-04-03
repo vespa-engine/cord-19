@@ -40,6 +40,7 @@ const ContentGrid = styled(Grid)`
 
     .ui.form {
       max-width: 800px;
+      padding: 0 2rem;
     }
 
     a {
