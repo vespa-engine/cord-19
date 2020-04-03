@@ -73,8 +73,8 @@ function SearchSuggestions() {
       <List>
         {shuffle(sampleQueries)
           .slice(0, 3)
-          .map(query => (
-            <List.Item>
+          .map((query, i) => (
+            <List.Item key={i}>
               <Link to={'/search?query=' + encodeURIComponent(query)}>
                 {query}
               </Link>
