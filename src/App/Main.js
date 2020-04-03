@@ -2,11 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import { Box, Text } from 'rebass';
 import { Grid, List, Image } from 'semantic-ui-react';
+import { shuffle } from 'lodash';
 import SearchForm from 'App/shared/components/SearchForm';
 import Link from 'App/shared/components/Link';
 import { onSearch } from './Search/Utils';
 import VespaIcon from 'App/shared/img/VespaIcon.png';
 import Footer from 'App/shared/components/Footer';
+
+const sampleQueries = [
+  '+covid-19 +temperature impact on viral transmission',
+  'basic reproduction numbers for covid-19 in +"south korea"',
+  'Impact of school closure to handle COVID-19 pandemic',
+  '+title:"reproduction number" +abstract:MERS',
+  '+authors.last:knobel',
+  '+("SARS-COV-2" "coronavirus 2" "novel coronavirus")',
+  '+chloroquine +(covid-19 coronavirus)',
+];
 
 const Content = styled(Box)`
   background-image: linear-gradient(0deg, #98c1db 7%, #005a8e 100%);
@@ -60,21 +71,15 @@ function SearchSuggestions() {
     <>
       <h4>Try searching for...</h4>
       <List>
-        <List.Item>
-          <Link to="/search?query=%2Bcovid-19+%2Btemperature+impact+on+viral+transmission">
-            +covid-19 +temperature impact on viral transmission
-          </Link>
-        </List.Item>
-        <List.Item>
-          <Link to="/search?query=basic+reproduction+numbers+for+covid-19+in+%2B%22south+korea%22">
-            basic reproduction numbers for covid-19 in +"south korea"
-          </Link>
-        </List.Item>
-        <List.Item>
-          <Link to="/search?query=Impact+of+school+closure+to+handle+COVID-19+pandemic">
-            Impact of school closure to handle COVID-19 pandemic
-          </Link>
-        </List.Item>
+        {shuffle(sampleQueries)
+          .slice(0, 3)
+          .map(query => (
+            <List.Item>
+              <Link to={'/search?query=' + encodeURIComponent(query)}>
+                {query}
+              </Link>
+            </List.Item>
+          ))}
       </List>
     </>
   );
