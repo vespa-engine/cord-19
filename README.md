@@ -9,9 +9,9 @@ All of this is open source.
 
 For more advanced usage, see the [CORD-19 API](/cord-19-queries.md).
 
-This application serves data from _COVID-19 Open Research Dataset (CORD-19). 2020. Version 2020-03-27._
+This application serves data from _COVID-19 Open Research Dataset (CORD-19). 2020. Version 2020-04-03._
 _Retrieved from https://pages.semanticscholar.org/coronavirus-research._
-_Accessed 2020-03-27. https://doi.org/10.5281/zenodo.3727291_
+_Accessed 2020-04-04. https://doi.org/10.5281/zenodo.3727291_
 
 It is made accessible by the Vespa Team.
 [Vespa](https://vespa.ai) is an open source big data serving engine:
