@@ -14,7 +14,7 @@ const sampleQueries = [
   'basic reproduction numbers for covid-19 in +"south korea"',
   'Impact of school closure to handle COVID-19 pandemic',
   '+title:"reproduction number" +abstract:MERS',
-  '+authors.last:knobel',
+  '+authors.name:"Neil M Ferguson"',
   '+("SARS-COV-2" "coronavirus 2" "novel coronavirus")',
   '+chloroquine +(covid-19 coronavirus)',
 ];
