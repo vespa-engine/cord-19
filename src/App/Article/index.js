@@ -72,6 +72,7 @@ function Meta({ journal, timestamp, source, license, doi }) {
 function Content({
   title,
   abstract,
+  abstract_t5,
   authors,
   doi,
   journal,
@@ -87,6 +88,12 @@ function Content({
         <>
           <Header as="h3">Abstract</Header>
           <p>{abstract}</p>
+          {abstract_t5 && (
+            <>
+            <Header as="h3">Machine Summary (T5)</Header>
+            <p>{abstract_t5}</p>
+            </>
+          )}
         </>
       )}
       <Meta {...{ journal, timestamp, source, license, doi }} />
