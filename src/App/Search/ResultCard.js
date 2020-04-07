@@ -204,7 +204,7 @@ function ResultCard({
             <div>
               <Popup
                 position="top center"
-                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum ante diam, eget facilisis nisl commodo eget. Sed elementum ultrices quam"
+                content="This is a dynamic summary of the abstract of the paper, showing the matched query terms and surrounding context."
                 trigger={<Label horizontal>Abstract</Label>}
               />
               {content}
@@ -212,7 +212,11 @@ function ResultCard({
           )}
           {body && (
             <div>
-              <Label horizontal>Full Text</Label>
+              <Popup
+                position="top center"
+                content="This is a dynamic summary of the body of the paper, showing the matched query terms and surrounding context."
+                trigger={<Label horizontal>Full Text</Label>}
+              />
               {body}
             </div>
           )}
@@ -220,7 +224,7 @@ function ResultCard({
             <div>
               <Label horizontal>
                 Machine Generated Summary
-                <Explanation text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum ante diam, eget facilisis nisl commodo eget. Sed elementum ultrices quam" />
+                <Explanation text="This is a short summary of the abstract, generated using a Natural Language Processing Model (T5)." />
               </Label>
               {formatText(abstract_t5)}
             </div>
