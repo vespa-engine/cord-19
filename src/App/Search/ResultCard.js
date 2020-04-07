@@ -156,6 +156,7 @@ function ResultCard({
     journal,
     doi,
     abstract,
+    abstract_t5,
     body_text,
     authors,
     source,
@@ -180,6 +181,7 @@ function ResultCard({
       {(content || onSearchSimilar) && (
         <Card.Content>
           {content && <p>{content}</p>}
+          {abstract_t5 && <p><b>Machine Summary (T5) </b>: {formatText(abstract_t5)}</p>}
           {onSearchSimilar && (
             <FunctionLink onClick={onSearchSimilar}>
               Search for similar articles
