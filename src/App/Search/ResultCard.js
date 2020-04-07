@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Card } from 'semantic-ui-react';
+import { Card, Label } from 'semantic-ui-react';
 import Moment from 'react-moment';
 import Link from 'App/shared/components/Link';
 import { nameFormatter } from 'App/shared/utils/formatter';
@@ -183,7 +183,8 @@ function ResultCard({
           {content && <p>{content}</p>}
           {abstract_t5 && (
             <p>
-              <b>Machine Summary (T5)</b>: {formatText(abstract_t5)}
+              <Label horizontal>Machine Summary (T5)</Label>
+              {formatText(abstract_t5)}
             </p>
           )}
           {onSearchSimilar && (
