@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Card } from 'semantic-ui-react';
+import { Card, Icon, Label, Popup } from 'semantic-ui-react';
 import Moment from 'react-moment';
 import Link from 'App/shared/components/Link';
 import { nameFormatter } from 'App/shared/utils/formatter';
@@ -50,6 +50,12 @@ const StyledCard = styled(Card)`
   }
 `;
 
+const ExplanationIcon = styled(Icon)`
+  &&.icon {
+    margin: 0 0 0 0.5em;
+  }
+`;
+
 const highlightRegex = /<hi>(.*?)<\/hi>/g;
 const formatText = text => {
   if (!text) return null;
@@ -74,6 +80,19 @@ const FunctionLink = ({ onClick, ...props }) => (
     {props.children}
   </a>
 );
+
+function Explanation({ text }) {
+  return (
+    <Popup
+      content={text}
+      trigger={
+        <span>
+          <ExplanationIcon name="question circle" />
+        </span>
+      }
+    />
+  );
+}
 
 function JournalAndDate({ journal, timestamp }) {
   const format = journal ? ' (YYYY-MM-DD)' : 'YYYY-MM-DD';
@@ -156,6 +175,7 @@ function ResultCard({
     journal,
     doi,
     abstract,
+    abstract_t5,
     body_text,
     authors,
     source,
@@ -164,7 +184,8 @@ function ResultCard({
   onSearchSimilar,
   isFieldSetAll,
 }) {
-  const content = formatText(abstract + (isFieldSetAll ? ' ' + body_text : ''));
+  const content = formatText(abstract);
+  const body = formatText(body_text);
   const plainTitle = title.replace(highlightRegex, '$1');
   return (
     <StyledCard>
@@ -179,7 +200,35 @@ function ResultCard({
       </Card.Meta>
       {(content || onSearchSimilar) && (
         <Card.Content>
-          {content && <p>{content}</p>}
+          {content && (
+            <div>
+              <Popup
+                position="top center"
+                content="This is a dynamic summary of the abstract of the paper, showing the matched query terms and surrounding context."
+                trigger={<Label horizontal>Abstract</Label>}
+              />
+              {content}
+            </div>
+          )}
+          {body && (
+            <div>
+              <Popup
+                position="top center"
+                content="This is a dynamic summary of the body of the paper, showing the matched query terms and surrounding context."
+                trigger={<Label horizontal>Full Text</Label>}
+              />
+              {body}
+            </div>
+          )}
+          {abstract_t5 && (
+            <div>
+              <Label horizontal>
+                Machine Generated Summary
+                <Explanation text="This is a short summary of the abstract, generated using a Natural Language Processing Model (T5)." />
+              </Label>
+              {formatText(abstract_t5)}
+            </div>
+          )}
           {onSearchSimilar && (
             <FunctionLink onClick={onSearchSimilar}>
               Search for similar articles
