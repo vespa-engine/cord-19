@@ -183,7 +183,7 @@ function ResultCard({
           {content && <p>{content}</p>}
           {abstract_t5 && (
             <p>
-              <b>Machine Summary (T5) </b>: {formatText(abstract_t5)}
+              <b>Machine Summary (T5)</b>: {formatText(abstract_t5)}
             </p>
           )}
           {onSearchSimilar && (
