@@ -182,7 +182,7 @@ function ResultCard({
       {(content || onSearchSimilar) && (
         <Card.Content>
           {content && <p><Label horizontal>Abstract</Label>{content}</p>}
-          {isFieldSetAll && (
+          {body && (
             <p>
               <Label horizontal>Full Text:</Label>
               {body}
