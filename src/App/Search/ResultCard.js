@@ -184,7 +184,7 @@ function ResultCard({
           {content && <p><Label horizontal>Abstract</Label>{content}</p>}
           {body && (
             <p>
-              <Label horizontal>Full Text:</Label>
+              <Label horizontal>Full Text</Label>
               {body}
             </p>
           )}
