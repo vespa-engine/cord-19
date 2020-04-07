@@ -181,18 +181,23 @@ function ResultCard({
       </Card.Meta>
       {(content || onSearchSimilar) && (
         <Card.Content>
-          {content && <p><Label horizontal>Abstract</Label>{content}</p>}
+          {content && (
+            <div>
+              <Label horizontal>Abstract</Label>
+              {content}
+            </div>
+          )}
           {body && (
-            <p>
+            <div>
               <Label horizontal>Full Text</Label>
               {body}
-            </p>
+            </div>
           )}
           {abstract_t5 && (
-            <p>
+            <div>
               <Label horizontal>Machine Generated Summary</Label>
               {formatText(abstract_t5)}
-            </p>
+            </div>
           )}
           {onSearchSimilar && (
             <FunctionLink onClick={onSearchSimilar}>
