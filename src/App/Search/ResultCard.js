@@ -183,7 +183,7 @@ function ResultCard({
           {content && <p>{content}</p>}
           {abstract_t5 && (
             <p>
-              <Label horizontal>Machine Summary (T5)</Label>
+              <Label horizontal>Machine Generated Summary</Label>
               {formatText(abstract_t5)}
             </p>
           )}

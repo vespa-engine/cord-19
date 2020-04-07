@@ -90,7 +90,7 @@ function Content({
           <p>{abstract}</p>
           {abstract_t5 && (
             <>
-              <Header as="h3">Machine Summary (T5)</Header>
+              <Header as="h3">Machine Generated Summary</Header>
               <p>{abstract_t5}</p>
             </>
           )}
