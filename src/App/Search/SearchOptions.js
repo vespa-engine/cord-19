@@ -17,7 +17,7 @@ const fieldsets = [
     value: 'default',
   },
   {
-    text: 'all fields',
+    text: 'title, abstract and full text',
     value: 'all',
   },
 ];
