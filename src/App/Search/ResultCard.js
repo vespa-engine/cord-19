@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Card, Label } from 'semantic-ui-react';
+import { Card, Icon, Label, Popup } from 'semantic-ui-react';
 import Moment from 'react-moment';
 import Link from 'App/shared/components/Link';
 import { nameFormatter } from 'App/shared/utils/formatter';
@@ -50,6 +50,12 @@ const StyledCard = styled(Card)`
   }
 `;
 
+const ExplanationIcon = styled(Icon)`
+  &&.icon {
+    margin: 0 0 0 0.5em;
+  }
+`;
+
 const highlightRegex = /<hi>(.*?)<\/hi>/g;
 const formatText = text => {
   if (!text) return null;
@@ -74,6 +80,19 @@ const FunctionLink = ({ onClick, ...props }) => (
     {props.children}
   </a>
 );
+
+function Explanation({ text }) {
+  return (
+    <Popup
+      content={text}
+      trigger={
+        <span>
+          <ExplanationIcon name="question circle" />
+        </span>
+      }
+    />
+  );
+}
 
 function JournalAndDate({ journal, timestamp }) {
   const format = journal ? ' (YYYY-MM-DD)' : 'YYYY-MM-DD';
@@ -183,7 +202,11 @@ function ResultCard({
         <Card.Content>
           {content && (
             <div>
-              <Label horizontal>Abstract</Label>
+              <Popup
+                position="top center"
+                content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum ante diam, eget facilisis nisl commodo eget. Sed elementum ultrices quam"
+                trigger={<Label horizontal>Abstract</Label>}
+              />
               {content}
             </div>
           )}
@@ -195,7 +218,10 @@ function ResultCard({
           )}
           {abstract_t5 && (
             <div>
-              <Label horizontal>Machine Generated Summary</Label>
+              <Label horizontal>
+                Machine Generated Summary
+                <Explanation text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum ante diam, eget facilisis nisl commodo eget. Sed elementum ultrices quam" />
+              </Label>
               {formatText(abstract_t5)}
             </div>
           )}
