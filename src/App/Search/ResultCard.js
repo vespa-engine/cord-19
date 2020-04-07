@@ -165,7 +165,8 @@ function ResultCard({
   onSearchSimilar,
   isFieldSetAll,
 }) {
-  const content = formatText(abstract + (isFieldSetAll ? ' ' + body_text : ''));
+  const content = formatText(abstract);
+  const body = formatText(body_text);
   const plainTitle = title.replace(highlightRegex, '$1');
   return (
     <StyledCard>
@@ -180,7 +181,13 @@ function ResultCard({
       </Card.Meta>
       {(content || onSearchSimilar) && (
         <Card.Content>
-          {content && <p>{content}</p>}
+          {content && <p><Label horizontal>Abstract</Label>{content}</p>}
+          {isFieldSetAll && (
+            <p>
+              <Label horizontal>Full Text:</Label>
+              {body}
+            </p>
+          )}
           {abstract_t5 && (
             <p>
               <Label horizontal>Machine Generated Summary</Label>
