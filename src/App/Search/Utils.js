@@ -1,5 +1,7 @@
 import { navigate } from '@reach/router';
 
+const relatedToRegex = /(?:^|\s)(\+?related_to:[0-9]+)(?:$|\s)/;
+
 const select = `all(
      all(group(source) order(-count()) each(output(count())))
      all(group(journal) max(10) order(-count()) each(output(count())))
@@ -71,11 +73,21 @@ const onSearch = params => {
     if (Array.isArray(value)) value.forEach(v => urlParams.append(key, v));
     else if (value) urlParams.set(key, value);
   }
+  // Offset must be reset whenever result set changes, which we assume may be
+  // every time the URL changes due to other interactions than with pagination.
   if (!params.hasOwnProperty('offset')) urlParams.delete('offset');
 
   // No query or filters specified
   if (urlParams.entries().next().done) return;
   navigate('/search?' + urlParams);
+};
+
+const getRelatedId = urlParams => {
+  const query = urlParams.get('query');
+  if (!query) return null;
+  const match = query.match(relatedToRegex);
+  if (!match) return null;
+  return match[1].split(':')[1];
 };
 
 const getSearchState = () => {
@@ -90,7 +102,8 @@ const getSearchState = () => {
     has_full_text: urlParams.getAll('has_full_text'),
     ranking: urlParams.get('ranking'),
     fieldset: urlParams.get('fieldset'),
+    relatedId: getRelatedId(urlParams),
   };
 };
 
-export { generateApiQueryParams, getSearchState, onSearch };
+export { generateApiQueryParams, getSearchState, onSearch, relatedToRegex };

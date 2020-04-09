@@ -4,7 +4,12 @@ import { Container } from 'semantic-ui-react';
 import ResultCard from './ResultCard';
 import Sidebar from './Sidebar';
 import SearchOptions from './SearchOptions';
-import { generateApiQueryParams, getSearchState, onSearch } from './Utils';
+import {
+  generateApiQueryParams,
+  getSearchState,
+  onSearch,
+  relatedToRegex,
+} from './Utils';
 import { Get } from 'App/shared/Fetcher';
 import SearchForm from 'App/shared/components/SearchForm';
 import { Error, Loading } from 'App/shared/components/Messages';
@@ -51,7 +56,6 @@ const ContainerSearch = styled(Container)`
 `;
 
 const appendRelatedToQuery = (query, id) => {
-  const relatedToRegex = /(?:^|\s)(\+?related_to:[0-9]+)(?:$|\s)/;
   return query.replace(relatedToRegex, ' ').trim() + ' related_to:' + id;
 };
 
