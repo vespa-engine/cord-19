@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Form } from 'semantic-ui-react';
+import { Form, Icon } from 'semantic-ui-react';
 
 const StyledSearchForm = styled(Form)`
   &&& {
@@ -19,12 +19,13 @@ function SearchForm({ onSearch, query = '' }) {
     if (query !== currentQuery) setCurrentQuery(query);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
+  const handleSearch = () => onSearch({ query: currentQuery });
 
   return (
-    <StyledSearchForm onSubmit={() => onSearch({ query: currentQuery })}>
+    <StyledSearchForm onSubmit={handleSearch}>
       <Form.Input
         fluid
-        icon="search"
+        icon={<Icon name="search" link onClick={handleSearch} />}
         placeholder="Search..."
         className="input"
         onChange={(e, { value }) => setCurrentQuery(value)}
