@@ -100,10 +100,10 @@ const getSearchState = () => {
     year: urlParams.getAll('year'),
     author: urlParams.getAll('author'),
     has_full_text: urlParams.getAll('has_full_text'),
-    use_specter : urlParams.getAll('use_specter'),
+    use_specter: urlParams.getAll('use_specter'),
     ranking: urlParams.get('ranking'),
     fieldset: urlParams.get('fieldset'),
-    relatedId: getRelatedId(urlParams)
+    relatedId: getRelatedId(urlParams),
   };
 };
 

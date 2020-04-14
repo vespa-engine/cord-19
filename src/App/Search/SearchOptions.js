@@ -42,10 +42,9 @@ const rankings = [
 
 function RelatedArticle({ id }) {
   var params = new URLSearchParams(window.location.search);
-  var use_specter = params.get('use-specter'); 
-  var similarMethod = "Sent-SciBERT similarity";
-  if (use_specter == 'true')
-    similarMethod = "SPECTER similarity";
+  var use_specter = params.get('use-specter');
+  var similarMethod = 'Sent-SciBERT similarity';
+  if (use_specter == 'true') similarMethod = 'SPECTER similarity';
 
   const query = new URLSearchParams();
   query.set('yql', `select title from sources * where id = ${id};`);
@@ -62,8 +61,9 @@ function RelatedArticle({ id }) {
 
   return (
     <Container>
-      Showing articles similar to{' '} 
-      <Link to={`/article/${id}`}>{hits[0].fields.title}</Link> by {similarMethod}. 
+      Showing articles similar to{' '}
+      <Link to={`/article/${id}`}>{hits[0].fields.title}</Link> by{' '}
+      {similarMethod}.
     </Container>
   );
 }

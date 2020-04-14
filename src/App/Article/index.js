@@ -106,8 +106,7 @@ function Related({ id, specter }) {
   query.set('id', id);
   query.set('summary', 'short');
   query.set('hits', 5);
-  if (specter)
-    query.set('use-specter', true)
+  if (specter) query.set('use-specter', true);
   const { loading, response, error } = Get(
     '/search/?' + query.toString()
   ).state();
@@ -124,7 +123,9 @@ function Related({ id, specter }) {
         {response.root.children.map((article, i) => (
           <ResultCard key={i} {...article} />
         ))}
-        <Link to={`/search/?query=related_to:${id}&use-specter=${specter}`}>Show more</Link>
+        <Link to={`/search/?query=related_to:${id}&use-specter=${specter}`}>
+          Show more
+        </Link>
       </React.Fragment>
     </Tab.Pane>
   );
