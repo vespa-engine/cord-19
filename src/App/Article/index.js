@@ -101,15 +101,12 @@ function Content({
   );
 }
 
-function Related({ id }) {
+function Related({ id, specter }) {
   const query = new URLSearchParams();
   query.set('id', id);
-  query.set('searchChain', 'related-ann');
   query.set('summary', 'short');
-  query.set('ranking.profile', 'related-ann');
-  query.set('use-abstract', true);
   query.set('hits', 5);
-
+  if (specter) query.set('use-specter', true);
   const { loading, response, error } = Get(
     '/search/?' + query.toString()
   ).state();
@@ -126,7 +123,9 @@ function Related({ id }) {
         {response.root.children.map((article, i) => (
           <ResultCard key={i} {...article} />
         ))}
-        <Link to={`/search/?query=related_to:${id}`}>Show more</Link>
+        <Link to={`/search/?query=related_to:${id}&use-specter=${specter}`}>
+          Show more
+        </Link>
       </React.Fragment>
     </Tab.Pane>
   );
@@ -145,7 +144,7 @@ function CitedBy({ citedBy, total, offset, onOffsetChange }) {
 
 function Citation({ id }) {
   const { loading, response, error } = Get(
-    `/document/v1/covid-19/doc/docid/${id}`
+    `/document/v1/covid-19/doc/docid/${id}?fieldSet=doc:title,abstract,doi,abstract_t5,journal,source,timestamp,license`
   ).state();
 
   if (loading) return <Loading message="Loading..." />;
@@ -177,8 +176,12 @@ function Article({ id }) {
 
   const panes = [
     {
-      menuItem: 'Similar articles',
-      render: () => <Related id={response.fields.id} />,
+      menuItem: 'Similar articles by Sent-SciBERT',
+      render: () => <Related id={response.fields.id} specter={false} />,
+    },
+    {
+      menuItem: 'Similar articles by SPECTER',
+      render: () => <Related id={response.fields.id} specter={true} />,
     },
     {
       menuItem: {
