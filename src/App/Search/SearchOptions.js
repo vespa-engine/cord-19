@@ -23,6 +23,10 @@ const fieldsets = [
     text: 'title, abstract and full text',
     value: 'all',
   },
+  {
+    text: 'title, abstract, full text and t5',
+    value: 'allt5',
+  },
 ];
 
 const rankings = [
@@ -31,8 +35,20 @@ const rankings = [
     value: 'bm25',
   },
   {
-    text: 'Vespa nativeRank',
+    text: 'Vespa BM25 FW',
+    value: 'bm25fw',
+  },
+  {
+    text: 'Vespa BM25 w T5',
+    value: 'bm25t5',
+  },
+  {
+    text: 'Vespa default',
     value: 'default',
+  },
+  {
+    text: 'Vespa nativeRank FW',
+    value: 'native-all',
   },
   {
     text: 'date',
