@@ -14,7 +14,7 @@ import CWLogo from 'App/shared/img/logos/computerworld-logo.png';
 import SMDLogo from 'App/shared/img/logos/search-marketing-daily.png';
 import ZDNetLogo from 'App/shared/img/logos/zdnet-logo-large.png';
 import DatanamiLogo from 'App/shared/img/logos/datanami-logo-2018.png';
-import WSJLogo from 'App/shared/img/logos/wsj-logo-big-black.svg';
+import WSJLogo from 'App/shared/img/logos/wsj-logo-alt.svg';
 
 const featuredArticles = [
   {
