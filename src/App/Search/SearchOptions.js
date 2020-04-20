@@ -31,23 +31,27 @@ const fieldsets = [
 
 const rankings = [
   {
-    text: 'Vespa BM25',
+    text: 'Vespa BM25 (bm25)',
     value: 'bm25',
   },
   {
-    text: 'Vespa BM25 FW',
+    text: 'Vespa BM25 FW (bm25fw)',
     value: 'bm25fw',
   },
   {
-    text: 'Vespa BM25 w T5',
+    text: 'Vespa BM25 w T5 (bm25t5)',
     value: 'bm25t5',
   },
   {
-    text: 'Vespa default',
+    text: 'Vespa BM25 w T5 FW (bm25t5fw)',
+    value: 'bm25t5fw',
+  },
+  {
+    text: 'Vespa default (default)',
     value: 'default',
   },
   {
-    text: 'Vespa nativeRank FW',
+    text: 'Vespa nativeRank (native-all)',
     value: 'native-all',
   },
   {
