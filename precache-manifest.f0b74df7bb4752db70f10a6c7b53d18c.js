@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "fbe105500e97994c349fbee0d59e37f4",
+    "revision": "03eca7f3bea7228f9ecc6d0269db5b27",
     "url": "/index.html"
   },
   {
-    "revision": "f5fb011d7d128488f812",
+    "revision": "0932680724a6d7fe20cb",
     "url": "/static/css/2.3a2a7389.chunk.css"
   },
   {
-    "revision": "7815bbabc44b81497b5f",
+    "revision": "a1602800016bf764f77e",
     "url": "/static/css/main.f8b5a4f2.chunk.css"
   },
   {
-    "revision": "f5fb011d7d128488f812",
-    "url": "/static/js/2.b3370d87.chunk.js"
+    "revision": "0932680724a6d7fe20cb",
+    "url": "/static/js/2.ce401fd6.chunk.js"
   },
   {
     "revision": "6c6a3fdbde1beaa316b503ba91b0abf6",
-    "url": "/static/js/2.b3370d87.chunk.js.LICENSE.txt"
+    "url": "/static/js/2.ce401fd6.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7815bbabc44b81497b5f",
-    "url": "/static/js/main.71f94eb0.chunk.js"
+    "revision": "a1602800016bf764f77e",
+    "url": "/static/js/main.6ea71acd.chunk.js"
   },
   {
     "revision": "a580cc98e9ef085ed614",
@@ -54,6 +54,10 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "f4920c94c0861c537f72ba36590f6362",
     "url": "/static/media/brand-icons.f4920c94.woff"
+  },
+  {
+    "revision": "5b7e4da0e88bb16f1aff7781c99ddf8c",
+    "url": "/static/media/datanami-logo-2018.5b7e4da0.png"
   },
   {
     "revision": "9c74e172f87984c48ddf5c8108cabe67",
@@ -98,5 +102,13 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "ece54318791c51b52dfdc689efdb6271",
     "url": "/static/media/outline-icons.ece54318.ttf"
+  },
+  {
+    "revision": "ad4677f0ee368dc41c6c124d32a0b72d",
+    "url": "/static/media/wsj-logo-alt.ad4677f0.svg"
+  },
+  {
+    "revision": "090d74c914097cacf425818d9bf8da48",
+    "url": "/static/media/zdnet-logo-large.090d74c9.png"
   }
 ]);
