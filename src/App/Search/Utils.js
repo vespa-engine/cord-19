@@ -59,6 +59,7 @@ const generateApiQueryParams = () => {
   ].forEach(q => query.delete(q));
   if (filter) query.set('filter', filter);
   if (ranking) query.set('ranking.profile', ranking);
+  else query.set('ranking.profile','bm25t5');
   if (fieldset) query.set('model.defaultIndex', fieldset);
   query.set('select', select);
 
