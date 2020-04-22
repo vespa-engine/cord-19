@@ -45,13 +45,16 @@ const featuredArticles = [
 ];
 
 const sampleQueries = [
-  '+covid-19 +temperature impact on viral transmission',
-  'basic reproduction numbers for covid-19 in +"south korea"',
-  'Impact of school closure to handle COVID-19 pandemic',
-  '+title:"reproduction number" +abstract:MERS',
-  '+authors.name:"Neil M Ferguson"',
-  '+("SARS-COV-2" "coronavirus 2" "novel coronavirus")',
-  '+chloroquine +(covid-19 coronavirus)',
+  'What is the impact of school closure in handling the COVID-19 pandemic?',
+  'What drugs have been active against SARS-CoV or SARS-CoV-2 in animal studies?',
+  'Are there serological tests that detect antibodies to coronavirus/SARS-CoV-2?',
+  'Has social distancing had an impact on slowing the spread of COVID-19?',
+  'Are there any clinical trials available for the coronavirus/COVID-19?',
+  'What are the best masks for preventing infection by COVID-19?',
+  'Are cardiac complications likely in patients with COVID-19?',
+  'What kinds of complications related to COVID-19 are associated with hypertension?',
+  'What kinds of complications related to COVID-19 are associated with diabetes?',
+  'Is remdesivir an effective treatment for COVID-19?',
 ];
 
 const TallDivider = styled(Divider)`
@@ -111,7 +114,7 @@ function SearchSuggestions() {
       <h4>Try searching for...</h4>
       <List>
         {shuffle(sampleQueries)
-          .slice(0, 3)
+          .slice(0, 4)
           .map((query, i) => (
             <List.Item key={i}>
               <Link to={'/search?query=' + encodeURIComponent(query)}>
