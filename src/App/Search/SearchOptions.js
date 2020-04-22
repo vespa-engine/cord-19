@@ -16,23 +16,19 @@ const Container = styled.div`
 
 const fieldsets = [
   {
-    text: 'title and abstract',
-    value: 'default',
+    text: 'title, abstract and full text',
+    value: 'allt5',
   },
   {
-    text: 'title, abstract and full text',
-    value: 'all',
+    text: 'title, abstract',
+    value: 'default',
   },
 ];
 
 const rankings = [
   {
-    text: 'Vespa BM25',
-    value: 'bm25',
-  },
-  {
-    text: 'Vespa nativeRank',
-    value: 'default',
+    text: 'text ranking',
+    value: 'bm25t5',
   },
   {
     text: 'date',
