@@ -36,6 +36,7 @@
     "eslint-plugin-react-hooks": "^2.3.0",
     "http-proxy-middleware": "^0.20.0",
     "husky": "^3.1.0",
+    "lint-staged": "^10.1.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "prettier": "^1.19.1",
@@ -46,8 +47,7 @@
     "react-window": "^1.8.5",
     "rebass": "^4.0.6",
     "semantic-ui-react": "^0.88.2",
-    "styled-components": "^4.4.1",
-    "lint-staged": "^10.1.0"
+    "styled-components": "^4.4.1"
   },
   "husky": {
     "hooks": {
