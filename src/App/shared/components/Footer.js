@@ -58,7 +58,7 @@ function Footer({ page = null }) {
             <Link to="https://pages.semanticscholar.org/coronavirus-research">
               COVID-19 Open Research Dataset (CORD-19)
             </Link>
-            . 2020. Version 2020-04-24. Accessed 2020-04-25.{' '}
+            . 2020. Version 2020-05-01. Accessed 2020-05-02.{' '}
             <Link to="https://doi.org/10.5281/zenodo.3727291">
               doi:10.5281/zenodo.3727291
             </Link>
