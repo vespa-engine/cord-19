@@ -102,6 +102,7 @@ function Search() {
   query.set('summary', 'short');
   query.set('restrict', 'doc');
   query.set('hits', 10);
+  query.set('collapsefield', 'title');
 
   const { loading, response, error } = Get(
     '/search/?' + query.toString()
