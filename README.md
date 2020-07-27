@@ -26,10 +26,12 @@ Find more details in [About CORD-19 Search](ABOUT.md)
 
 ## Contribute and run your own
 
-We are currently working on this -
-expect daily updates to documentation and query features.
-Use [issues](https://github.com/vespa-engine/cord-19/issues) for bug reports. 
 Contributions are appreciated, see [contributing](/CONTRIBUTING.md).
+Use [issues](https://github.com/vespa-engine/cord-19/issues) for bug reports. 
+
+Data access in Vespa Cloud is secured.
+Refer to [vespa-documentation-search](https://github.com/vespa-engine/sample-apps/blob/master/vespa-cloud/vespa-documentation-search/README.md)
+to learn how to manage secrets using AWS Lambda/Parameter Store.
 
 To create your __own copy__ of the backend Vespa application, see 
 [experiment yourself](https://github.com/vespa-engine/sample-apps/blob/master/vespa-cloud/cord-19-search/experiment-yourself.md).
