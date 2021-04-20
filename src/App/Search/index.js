@@ -70,7 +70,7 @@ function NoMatches({ query }) {
 }
 
 function SearchResults({ articles, query, isFieldSetAll, loading, error }) {
-  if (loading) return <Loading message="Searching..." />;
+  if (loading) return <Loading message="Searching ..." />;
   if (error)
     return <Error message={error.message || 'Unknown search error...'} />;
 
