@@ -63,7 +63,7 @@ function Footer({ page = null }) {
               doi:10.5281/zenodo.3727291
             </Link>
             <br />
-            Copyright Verizon Media 2020 Licensed under{' '}
+            Copyright Yahoo Licensed under{' '}
             <Link to="https://github.com/vespa-engine/cord-19/blob/master/LICENSE">
               Apache License 2.0
             </Link>
