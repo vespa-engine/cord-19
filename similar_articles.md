@@ -1,4 +1,4 @@
-<!-- Copyright Verizon Media. Licensed under the terms of the Apache 2.0 license. See LICENSE in the project root. -->
+<!-- Copyright Yahoo. Licensed under the terms of the Apache 2.0 license. See LICENSE in the project root. -->
 # Semantic similarity for the CORD-19 dataset 
 
 A nice feature of the [cord19.vespa.ai](https://cord19.vespa.ai/) application is its ability to display similar articles to the one being read, as displayed in the figure below. We have implemented one of the most sophisticated techniques, called semantic similarity, to display those related articles.

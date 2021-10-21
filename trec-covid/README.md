@@ -1,4 +1,4 @@
-<!-- Copyright Verizon Media. Licensed under the terms of the Apache 2.0 license. See LICENSE in the project root. -->
+<!-- Copyright Yahoo. Licensed under the terms of the Apache 2.0 license. See LICENSE in the project root. -->
 
 # TREC-COVID 
 This describes [cord19.vespa.ai](https://cord19.vespa.ai/)'s submissions to [TREC-COVID](https://ir.nist.gov/covidSubmit/). This is Work in Progress. 
