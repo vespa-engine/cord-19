@@ -4,7 +4,7 @@
 
 This is the __frontend__ of the [Vespa CORD-19 Search](https://cord19.vespa.ai/).
 The __backend__ [Vespa](https://vespa.ai) application is 
-[here](https://github.com/vespa-engine/sample-apps/tree/master/vespa-cloud/cord-19-search). 
+[here](https://github.com/vespa-cloud/cord-19-search). 
 All of this is open source.
 
 For more advanced usage, see the [CORD-19 API](/cord-19-queries.md).
@@ -30,11 +30,11 @@ Contributions are appreciated, see [contributing](/CONTRIBUTING.md).
 Use [issues](https://github.com/vespa-engine/cord-19/issues) for bug reports. 
 
 Data access in Vespa Cloud is secured.
-Refer to [vespa-documentation-search](https://github.com/vespa-engine/sample-apps/blob/master/vespa-cloud/vespa-documentation-search/README.md)
+Refer to [vespa-documentation-search](https://github.com/vespa-cloud/vespa-documentation-search/blob/main/README.md)
 to learn how to manage secrets using AWS Lambda/Parameter Store.
 
 To create your __own copy__ of the backend Vespa application, see 
-[experiment yourself](https://github.com/vespa-engine/sample-apps/blob/master/vespa-cloud/cord-19-search/experiment-yourself.md).
+[experiment yourself](https://github.com/vespa-cloud/cord-19-search/blob/main/experiment-yourself.md).
 
 Please use [cord19.vespa.ai](https://cord19.vespa.ai/) when referring to this.
 
