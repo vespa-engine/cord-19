@@ -6,14 +6,14 @@
     "runtime-main.js": "/static/js/runtime-main.5e4498a3.js",
     "runtime-main.js.map": "/static/js/runtime-main.5e4498a3.js.map",
     "static/css/2.784726de.chunk.css": "/static/css/2.784726de.chunk.css",
-    "static/js/2.7a5dce5b.chunk.js": "/static/js/2.7a5dce5b.chunk.js",
-    "static/js/2.7a5dce5b.chunk.js.map": "/static/js/2.7a5dce5b.chunk.js.map",
+    "static/js/2.4accb966.chunk.js": "/static/js/2.4accb966.chunk.js",
+    "static/js/2.4accb966.chunk.js.map": "/static/js/2.4accb966.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.0f17a8d524ba83981e55117efa480bee.js": "/precache-manifest.0f17a8d524ba83981e55117efa480bee.js",
+    "precache-manifest.0dba191a5010e1f9c0e70ad0a868e1fb.js": "/precache-manifest.0dba191a5010e1f9c0e70ad0a868e1fb.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.784726de.chunk.css.map": "/static/css/2.784726de.chunk.css.map",
     "static/css/main.f8b5a4f2.chunk.css.map": "/static/css/main.f8b5a4f2.chunk.css.map",
-    "static/js/2.7a5dce5b.chunk.js.LICENSE.txt": "/static/js/2.7a5dce5b.chunk.js.LICENSE.txt",
+    "static/js/2.4accb966.chunk.js.LICENSE.txt": "/static/js/2.4accb966.chunk.js.LICENSE.txt",
     "static/media/VespaIcon.png": "/static/media/VespaIcon.aefa1e1f.png",
     "static/media/VespaLogoWhite.png": "/static/media/VespaLogoWhite.2fad86a7.png",
     "static/media/semantic.css": "/static/media/outline-icons.f89ea91e.woff",
@@ -24,7 +24,7 @@
   "entrypoints": [
     "static/js/runtime-main.5e4498a3.js",
     "static/css/2.784726de.chunk.css",
-    "static/js/2.7a5dce5b.chunk.js",
+    "static/js/2.4accb966.chunk.js",
     "static/css/main.f8b5a4f2.chunk.css",
     "static/js/main.0e91a455.chunk.js"
   ]
