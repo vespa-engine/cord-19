@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/static/css/main.f8b5a4f2.chunk.css",
-    "main.js": "/static/js/main.b3abe05d.chunk.js",
-    "main.js.map": "/static/js/main.b3abe05d.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.0206c3c8.js",
-    "runtime-main.js.map": "/static/js/runtime-main.0206c3c8.js.map",
+    "main.js": "/static/js/main.0e91a455.chunk.js",
+    "main.js.map": "/static/js/main.0e91a455.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.5e4498a3.js",
+    "runtime-main.js.map": "/static/js/runtime-main.5e4498a3.js.map",
     "static/css/2.784726de.chunk.css": "/static/css/2.784726de.chunk.css",
-    "static/js/2.729cc7ba.chunk.js": "/static/js/2.729cc7ba.chunk.js",
-    "static/js/2.729cc7ba.chunk.js.map": "/static/js/2.729cc7ba.chunk.js.map",
+    "static/js/2.7a5dce5b.chunk.js": "/static/js/2.7a5dce5b.chunk.js",
+    "static/js/2.7a5dce5b.chunk.js.map": "/static/js/2.7a5dce5b.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.0c44c0f68f09e61cea39f8e5c518eb46.js": "/precache-manifest.0c44c0f68f09e61cea39f8e5c518eb46.js",
+    "precache-manifest.0f17a8d524ba83981e55117efa480bee.js": "/precache-manifest.0f17a8d524ba83981e55117efa480bee.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.784726de.chunk.css.map": "/static/css/2.784726de.chunk.css.map",
     "static/css/main.f8b5a4f2.chunk.css.map": "/static/css/main.f8b5a4f2.chunk.css.map",
-    "static/js/2.729cc7ba.chunk.js.LICENSE.txt": "/static/js/2.729cc7ba.chunk.js.LICENSE.txt",
+    "static/js/2.7a5dce5b.chunk.js.LICENSE.txt": "/static/js/2.7a5dce5b.chunk.js.LICENSE.txt",
     "static/media/VespaIcon.png": "/static/media/VespaIcon.aefa1e1f.png",
     "static/media/VespaLogoWhite.png": "/static/media/VespaLogoWhite.2fad86a7.png",
     "static/media/semantic.css": "/static/media/outline-icons.f89ea91e.woff",
@@ -22,10 +22,10 @@
     "static/media/zdnet-logo-large.png": "/static/media/zdnet-logo-large.090d74c9.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.0206c3c8.js",
+    "static/js/runtime-main.5e4498a3.js",
     "static/css/2.784726de.chunk.css",
-    "static/js/2.729cc7ba.chunk.js",
+    "static/js/2.7a5dce5b.chunk.js",
     "static/css/main.f8b5a4f2.chunk.css",
-    "static/js/main.b3abe05d.chunk.js"
+    "static/js/main.0e91a455.chunk.js"
   ]
 }
