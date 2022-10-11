@@ -9,10 +9,9 @@ Contribution can include:
 * Improvement to data quality
 * Frontend improvements
 
-To contribute, make a PR - the Vespa Team reviews and merges at best effort. For 
-contributions to ranking or data quality, see the 
-[cord-19-search](https://github.com/vespa-engine/sample-apps/tree/master/vespa-cloud/cord-19-search) 
-repo for details.
+To contribute, make a PR - the Vespa Team reviews and merges at best effort.
+For contributions to ranking or data quality,
+see the [cord-19-search](https://github.com/vespa-cloud/cord-19-search) repo for details.
 
 ## Running frontend locally
 To work on the frontend application, it is easiest to run a version of the frontend
