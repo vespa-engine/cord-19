@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ac211564a91a0e0efed9232e8cbbbfba",
+    "revision": "cadf29516377e489c809962ec2140675",
     "url": "/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/css/2.367d7d23.chunk.css"
   },
   {
-    "revision": "f203adf204e87b89355b",
+    "revision": "9cd6d2946113eb873f2f",
     "url": "/static/css/main.f8b5a4f2.chunk.css"
   },
   {
@@ -20,16 +20,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.d0988954.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f203adf204e87b89355b",
-    "url": "/static/js/main.33daf5c3.chunk.js"
+    "revision": "9cd6d2946113eb873f2f",
+    "url": "/static/js/main.acf82e3d.chunk.js"
   },
   {
     "revision": "c9bc8fbef5d3bb94a60c",
     "url": "/static/js/runtime-main.5e4498a3.js"
   },
   {
-    "revision": "2fad86a77fa339e40983978720ba1cee",
-    "url": "/static/media/VespaLogoWhite.2fad86a7.png"
+    "revision": "0d68d065becb47041ed750d6e4144659",
+    "url": "/static/media/Vespa_Logo_FullWhite.0d68d065.svg"
   },
   {
     "revision": "49a249a99a8bbcdfb2313afedc0d248d",
