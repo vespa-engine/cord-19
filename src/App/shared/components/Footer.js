@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Box } from 'rebass';
 import Link from 'App/shared/components/Link';
 import { Segment, Image } from 'semantic-ui-react';
-import logo from 'App/shared/img/VespaLogoWhite.png';
+import logo from 'App/shared/img/Vespa_Logo_FullWhite.svg';
 import { Container } from 'semantic-ui-react';
 
 const FooterBox = styled(Box)`
