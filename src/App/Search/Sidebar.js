@@ -3,22 +3,13 @@ import styled from 'styled-components';
 import { Button, Checkbox, Form } from 'semantic-ui-react';
 
 const filters = [
-  { name: 'Source', field: 'source' },
   {
     name: 'Journal',
     field: 'journal',
   },
   {
-    name: 'Published',
-    field: 'year',
-  },
-  {
     name: 'Author',
     field: 'author',
-  },
-  {
-    name: 'Full text',
-    field: 'has_full_text',
   },
 ];
 

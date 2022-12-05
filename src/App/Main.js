@@ -6,7 +6,7 @@ import { shuffle } from 'lodash';
 import SearchForm from 'App/shared/components/SearchForm';
 import Link from 'App/shared/components/Link';
 import { onSearch } from './Search/Utils';
-import VespaIcon from 'App/shared/img/VespaIcon.png';
+import VespaIcon from 'App/shared/img/Vespa_Logo_Mark_Full.svg';
 import Footer from 'App/shared/components/Footer';
 
 // Logos used in "featured in" section
@@ -20,28 +20,33 @@ const featuredArticles = [
   {
     logo: CWLogo,
     name: 'ComputerWorld',
-    link: 'https://www.computerworld.com/article/3534478/tech-pitches-in-to-fight-covid-19-pandemic.html'
+    link:
+      'https://www.computerworld.com/article/3534478/tech-pitches-in-to-fight-covid-19-pandemic.html',
   },
   {
     logo: SMDLogo,
     name: 'SearchMarketing Daily',
-    link: 'https://www.mediapost.com/publications/article/349673/verizon-media-launches-covid-19-search-engine-for.html'
+    link:
+      'https://www.mediapost.com/publications/article/349673/verizon-media-launches-covid-19-search-engine-for.html',
   },
   {
     logo: ZDNetLogo,
     name: 'ZDNet',
-    link: 'https://www.zdnet.com/article/verizon-introduces-open-source-big-data-coronavirus-search-engine/'
+    link:
+      'https://www.zdnet.com/article/verizon-introduces-open-source-big-data-coronavirus-search-engine/',
   },
   {
     logo: DatanamiLogo,
     name: 'Datanami',
-    link: 'https://www.datanami.com/2020/04/10/yahoos-vespa-takes-a-whack-at-cord-19-data/'
+    link:
+      'https://www.datanami.com/2020/04/10/yahoos-vespa-takes-a-whack-at-cord-19-data/',
   },
   {
     logo: WSJLogo,
     name: 'Wall Street Journal',
-    link: 'https://www.wsj.com/articles/machine-learning-experts-delve-into-47-000-papers-on-coronavirus-family-11586338201'
-  }
+    link:
+      'https://www.wsj.com/articles/machine-learning-experts-delve-into-47-000-papers-on-coronavirus-family-11586338201',
+  },
 ];
 
 const sampleQueries = [
@@ -151,13 +156,19 @@ function FeaturedInSection() {
         {featuredArticles.map((article, i) => (
           <List.Item key={i}>
             <Link to={article.link}>
-              <Image src={article.logo} alt={article.name} size="tiny" centered verticalAlign='middle' />
+              <Image
+                src={article.logo}
+                alt={article.name}
+                size="tiny"
+                centered
+                verticalAlign="middle"
+              />
             </Link>
           </List.Item>
         ))}
       </List>
     </>
-  )
+  );
 }
 
 function Main() {
