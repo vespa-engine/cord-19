@@ -3,11 +3,9 @@ import { navigate } from '@reach/router';
 const relatedToRegex = /(?:^|\s)(\+?related_to:[0-9]+)(?:$|\s)/;
 
 const select = `all(
-     all(group(source) order(-count()) each(output(count())))
      all(group(journal) max(10) order(-count()) each(output(count())))
      all(group(authors.name) max(10) order(-count()) each(output(count())) as(author))
      all(group(time.year(timestamp)) max(10) order(-max(time.year(timestamp))) each(output(count())) as(year))
-     all(group(has_full_text) each(output(count())))
    )`
   .split('\n')
   .map(s => s.trim())
@@ -59,7 +57,7 @@ const generateApiQueryParams = () => {
   ].forEach(q => query.delete(q));
   if (filter) query.set('filter', filter);
   if (ranking) query.set('ranking.profile', ranking);
-  else query.set('ranking.profile','bm25t5');
+  else query.set('ranking.profile', 'bm25t5');
   if (fieldset) query.set('model.defaultIndex', fieldset);
   query.set('select', select);
 
