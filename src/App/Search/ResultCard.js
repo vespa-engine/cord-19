@@ -81,19 +81,6 @@ const FunctionLink = ({ onClick, ...props }) => (
   </a>
 );
 
-function Explanation({ text }) {
-  return (
-    <Popup
-      content={text}
-      trigger={
-        <span>
-          <ExplanationIcon name="question circle" />
-        </span>
-      }
-    />
-  );
-}
-
 function JournalAndDate({ journal, timestamp }) {
   const format = journal ? ' (YYYY-MM-DD)' : 'YYYY-MM-DD';
   return (
