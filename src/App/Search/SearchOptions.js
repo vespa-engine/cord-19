@@ -33,7 +33,6 @@ const rankings = [
 ];
 
 function RelatedArticle({ id }) {
-  const params = new URLSearchParams(window.location.search);
   const similarMethod = 'Specter';
 
   const query = new URLSearchParams();

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Card, Icon, Label, Popup } from 'semantic-ui-react';
+import { Card, Label, Popup } from 'semantic-ui-react';
 import Moment from 'react-moment';
 import Link from 'App/shared/components/Link';
 import { nameFormatter } from 'App/shared/utils/formatter';
@@ -47,12 +47,6 @@ const StyledCard = styled(Card)`
   && .content {
     padding: 0.3em 0.5em;
     border: 0;
-  }
-`;
-
-const ExplanationIcon = styled(Icon)`
-  &&.icon {
-    margin: 0 0 0 0.5em;
   }
 `;
 
