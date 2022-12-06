@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Card, Icon, Label, Popup } from 'semantic-ui-react';
+import { Card, Label, Popup } from 'semantic-ui-react';
 import Moment from 'react-moment';
 import Link from 'App/shared/components/Link';
 import { nameFormatter } from 'App/shared/utils/formatter';
@@ -50,12 +50,6 @@ const StyledCard = styled(Card)`
   }
 `;
 
-const ExplanationIcon = styled(Icon)`
-  &&.icon {
-    margin: 0 0 0 0.5em;
-  }
-`;
-
 const highlightRegex = /<hi>(.*?)<\/hi>/g;
 const formatText = text => {
   if (!text) return null;
@@ -80,19 +74,6 @@ const FunctionLink = ({ onClick, ...props }) => (
     {props.children}
   </a>
 );
-
-function Explanation({ text }) {
-  return (
-    <Popup
-      content={text}
-      trigger={
-        <span>
-          <ExplanationIcon name="question circle" />
-        </span>
-      }
-    />
-  );
-}
 
 function JournalAndDate({ journal, timestamp }) {
   const format = journal ? ' (YYYY-MM-DD)' : 'YYYY-MM-DD';
