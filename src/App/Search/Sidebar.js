@@ -51,7 +51,7 @@ function Checkboxes({ name, field, values, onSearch }) {
             name={name}
             value={value}
             onChange={onChange}
-            label={`${value} (${count})`}
+            label={`${value}`}
             checked={checked}
           />
         ))}

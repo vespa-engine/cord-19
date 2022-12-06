@@ -55,14 +55,10 @@ function Footer({ page = null }) {
       <Container>
         <Segment.Group horizontal size="small">
           <Segment basic textAlign={page === 'main' ? 'center' : 'left'}>
-            <Link to="https://pages.semanticscholar.org/coronavirus-research">
+            <Link to="https://blog.allenai.org/sunsetting-cord-19-239fb2f9ff4a">
               COVID-19 Open Research Dataset (CORD-19)
             </Link>
-            . 2020. Version 2020-08-23. Accessed 2020-08-23.{' '}
-            <Link to="https://doi.org/10.5281/zenodo.3727291">
-              doi:10.5281/zenodo.3727291
-            </Link>
-            <br />
+            <br /> Version 2022-06-02 <br />
             Copyright Yahoo Licensed under{' '}
             <Link to="https://github.com/vespa-engine/cord-19/blob/master/LICENSE">
               Apache License 2.0

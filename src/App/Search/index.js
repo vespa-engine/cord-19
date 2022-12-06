@@ -101,6 +101,7 @@ function Search() {
   query.set('summary', 'short');
   query.set('type', 'weakAnd');
   query.set('restrict', 'doc');
+  query.set('collapsefield', 'title');
   query.set('hits', 10);
 
   const { loading, response, error } = Get(
