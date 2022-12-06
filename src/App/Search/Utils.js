@@ -2,11 +2,10 @@ import { navigate } from '@reach/router';
 
 const relatedToRegex = /(?:^|\s)(\+?related_to:[0-9]+)(?:$|\s)/;
 
-const select = `all(
+const select = `all(max(200) all(
      all(group(journal) max(10) order(-count()) each(output(count())))
      all(group(authors.name) max(10) order(-count()) each(output(count())) as(author))
-     all(group(time.year(timestamp)) max(10) order(-max(time.year(timestamp))) each(output(count())) as(year))
-   )`
+   ))`
   .split('\n')
   .map(s => s.trim())
   .join('');
@@ -99,7 +98,6 @@ const getSearchState = () => {
     year: urlParams.getAll('year'),
     author: urlParams.getAll('author'),
     has_full_text: urlParams.getAll('has_full_text'),
-    use_specter: urlParams.getAll('use_specter'),
     ranking: urlParams.get('ranking'),
     fieldset: urlParams.get('fieldset'),
     relatedId: getRelatedId(urlParams),

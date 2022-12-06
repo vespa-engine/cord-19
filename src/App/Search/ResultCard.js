@@ -220,20 +220,6 @@ function ResultCard({
               {body}
             </div>
           )}
-          {abstract_t5 && (
-            <div>
-              <Label horizontal>
-                Machine Generated Summary
-                <Explanation text="This is a short summary of the abstract, generated using a Natural Language Processing Model (T5)." />
-              </Label>
-              {formatText(abstract_t5)}
-            </div>
-          )}
-          {onSearchSimilar && (
-            <FunctionLink onClick={onSearchSimilar}>
-              Search for similar articles
-            </FunctionLink>
-          )}
         </Card.Content>
       )}
     </StyledCard>

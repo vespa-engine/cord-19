@@ -51,14 +51,13 @@ const featuredArticles = [
 
 const sampleQueries = [
   'What is the impact of school closure in handling the COVID-19 pandemic?',
-  '+CT screening COVID-19 +("Machine Learning" AI "Aritifical Intelligence")',
+  'CT screening to detect infection using Machine Learning',
   'Has social distancing had an impact on slowing the spread of COVID-19?',
   'What are the best masks for preventing infection by COVID-19?',
   'What kinds of complications related to COVID-19 are associated with hypertension?',
-  'Is +(remdesivir hydroxychloroquine) an effective treatment for COVID-19?',
-  '+"diamond princess" cruise +COVID-19',
-  'Estimate +COVID-19 +("case fatality rate" cfr ifr "infection fatality rate")',
-  '+(title:masks title:respirator title:n95) +covid-19',
+  'Is remdesivir an effective treatment for COVID-19?',
+  'diamond princess cruise',
+  'Estimate COVID-19 case fatality rate',
 ];
 
 const TallDivider = styled(Divider)`

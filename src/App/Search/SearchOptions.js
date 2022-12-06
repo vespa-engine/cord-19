@@ -16,32 +16,26 @@ const Container = styled.div`
 
 const fieldsets = [
   {
-    text: 'title, abstract and full text',
-    value: 'allt5',
-  },
-  {
-    text: 'title, abstract',
+    text: 'title and abstract',
     value: 'default',
   },
 ];
 
 const rankings = [
   {
-    text: 'text ranking',
-    value: 'bm25t5',
+    text: 'text ranking (BM25)',
+    value: 'bm25',
   },
   {
-    text: 'date',
-    value: 'freshness',
+    text: 'neural (ColBERT)',
+    value: 'colbert',
   },
 ];
 
 function RelatedArticle({ id }) {
   const params = new URLSearchParams(window.location.search);
   const use_specter = params.get('use-specter') === 'true';
-  const similarMethod = use_specter
-    ? 'SPECTER similarity'
-    : 'Sent-SciBERT similarity';
+  const similarMethod = 'Specter';
 
   const query = new URLSearchParams();
   query.set('yql', `select title from sources * where id = ${id};`);
@@ -71,7 +65,7 @@ function SearchOptions({ totalCount, fieldset, ranking, onSearch, relatedId }) {
       <Container>
         {totalCount > 0 && (
           <>
-            <b>{totalCount}</b> matches
+            Ranked <b>{totalCount}</b> articles.
           </>
         )}
         <span>
@@ -86,7 +80,7 @@ function SearchOptions({ totalCount, fieldset, ranking, onSearch, relatedId }) {
             options={fieldsets.map((flds, id) => ({ id, ...flds }))}
             onChange={(event, { value }) => onSearch({ fieldset: value })}
           />
-          {' and sorting by '}
+          {' ranked using '}
           <Dropdown
             inline
             defaultValue={
