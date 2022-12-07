@@ -104,7 +104,7 @@ function Related({ id, specter }) {
   query.set('id', id);
   query.set('summary', 'short');
   query.set('hits', 5);
-  query.set('collapsefield', 'title');
+  query.set('collapse.enable', 'true');
   if (specter) query.set('use-specter', true);
   const { loading, response, error } = Get(
     '/search/?' + query.toString()
