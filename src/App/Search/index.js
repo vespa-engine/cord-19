@@ -102,6 +102,8 @@ function Search() {
   query.set('type', 'weakAnd');
   query.set('restrict', 'doc');
   query.set('collapse.enable', 'true');
+  query.set('collapse.similarity.threshold', 0.85);
+  query.set('input.query(title_weight)', 0.5);
   query.set('hits', 10);
 
   const { loading, response, error } = Get(

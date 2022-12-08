@@ -63,7 +63,7 @@ function SearchOptions({ totalCount, fieldset, ranking, onSearch, relatedId }) {
       <Container>
         {totalCount > 0 && (
           <>
-            Ranked <b>{totalCount}</b> articles.
+            Ranked approximately <b>{totalCount}</b> articles.
           </>
         )}
         <span>

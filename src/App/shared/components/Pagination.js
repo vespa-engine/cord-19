@@ -9,7 +9,7 @@ const Center = styled.div`
 
 function Pagination({ total, offset, onOffsetChange, numPerPage = 10 }) {
   const totalPages = Math.min(
-    10,
+    5,
     Math.floor((total + numPerPage - 1) / numPerPage)
   );
 
