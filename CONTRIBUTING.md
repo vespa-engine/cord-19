@@ -1,16 +1,17 @@
 <!-- Copyright Yahoo. Licensed under the terms of the Apache 2.0 license. See LICENSE in the project root. -->
 # Contributing to Vespa CORD-19
+
 Contributions are greatly appreciated.
+
 This document describes what’s needed to contribute.
 If you have any questions, tweet us @vespaengine.
 
 Contribution can include:
 * Improvements to ranking
-* Improvement to data quality
 * Frontend improvements
 
 To contribute, make a PR - the Vespa Team reviews and merges at best effort.
-For contributions to ranking or data quality,
+For contributions to ranking, 
 see the [cord-19-search](https://github.com/vespa-cloud/cord-19-search) repo for details.
 
 ## Running frontend locally
