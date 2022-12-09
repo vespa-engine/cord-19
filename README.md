@@ -1,28 +1,13 @@
 <!-- Copyright Yahoo. Licensed under the terms of the Apache 2.0 license. See LICENSE in the project root. -->
 
 # CORD-19 Search
+This application serves data from [COVID-19 Open Research Dataset (CORD-19)](https://allenai.org/data/cord-19) dataset.
 
-This is the __frontend__ of the [Vespa CORD-19 Search](https://cord19.vespa.ai/).
-The __backend__ [Vespa](https://vespa.ai) application is 
-[here](https://github.com/vespa-cloud/cord-19-search). 
-All of this is open source.
+This repo contains the __frontend__ of the [Vespa CORD-19 Search](https://cord19.vespa.ai/).
+The __backend__  is released as a [Vespa](https://vespa.ai) sample application:
+[https://github.com/vespa-cloud/cord-19-search](https://github.com/vespa-cloud/cord-19-search). All of this is open source, licenced under Apache 2.0. 
 
-For more advanced usage, see the [CORD-19 API](/cord-19-queries.md).
-
-This application serves data from _COVID-19 Open Research Dataset (CORD-19). 2020. Version 2020-08-23._
-_Retrieved from https://pages.semanticscholar.org/coronavirus-research._
-_Accessed 2020-08-23. https://doi.org/10.5281/zenodo.3727291_
-
-It is made accessible by the Vespa Team.
-[Vespa](https://vespa.ai) is an open source big data serving engine:
-store, search, rank and organize big data at user serving time.
-
-To implement this application, we also used:
-* https://medium.com/scite/analyzing-more-than-1m-citations-to-better-understand-scientific-research-on-covid-19-3faa59d726c2
-* https://zenodo.org/record/3724818#.Xn4Z-tNKh26
-* https://github.com/allenai/scibert
-
-Find more details in [About CORD-19 Search](ABOUT.md)
+For API usage, see the [CORD-19 API](/cord-19-queries.md).
 
 ## Contribute and run your own
 
@@ -30,20 +15,18 @@ Contributions are appreciated, see [contributing](/CONTRIBUTING.md).
 Use [issues](https://github.com/vespa-engine/cord-19/issues) for bug reports. 
 
 Data access in Vespa Cloud is secured.
+
 Refer to [vespa-documentation-search](https://github.com/vespa-cloud/vespa-documentation-search/blob/main/README.md)
-to learn how to manage secrets using AWS Lambda/Parameter Store.
+to learn how to manage secrets using AWS Lambda and AWS Parameter Store.
 
 To create your __own copy__ of the backend Vespa application, see 
 [experiment yourself](https://github.com/vespa-cloud/cord-19-search/blob/main/experiment-yourself.md).
 
 Please use [cord19.vespa.ai](https://cord19.vespa.ai/) when referring to this.
 
-
 ## Contact
-
 Tweet us at [@vespaengine](https://twitter.com/vespaengine),
 or mail at [info@vespa.ai](mailto:info@vespa.ai).
-
 
 ----
 
