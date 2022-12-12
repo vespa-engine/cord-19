@@ -50,14 +50,13 @@ const featuredArticles = [
 ];
 
 const sampleQueries = [
-  'What is the impact of school closure in handling the COVID-19 pandemic?',
-  'CT screening to detect infection using Machine Learning',
-  'Has social distancing had an impact on slowing the spread of COVID-19?',
-  'What are the best masks for preventing infection by COVID-19?',
-  'What kinds of complications related to COVID-19 are associated with hypertension?',
-  'Is remdesivir an effective treatment for COVID-19?',
-  'diamond princess cruise',
-  'Estimate COVID-19 case fatality rate',
+  'effect on mental health during and after lockdown in children',
+  'long covid symptoms',
+  'what do we know about long covid?',
+  'long covid - real or not?',
+  'crime statistics during the pandemic USA',
+  'online teaching impact on post pandemic grades',
+  'environmental impact due to pandemic travel restrictions',
 ];
 
 const TallDivider = styled(Divider)`
