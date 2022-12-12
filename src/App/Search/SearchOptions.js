@@ -23,12 +23,12 @@ const fieldsets = [
 
 const rankings = [
   {
-    text: 'text ranking (BM25)',
-    value: 'bm25',
-  },
-  {
     text: 'neural (ColBERT)',
     value: 'colbert',
+  },
+  {
+    text: 'text ranking (BM25)',
+    value: 'bm25',
   },
 ];
 
