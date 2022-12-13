@@ -23,11 +23,15 @@ const fieldsets = [
 
 const rankings = [
   {
-    text: 'neural (ColBERT)',
+    text: 'Hybrid (ColBERT + BM25)',
+    value: 'hybrid-colbert',
+  },
+  {
+    text: 'ColBERT',
     value: 'colbert',
   },
   {
-    text: 'text ranking (BM25)',
+    text: 'BM25',
     value: 'bm25',
   },
 ];
@@ -78,7 +82,7 @@ function SearchOptions({ totalCount, fieldset, ranking, onSearch, relatedId }) {
             options={fieldsets.map((flds, id) => ({ id, ...flds }))}
             onChange={(event, { value }) => onSearch({ fieldset: value })}
           />
-          {' ranked using '}
+          {' ranked by '}
           <Dropdown
             inline
             defaultValue={
