@@ -27,6 +27,10 @@ const rankings = [
     value: 'hybrid-colbert',
   },
   {
+    text: 'Hybrid -> Cross-Encoder',
+    value: 'hybrid-colbert-cross',
+  },
+  {
     text: 'ColBERT',
     value: 'colbert',
   },
