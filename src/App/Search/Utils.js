@@ -57,6 +57,12 @@ const generateApiQueryParams = () => {
   if (filter) query.set('filter', filter);
   if (ranking) query.set('ranking.profile', ranking);
   else query.set('ranking.profile', 'hybrid-colbert');
+
+  if (ranking == 'hybrid-colbert-cross') {
+    query.set('ranking.profile', 'hybrid-colbert');
+    query.set('cross-rerank', 'true');
+  }
+
   if (fieldset) query.set('model.defaultIndex', fieldset);
   query.set('select', select);
 
