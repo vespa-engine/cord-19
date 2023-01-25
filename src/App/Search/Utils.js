@@ -58,7 +58,7 @@ const generateApiQueryParams = () => {
   if (ranking) query.set('ranking.profile', ranking);
   else query.set('ranking.profile', 'hybrid-colbert');
 
-  if (ranking == 'hybrid-colbert-cross') {
+  if (ranking === 'hybrid-colbert-cross') {
     query.set('ranking.profile', 'hybrid-colbert');
     query.set('cross-rerank', 'true');
   }
