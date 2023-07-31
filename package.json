@@ -47,7 +47,7 @@
     "react-window": "^1.8.5",
     "rebass": "^4.0.6",
     "semantic-ui-react": "^0.88.2",
-    "styled-components": "^4.4.1"
+    "styled-components": "^6.0.0"
   },
   "husky": {
     "hooks": {
