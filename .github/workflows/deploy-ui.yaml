@@ -30,7 +30,7 @@ jobs:
         yarn install
         yarn build
     - name: Upload artifacts
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v3
       with:
         name: site-artifacts
         path: build
