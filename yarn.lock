@@ -4462,8 +4462,9 @@ follow-redirects@^1.0.0:
   resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.8.tgz"
 
 fomantic-ui-css@^2.8.4:
-  version "2.8.7"
-  resolved "https://registry.npmjs.org/fomantic-ui-css/-/fomantic-ui-css-2.8.7.tgz"
+  version "2.9.2"
+  resolved "https://registry.yarnpkg.com/fomantic-ui-css/-/fomantic-ui-css-2.9.2.tgz#b445206bb0c1547ff05abbecc4725107749f7f54"
+  integrity sha512-D2KogymuA0t7z7zLoekSorgpOKil+q8y09sfYmWP1LcEA1WYRcMKdm5okjnxn4eopl8j45WBnWrkgtobNSbY2w==
   dependencies:
     jquery "^3.4.0"
 
@@ -5932,8 +5933,9 @@ jest@24.9.0:
     jest-cli "^24.9.0"
 
 jquery@^3.4.0:
-  version "3.6.0"
-  resolved "https://registry.npmjs.org/jquery/-/jquery-3.6.0.tgz"
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.7.0.tgz#fe2c01a05da500709006d8790fe21c8a39d75612"
+  integrity sha512-umpJ0/k8X0MvD1ds0P9SfowREz2LenHsQaxSohMZ5OMNEU2r0tf8pdeEFTHMFxWVxKNyU9rTtK3CWzUCTKJUeQ==
 
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
