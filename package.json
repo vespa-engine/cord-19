@@ -42,7 +42,7 @@
     "prettier": "^1.19.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-moment": "^0.9.7",
+    "react-moment": "^1.0.0",
     "react-scripts": "^3.4.0",
     "react-window": "^1.8.5",
     "rebass": "^4.0.6",
