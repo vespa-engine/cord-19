@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Fetch artifacts
-      uses: actions/download-artifact@v1
+      uses: actions/download-artifact@v3
       with:
         name: site-artifacts
         path: ../build
@@ -61,7 +61,7 @@ jobs:
       DEPLOY_TOKEN: ${{ secrets.CORD_19_DEPLOY }}
     steps:
     - name: Fetch artifacts
-      uses: actions/download-artifact@v1
+      uses: actions/download-artifact@v3
       with:
         name: site-artifacts
         path: ../build
