@@ -34,7 +34,7 @@
     "@welldone-software/why-did-you-render": "^7.0.0",
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react-hooks": "^4.0.0",
-    "http-proxy-middleware": "^3.0.0",
+    "http-proxy-middleware": "^3.0.3",
     "husky": "^8.0.0",
     "lint-staged": "^14.0.0",
     "lodash": "^4.17.15",
