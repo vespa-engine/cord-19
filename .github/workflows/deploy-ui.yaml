@@ -15,25 +15,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Check out code
-      uses: actions/checkout@v4
-    - name: Use Node.js 16
-      uses: actions/setup-node@v4
-      with:
-        node-version: '16.x'
-    - name: Build code
-      run: |
-        set -ex
-        shopt -s extglob
-        cd "${GITHUB_WORKSPACE}"
-        ls -la
-        yarn install
-        yarn build
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: site-artifacts
-        path: build
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Create a “build” directory and copy index.html
+        run: |
+          # fail on any error
+          set -e
+          mkdir -p build
+          cp index.html build/index.html
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-artifacts
+          path: build
 
   check-artifact:
     if: github.event_name == 'pull_request'
