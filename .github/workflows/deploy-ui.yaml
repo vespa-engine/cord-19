@@ -1,4 +1,8 @@
 name: CORD-19 UI
+
+permissions:
+  contents: write
+
 on:
   push:
     branches: [ master ]
@@ -53,30 +57,35 @@ jobs:
     if: github.event_name == 'push'
     needs: build
     runs-on: ubuntu-latest
-    env:
-      DEPLOY_TOKEN: ${{ secrets.CORD_19_DEPLOY }}
     steps:
-    - name: Fetch artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: site-artifacts
-        path: ../build
-    - name: Check out code
-      uses: actions/checkout@v4
-      with:
-        ref: gh-pages
-    - name: Deploy to gh-pages
-      run: |
-        set -ex
-        shopt -s extglob
-        cd "${GITHUB_WORKSPACE}"
-        git config user.name  "${GITHUB_ACTOR}"
-        git config user.email "info@vespa.ai"
-        rm -rf !("CNAME"|"node_modules")
-        mv ../build/* .
-        ls -la
-        rm -rf ../build
-        git add .
-        git commit --allow-empty -m "Publish to gh-pages branch $(date -Is)"
-        git remote set-url origin "https://x-access-token:${DEPLOY_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-        git push origin gh-pages
+      - name: Fetch artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: site-artifacts
+          path: ../build
+
+      - name: Check out gh-pages branch
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Deploy shutdown page
+        run: |
+          set -ex
+          shopt -s extglob
+          cd "${GITHUB_WORKSPACE}"
+          git config user.name  "${GITHUB_ACTOR}"
+          git config user.email "info@vespa.ai"
+
+          # Remove everything except CNAME and .git:
+          rm -rf !(CNAME|.git)
+
+          # Move index.html into root:
+          mv ../build/index.html .
+
+          # Stage + commit:
+          git add --all
+          git commit --allow-empty -m "Publish shutdown page $(date -Is)"
+
+          # Push with the built-in GITHUB_TOKEN
+          git push origin gh-pages
