@@ -6,11 +6,11 @@
   <img alt="#Vespa" width="200" src="https://assets.vespa.ai/logos/Vespa-logo-dark-RGB.svg" style="margin-bottom: 25px;">
 </picture>
 
-# CORD-19 Search
-This application serves data from [COVID-19 Open Research Dataset (CORD-19)](https://allenai.org/data/cord-19) dataset.
+# CORD-19 Search has been _shut down_
+This application served data from the [COVID-19 Open Research Dataset (CORD-19)](https://allenai.org/data/cord-19) dataset.
 
-This repo contains the __frontend__ of the [Vespa CORD-19 Search](https://cord19.vespa.ai/).
-The __backend__  is released as a [Vespa](https://vespa.ai) sample application:
+This repo contains the __frontend__ of the application previosuly served at [https://cord19.vespa.ai/](https://cord19.vespa.ai/).
+The __backend__  was released as a [Vespa](https://vespa.ai) sample application:
 [https://github.com/vespa-cloud/cord-19-search](https://github.com/vespa-cloud/cord-19-search). All of this is open source, licenced under Apache 2.0. 
 
 For API usage, see the [CORD-19 API](/cord-19-queries.md).
